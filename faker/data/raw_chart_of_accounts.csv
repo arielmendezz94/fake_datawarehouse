@@ -1,0 +1,29 @@
+account_id,account_code,account_name,account_type,account_subtype,is_active
+5d944d22-de23-4ca6-8ed2-47645e5415ec,1010,Cash and Cash Equivalents,Asset,Current Asset,True
+330199c5-da7f-4eb5-9698-d4445be45e13,1100,Accounts Receivable,Asset,Current Asset,True
+7793cf85-ba2d-40cc-b30c-73b5c3e67d37,1200,Prepaid Expenses,Asset,Current Asset,True
+073bd53d-b2fc-4c0a-9753-2fc8489a49a2,1500,Equipment,Asset,Non-Current Asset,True
+3c63e958-c808-4305-8988-5fecad403c7d,1510,Accumulated Depreciation,Asset,Non-Current Asset,True
+0509f1da-fe2d-427c-8455-6ef8fd4d2854,2000,Accounts Payable,Liability,Current Liability,True
+63fc7e31-d669-432f-ab4d-acb0da21376c,2100,Accrued Expenses,Liability,Current Liability,True
+6a0eb63f-14c7-4baf-a79e-41e80d1422f0,2200,Deferred Revenue,Liability,Current Liability,True
+15c5e8ba-5035-403d-9fd9-980254f95b6f,2300,Loan Payable,Liability,Non-Current Liability,True
+734d6bd0-8209-4437-ac68-5ed7609327b4,3000,Common Stock,Equity,Equity,True
+9b0b8a3e-dcf5-476a-9d03-50b246a93a99,3100,Additional Paid-in Capital,Equity,Equity,True
+1c7e493f-6f5d-47bd-93df-2ff131f43e25,3200,Retained Earnings,Equity,Equity,True
+218e7b1a-a95f-43da-85c4-55336f73a934,4000,Subscription Revenue,Revenue,Operating Revenue,True
+2dffb7ff-6d59-4c43-bf61-55b352220a74,4100,Professional Services Revenue,Revenue,Operating Revenue,True
+27ddd3b2-a5ad-483d-986c-b5dbc4ff5bfc,4200,Setup Fees,Revenue,Operating Revenue,True
+76cd4070-0590-4ff0-ba1f-b2f713487362,5000,Hosting and Infrastructure,COGS,Cost of Revenue,True
+b47462ee-0880-4394-b67c-b56fd3b97ab8,5100,Third-party Software Costs,COGS,Cost of Revenue,True
+57fef1e2-6bb5-4b6b-b2a7-6f0616e1cac8,5200,Professional Services Delivery,COGS,Cost of Revenue,True
+413c887f-93df-4ed7-932e-b4814e2f6d64,5300,Engineering - Product Delivery,COGS,Cost of Revenue,True
+7d715a41-218a-475e-859d-054226e0fdbb,6000,Salaries - Engineering,OpEx,Personnel,True
+1e37135b-607d-42ed-b3bc-76cddcbb2d71,6010,Salaries - Sales,OpEx,Personnel,True
+0f0c5158-47c2-485d-b7f7-ce587a8e822f,6020,Salaries - Customer Success,OpEx,Personnel,True
+d5ed4be3-4952-4e42-8deb-c7ed99af5caa,6030,Salaries - G&A,OpEx,Personnel,True
+442be84d-1686-45fb-aefe-3d6feb30e71e,6100,Sales and Marketing,OpEx,Sales & Marketing,True
+76c01349-7a40-42c4-a66b-7cd144afd187,6200,Office and Facilities,OpEx,Overhead,True
+6d91a4a3-e1af-4e96-b35e-f49bc43bad15,6300,Professional Fees,OpEx,Overhead,True
+6aa21452-3615-4dfd-bef7-740f4446e410,6400,Software and Tools,OpEx,Overhead,True
+6a5162b4-fd97-4fcb-9274-2c066d04785f,6500,Depreciation Expense,OpEx,Overhead,True

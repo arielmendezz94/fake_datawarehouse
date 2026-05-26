@@ -1,0 +1,171 @@
+
+version: 2
+
+sources:
+  - name: raw
+    database: dbt_db
+    schema: raw
+    description: >
+      Raw landing zone for CloudBridge Inc. synthetic SaaS dataset.
+      Grime on text/categorical fields — IDs always clean.
+      Period: 2021-01-01 to 2024-12-31.
+
+    tables:
+
+      - name: raw_chart_of_accounts
+        description: "Full chart of accounts. Account types: Asset, Liability, Equity, Revenue, COGS, OpEx."
+        columns:
+          - name: account_id
+          - name: account_code
+          - name: account_name
+          - name: account_type
+          - name: account_subtype
+          - name: is_active
+
+      - name: raw_customers
+        description: "500 B2B customers across 4 cohorts. region and industry have ~5% nulls/N/A — clean in bronze."
+        columns:
+          - name: customer_id
+          - name: company_name
+          - name: industry
+          - name: segment
+          - name: region
+          - name: billing_email
+          - name: credit_limit
+          - name: created_at
+          - name: is_active
+
+      - name: raw_products
+        description: "5 subscription plans + 3 professional services SKUs. list price only — actual MRR is in raw_subscriptions."
+        columns:
+          - name: product_id
+          - name: product_name
+          - name: product_category
+          - name: unit_price
+          - name: description
+          - name: is_active
+          - name: created_at
+
+      - name: raw_employees
+        description: "55 employees across Engineering, Sales, CS, G&A. role is null ~2% of rows."
+        columns:
+          - name: employee_id
+          - name: first_name
+          - name: last_name
+          - name: department
+          - name: role
+          - name: salary
+          - name: hire_date
+          - name: is_active
+          - name: created_at
+          - name: manager_id
+
+      - name: raw_vendors
+        description: "15 AP vendors. expense_account_code maps to raw_chart_of_accounts.account_code."
+        columns:
+          - name: vendor_id
+          - name: vendor_name
+          - name: vendor_category
+          - name: payment_terms_days
+          - name: expense_account_code
+          - name: is_active
+          - name: created_at
+
+      - name: raw_subscriptions
+        description: "1 per customer. mrr reflects negotiated pricing — diverges from raw_products.unit_price intentionally. status: Active | Churned."
+        columns:
+          - name: subscription_id
+          - name: customer_id
+          - name: product_id
+          - name: plan_name
+          - name: status
+          - name: mrr
+          - name: start_date
+          - name: end_date
+          - name: created_at
+          - name: updated_at
+
+      - name: raw_invoices
+        description: "Invoice headers — subscription renewals + PS one-offs. status has casing grime (~4%). currency may be 'usd' (~2%)."
+        columns:
+          - name: invoice_id
+          - name: customer_id
+          - name: subscription_id
+          - name: sales_rep_id
+          - name: invoice_type
+          - name: invoice_date
+          - name: due_date
+          - name: status
+          - name: total_amount
+          - name: currency
+          - name: created_at
+
+      - name: raw_invoice_lines
+        description: "1 line per subscription invoice, 1.3 lines for PS invoices."
+        columns:
+          - name: line_id
+          - name: invoice_id
+          - name: product_id
+          - name: description
+          - name: quantity
+          - name: unit_price
+          - name: discount_pct
+          - name: line_total
+
+      - name: raw_payments
+        description: "AR collections — ~85% of invoices. payment_method lowercase ~3% of rows."
+        columns:
+          - name: payment_id
+          - name: invoice_id
+          - name: customer_id
+          - name: payment_date
+          - name: amount
+          - name: payment_method
+          - name: currency
+          - name: created_at
+
+      - name: raw_vendor_bills
+        description: "48 months  15 vendors. Amounts seasonal + YoY growth. status has ~3% casing grime."
+        columns:
+          - name: bill_id
+          - name: vendor_id
+          - name: expense_account_id
+          - name: bill_date
+          - name: due_date
+          - name: amount
+          - name: status
+          - name: description
+          - name: currency
+          - name: created_at
+
+      - name: raw_payroll
+        description: "Monthly salary + December bonus records. Use pay_type (Salary | Bonus) to distinguish."
+        columns:
+          - name: payroll_id
+          - name: employee_id
+          - name: department
+          - name: pay_period_start
+          - name: pay_period_end
+          - name: gross_pay
+          - name: tax_withheld
+          - name: net_pay
+          - name: payment_date
+          - name: pay_type
+          - name: created_at
+
+      - name: raw_journal_entries
+        description: >
+          Double-entry GL — two rows per event (debit + credit).
+          transaction_type: INVOICE | PAYMENT | VENDOR_BILL | BILL_PAYMENT | PAYROLL_SALARY | PAYROLL_BONUS.
+          Primary source for P&L, Balance Sheet, and Cash Flow.
+        columns:
+          - name: entry_id
+          - name: transaction_ref
+          - name: transaction_type
+          - name: account_id
+          - name: account_code
+          - name: entry_date
+          - name: debit_amount
+          - name: credit_amount
+          - name: description
+          - name: created_at

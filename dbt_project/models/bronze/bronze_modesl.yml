@@ -1,0 +1,354 @@
+
+version: 2
+
+models:
+  - name: stg_chart_of_accounts
+    description: "Bronze staging for chart of accounts. Pass-through from raw with ingestion timestamp."
+    columns:
+      - name: account_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: account_code
+        description: "Numeric account code (e.g. 1010, 4000)."
+        tests:
+          - not_null
+      - name: account_name
+        description: "Human-readable account name."
+      - name: account_type
+        description: "Asset | Liability | Equity | Revenue | COGS | OpEx."
+      - name: account_subtype
+        description: "More granular type (e.g. Current Asset, Non-Current Asset)."
+      - name: is_active
+        description: "Boolean — whether the account is still in use."
+      - name: ingestion_timestamp
+        description: "Timestamp when the row was loaded into bronze."
+
+  - name: stg_customers
+    description: "Bronze staging for customers."
+    columns:
+      - name: customer_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: company_name
+        description: "B2B customer company name."
+      - name: industry
+        description: "Industry vertical. ~5% nulls expected from raw."
+      - name: segment
+        description: "SMB | Mid-Market | Enterprise."
+      - name: region
+        description: "Geographic region. ~5% nulls expected from raw."
+      - name: billing_email
+        description: "Primary billing contact email."
+      - name: credit_limit
+        description: "Approved credit limit in USD."
+      - name: created_at
+        description: "Date customer was onboarded."
+      - name: is_active
+        description: "Boolean — whether the customer is active."
+      - name: ingestion_timestamp
+        description: "Timestamp when the row was loaded into bronze."
+
+  - name: stg_products
+    description: "Bronze staging for products and SKUs."
+    columns:
+      - name: product_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: product_name
+        description: "Product name (e.g. Starter, Pro, Business)."
+      - name: product_category
+        description: "Subscription | Professional Services."
+      - name: unit_price
+        description: "List price. Actual MRR is in stg_subscriptions."
+      - name: description
+        description: "Free-text product description."
+      - name: is_active
+        description: "Boolean — whether the product is available."
+      - name: created_at
+        description: "Date the product was added."
+      - name: ingestion_timestamp
+        description: "Timestamp when the row was loaded into bronze."
+
+  - name: stg_employees
+    description: "Bronze staging for employees."
+    columns:
+      - name: employee_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: first_name
+        description: "First name."
+      - name: last_name
+        description: "Last name."
+      - name: department
+        description: "Department (Engineering, Sales, CS, G&A, etc.)."
+      - name: role
+        description: "Job title. ~2% nulls expected from raw."
+      - name: salary
+        description: "Annual base salary in USD."
+      - name: hire_date
+        description: "Date employee was hired."
+      - name: is_active
+        description: "Boolean — whether the employee is active."
+      - name: created_at
+        description: "Record creation date."
+      - name: manager_id
+        description: "FK to employee_id (self-join for org hierarchy). NULL for top-level."
+      - name: ingestion_timestamp
+        description: "Timestamp when the row was loaded into bronze."
+
+  - name: stg_vendors
+    description: "Bronze staging for AP vendors."
+    columns:
+      - name: vendor_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: vendor_name
+        description: "Vendor company name."
+      - name: vendor_category
+        description: "Expense category (e.g. Software, Facilities, Legal)."
+      - name: payment_terms_days
+        description: "Standard net payment terms in days."
+      - name: expense_account_code
+        description: "Default expense account code. Maps to chart_of_accounts.account_code."
+      - name: is_active
+        description: "Boolean — whether the vendor relationship is active."
+      - name: created_at
+        description: "Date vendor was added."
+      - name: ingestion_timestamp
+        description: "Timestamp when the row was loaded into bronze."
+
+  - name: stg_subscriptions
+    description: "Bronze staging for customer subscriptions. One row per customer."
+    columns:
+      - name: subscription_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "FK to stg_customers.customer_id."
+        tests:
+          - not_null
+      - name: product_id
+        description: "FK to stg_products.product_id."
+        tests:
+          - not_null
+      - name: plan_name
+        description: "Plan tier name (e.g. Starter, Pro, Business, Enterprise)."
+      - name: status
+        description: "Active | Churned."
+      - name: mrr
+        description: "Monthly recurring revenue for this subscription. Negotiated — may differ from product list price."
+      - name: start_date
+        description: "Subscription start date."
+      - name: end_date
+        description: "Subscription end date. NULL for active subscriptions."
+      - name: created_at
+        description: "Record creation date."
+      - name: updated_at
+        description: "Last update date."
+      - name: ingestion_timestamp
+        description: "Timestamp when the row was loaded into bronze."
+
+  - name: stg_invoices
+    description: "Bronze staging for invoice headers. status and currency have minor casing grime from raw."
+    columns:
+      - name: invoice_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: customer_id
+        description: "FK to stg_customers.customer_id."
+        tests:
+          - not_null
+      - name: subscription_id
+        description: "FK to stg_subscriptions.subscription_id. NULL for Professional Services invoices."
+      - name: sales_rep_id
+        description: "FK to stg_employees.employee_id. Note: column name differs from the PK it references."
+        tests:
+          - not_null
+      - name: invoice_type
+        description: "Subscription | Professional Services."
+      - name: invoice_date
+        description: "Date the invoice was issued."
+      - name: due_date
+        description: "Payment due date."
+      - name: status
+        description: "Paid | Open | Overdue. ~4% casing grime in raw."
+      - name: total_amount
+        description: "Total invoice amount in USD."
+      - name: currency
+        description: "Currency code. ~2% may be lowercase 'usd' in raw."
+      - name: created_at
+        description: "Record creation date."
+      - name: ingestion_timestamp
+        description: "Timestamp when the row was loaded into bronze."
+
+  - name: stg_invoice_lines
+    description: "Bronze staging for invoice line items."
+    columns:
+      - name: line_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: invoice_id
+        description: "FK to stg_invoices.invoice_id."
+        tests:
+          - not_null
+      - name: product_id
+        description: "FK to stg_products.product_id."
+        tests:
+          - not_null
+      - name: description
+        description: "Line item description (e.g. Business -- February 2021)."
+      - name: quantity
+        description: "Units sold."
+      - name: unit_price
+        description: "Price per unit at time of invoice."
+      - name: discount_pct
+        description: "Discount percentage applied (0.0 to 1.0)."
+      - name: line_total
+        description: "quantity * unit_price * (1 - discount_pct)."
+      - name: ingestion_timestamp
+        description: "Timestamp when the row was loaded into bronze."
+
+  - name: stg_payments
+    description: "Bronze staging for AR payment collections."
+    columns:
+      - name: payment_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: invoice_id
+        description: "FK to stg_invoices.invoice_id."
+        tests:
+          - not_null
+      - name: customer_id
+        description: "FK to stg_customers.customer_id."
+        tests:
+          - not_null
+      - name: payment_date
+        description: "Date payment was received."
+      - name: amount
+        description: "Payment amount in USD."
+      - name: payment_method
+        description: "ACH | Wire | Credit Card | Check. ~3% lowercase grime in raw."
+      - name: currency
+        description: "Currency code."
+      - name: created_at
+        description: "Record creation date."
+      - name: ingestion_timestamp
+        description: "Timestamp when the row was loaded into bronze."
+
+  - name: stg_vendor_bills
+    description: "Bronze staging for AP vendor bills."
+    columns:
+      - name: bill_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: vendor_id
+        description: "FK to stg_vendors.vendor_id."
+        tests:
+          - not_null
+      - name: expense_account_id
+        description: "FK to stg_chart_of_accounts.account_id."
+        tests:
+          - not_null
+      - name: bill_date
+        description: "Date the bill was issued."
+      - name: due_date
+        description: "Payment due date."
+      - name: amount
+        description: "Bill amount in USD."
+      - name: status
+        description: "Paid | Open. ~3% casing grime in raw."
+      - name: description
+        description: "Expense description."
+      - name: currency
+        description: "Currency code."
+      - name: created_at
+        description: "Record creation date."
+      - name: ingestion_timestamp
+        description: "Timestamp when the row was loaded into bronze."
+
+  - name: stg_payroll
+    description: "Bronze staging for employee payroll records."
+    columns:
+      - name: payroll_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: employee_id
+        description: "FK to stg_employees.employee_id."
+        tests:
+          - not_null
+      - name: department
+        description: "Department at time of payment."
+      - name: pay_period_start
+        description: "Start date of the pay period."
+      - name: pay_period_end
+        description: "End date of the pay period."
+      - name: gross_pay
+        description: "Total gross compensation."
+      - name: tax_withheld
+        description: "Taxes withheld from gross."
+      - name: net_pay
+        description: "Take-home pay (gross - tax_withheld)."
+      - name: payment_date
+        description: "Date payroll was disbursed."
+      - name: pay_type
+        description: "Salary | Bonus."
+      - name: created_at
+        description: "Record creation date."
+      - name: ingestion_timestamp
+        description: "Timestamp when the row was loaded into bronze."
+
+  - name: stg_journal_entries
+    description: "Bronze staging for the general ledger. Two rows per financial event (debit + credit)."
+    columns:
+      - name: entry_id
+        description: "Primary key."
+        tests:
+          - not_null
+          - unique
+      - name: transaction_ref
+        description: "Reference to the source transaction (invoice_id, payment_id, etc. depending on transaction_type)."
+        tests:
+          - not_null
+      - name: transaction_type
+        description: "INVOICE | PAYMENT | VENDOR_BILL | BILL_PAYMENT | PAYROLL_SALARY | PAYROLL_BONUS."
+      - name: account_id
+        description: "FK to stg_chart_of_accounts.account_id."
+        tests:
+          - not_null
+      - name: account_code
+        description: "Denormalized account code for query convenience."
+      - name: entry_date
+        description: "Date of the journal entry."
+      - name: debit_amount
+        description: "Debit side amount. 0 if this row is the credit leg."
+      - name: credit_amount
+        description: "Credit side amount. 0 if this row is the debit leg."
+      - name: description
+        description: "Free-text description of the transaction."
+      - name: created_at
+        description: "Record creation date."
+      - name: ingestion_timestamp
+        description: "Timestamp when the row was loaded into bronze."
+

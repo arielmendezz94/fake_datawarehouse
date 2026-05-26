@@ -1,0 +1,16 @@
+vendor_id,vendor_name,vendor_category,payment_terms_days,expense_account_code,is_active,created_at
+98e34843-f453-4b8e-8443-422f4eccd778,Amazon Web Services,Infrastructure,30,5000,True,2020-12-01
+a15d5331-ed38-47f5-9c20-db74465f3f32,Stripe,Payment Processing,15,5100,True,2020-12-01
+d5fbdccf-6e6c-4c94-9799-3f64916f8363,Salesforce,CRM Software,30,6400,True,2020-12-01
+1fbc6c20-420f-4186-9d5b-741117b164fd,HubSpot,Marketing Tools,30,6100,True,2020-12-01
+8eab6ab5-a06f-4637-b024-283508d3bb4e,Slack,Collaboration,30,6400,True,2020-12-01
+dce666ff-a9db-4c13-8546-f49b6b362221,Google Workspace,Productivity,30,6400,True,2020-12-01
+deb1569b-1b08-4c05-8c3f-6d1ab6062f3c,Zendesk,Support,30,6400,True,2020-12-01
+79c14b0f-2052-4ff1-aaa2-63a79a374d10,Datadog,Monitoring,30,5000,True,2020-12-01
+248f39e5-01a3-4562-87d4-a49ae6d0d279,Smith & Associates LLP,Legal,45,6300,True,2020-12-01
+f9b1e796-adf0-4e3f-87b2-7faf1b994c6b,Deloitte,Accounting,30,6300,True,2020-12-01
+ab0350f4-eb38-4c05-a835-5a9d862b53a5,WeWork,Office Space,30,6200,True,2020-12-01
+0adeb4de-378c-473d-9a7f-55d65152019e,Indeed,Recruiting,15,6100,True,2020-12-01
+df1bc2e0-47ae-4d94-9771-ac6f13cfcf2d,LinkedIn,Sales & Marketing,30,6100,True,2020-12-01
+49be1183-8096-4cc0-a0ec-53e0dc7b1627,Gusto,Payroll Software,30,6400,True,2020-12-01
+74347ff6-f8c7-4bdd-b36e-a957e70be19d,Silicon Valley Bank,Banking,0,6300,True,2020-12-01

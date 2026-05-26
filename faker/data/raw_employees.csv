@@ -1,0 +1,56 @@
+employee_id,first_name,last_name,department,cost_center,salary_account,role,salary,hire_date,is_active,created_at,manager_id
+11581bee-1622-4b90-8318-76d653410679,Amanda,Terrell,Engineering,COGS,5300,Software Engineer,87900.0,2020-05-10,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+173afd31-af8c-4bf4-8b0b-9219fad7f213,Benjamin,Hughes,Engineering,COGS,5300,Senior Engineer,86400.0,2020-02-20,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+82d71f43-697e-4163-af55-a610ec7825ec,Kathy,Estes,Engineering,COGS,5300,Tech Lead,121000.0,2020-12-30,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+42d9eb0b-97a3-476e-bace-d6d830f594a4,James,Gonzales,Engineering,COGS,5300,Staff Engineer,80900.0,2019-06-10,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+05a4ca90-34d9-402f-af0f-ff0595c2383d,Nicole,Ayala,Engineering,COGS,5300,Engineering Manager,111500.0,2022-06-11,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+4d1037cf-4651-4297-819d-84c2959f3738,Justin,Jackson,Engineering,COGS,5300,,122100.0,2019-03-28,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+89749565-19f3-4541-b9e6-c26eeb636619,Kelly,Ellison,Engineering,COGS,5300,Senior Engineer,95400.0,2020-10-07,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+12921ef8-258d-4bc9-9ec3-e958c3ce1d1f,Hannah,Mckee,Engineering,COGS,5300,Tech Lead,129200.0,2022-03-22,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+3ed9cf12-bb81-4f16-bc72-3410d2dabb3e,Steven,Lucas,Engineering,COGS,5300,Staff Engineer,102000.0,2023-04-15,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+ea1d367b-45ab-4f48-92b4-b932d42f0e71,Christopher,Mason,Engineering,OPEX,6000,Engineering Manager,90400.0,2020-03-30,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+9f0a8148-843b-4ea5-90d5-e467aff65209,Hector,Richards,Engineering,OPEX,6000,Software Engineer,82100.0,2021-12-12,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+dbcf3d55-fe36-4ac3-827a-556cbd62808b,Patricia,Payne,Engineering,OPEX,6000,Senior Engineer,101300.0,2022-01-12,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+868978a6-59e7-4a0e-95dd-1356742d2310,Phillip,Morris,Engineering,OPEX,6000,Tech Lead,94100.0,2022-11-06,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+587117b8-27b1-4912-a3f0-5fa99bc5d7ac,Angel,Chavez,Engineering,OPEX,6000,Staff Engineer,100100.0,2019-09-04,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+1a1a8d54-5e2a-4880-b51a-a6a84944efd3,Peggy,Huang,Engineering,OPEX,6000,Engineering Manager,100300.0,2022-11-12,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+5b5f8503-2dad-400a-a101-5cfa406454d9,Nicole,Davis,Engineering,OPEX,6000,,112100.0,2021-02-16,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+a2cd790d-8d88-43d7-b8ee-ab6886d51cb7,Mario,Wong,Engineering,OPEX,6000,Senior Engineer,92900.0,2022-06-08,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+b054cd08-0eee-4b5a-94e6-98fba3f77171,Jennifer,Martin,Engineering,OPEX,6000,Tech Lead,85300.0,2020-06-22,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+6f3947dd-2de1-4c61-8ce5-6ac3d1b6602d,Jessica,Davis,Engineering,OPEX,6000,Staff Engineer,100900.0,2022-06-09,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+347fa2b0-e257-4cbc-935c-83894a90090b,Jasmin,Walters,Engineering,OPEX,6000,Engineering Manager,85100.0,2021-05-18,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+ea89411c-ae77-401a-9edd-4b0741cd289b,Christopher,Zimmerman,Engineering,OPEX,6000,Software Engineer,113500.0,2021-02-01,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+564be5d5-7984-4dc0-bb25-a54bcbf0411d,Jessica,Hester,Engineering,OPEX,6000,Senior Engineer,97000.0,2021-07-12,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+48bb3226-ff55-488a-9193-27dcf197eeb0,Cheryl,Moore,Sales,OPEX,6010,Account Executive,62900.0,2022-03-25,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+ddedc4ab-c131-49a4-84f0-e1c0b0eaddfc,Andrea,Williams,Sales,OPEX,6010,Sales Manager,103900.0,2023-01-16,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+d45e3134-2904-45d4-b71a-88e0dba6ff11,George,Rogers,Sales,OPEX,6010,SDR,69100.0,2021-06-04,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+c12723ce-0149-468a-9884-6138be620784,Monica,Huffman,Sales,OPEX,6010,Enterprise AE,66800.0,2023-06-27,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+d5d26ecf-acfb-4245-a8af-de532ef96727,Fernando,Thomas,Sales,OPEX,6010,VP of Sales,64000.0,2019-01-20,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+b0b418d0-aaa7-4a88-8817-55defac16531,Kayla,Williams,Sales,OPEX,6010,Account Executive,85000.0,2022-07-15,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+63028cba-5164-4000-bcd4-8cbe4603db02,Kyle,Cross,Sales,OPEX,6010,Sales Manager,98200.0,2023-05-28,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+bfd313f2-3b32-4425-b96a-6913e73b5ee5,Susan,Roberts,Sales,OPEX,6010,SDR,70100.0,2022-03-08,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+49ccea83-fbe9-481d-a65f-da055a593453,Henry,Roach,Sales,OPEX,6010,Enterprise AE,60900.0,2019-12-01,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+a309497e-5ba8-4894-8d91-4fbde31a6dce,Susan,Smith,Sales,OPEX,6010,VP of Sales,103800.0,2021-09-02,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+5f78df04-367c-4fee-884d-63b05efda6fe,Kathy,Smith,Sales,OPEX,6010,Account Executive,60800.0,2023-03-05,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+3864e01c-72bf-4a0b-8e9d-6c5afba4ba2b,Tyler,Jimenez,Sales,OPEX,6010,Sales Manager,76700.0,2022-02-21,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+aacfc591-11bb-4b2d-b2eb-11eb32826af5,Lindsey,Franklin,Sales,OPEX,6010,SDR,103600.0,2020-12-05,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+bde1b0d8-d9e8-45c0-9cec-e338396ec3ad,Trevor,Robinson,Sales,OPEX,6010,,62300.0,2022-10-23,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+b4e2af0a-1146-4e6b-b573-8ee94ff8939b,Donna,Chavez,Customer Success,OPEX,6020,CSM,58000.0,2022-03-25,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+4e746091-ef4c-4b54-9b3e-e0b9ee1aa293,Scott,Burke,Customer Success,OPEX,6020,Senior CSM,71500.0,2023-05-18,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+bea0a75e-ab3e-44a3-9cdc-1b73d310ab3a,Adam,Khan,Customer Success,OPEX,6020,CS Director,63000.0,2021-11-11,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+69e9c0b5-a927-45c5-b2bd-9528344ed20f,Joshua,Fuller,Customer Success,OPEX,6020,Implementation Specialist,79500.0,2019-06-10,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+13a9cc4c-6dc6-4eb2-a3dc-8a8d06a6ee09,Lori,Clark,Customer Success,OPEX,6020,Technical CSM,61500.0,2022-07-17,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+b86bc5de-775a-4cdd-99cc-b8d147de749a,Jack,Brown,Customer Success,OPEX,6020,CSM,84700.0,2022-08-04,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+460d74a1-8d24-476f-bbbf-81dfc111303d,Michael,Thomas,Customer Success,OPEX,6020,Senior CSM,63500.0,2022-07-16,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+30841a09-8f41-40ef-9963-4449a85032d4,Antonio,Lane,Customer Success,OPEX,6020,CS Director,66200.0,2019-05-27,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+f12f1c8a-39f9-434f-b551-1bb83f50db92,Carrie,Rivera,Customer Success,OPEX,6020,Implementation Specialist,63700.0,2020-10-04,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+b1f14ea2-5a6c-472b-9dcd-7f390fd47efe,Christopher,Rodriguez,Customer Success,OPEX,6020,Technical CSM,61700.0,2020-07-01,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+7db54b0f-c848-4818-8bca-6a4b440fe3d6,Victoria,Martin,G&A,OPEX,6030,Controller,105500.0,2021-06-30,True,2021-01-01,
+d6a0d9e2-ef1b-4d73-8670-95dddf73aa9a,Justin,Guerrero,G&A,OPEX,6030,HR Manager,168000.0,2023-03-12,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+026cb297-dfdf-4aca-8fea-c14832b473d9,Holly,Armstrong,G&A,OPEX,6030,Operations Mgr,171000.0,2021-04-27,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+d0c9bdb5-dd46-4147-b547-52f3b4cbf169,Anna,Burch,G&A,OPEX,6030,CEO,158200.0,2019-09-14,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+9bc83511-69d0-441a-8baa-fe1af3b2ba12,Kara,Ward,G&A,OPEX,6030,CFO,136100.0,2023-03-04,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+e15a465d-5c9e-4852-8a3d-d1cf470b35d1,Barry,Mack,G&A,OPEX,6030,COO,69200.0,2019-12-08,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+9ebf84b7-9b27-48f1-a997-ca8cfeae5c23,Marcus,Merritt,G&A,OPEX,6030,Executive Assistant,71000.0,2021-08-27,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+3e324a3c-1461-4a21-b090-eb915d7692a2,Lori,Chang,G&A,OPEX,6030,Recruiter,63000.0,2021-03-24,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6
+e928c210-34d5-4775-8360-f4836792b2c3,Megan,Brown,G&A,OPEX,6030,Finance Analyst,174500.0,2019-08-01,True,2021-01-01,7db54b0f-c848-4818-8bca-6a4b440fe3d6

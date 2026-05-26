@@ -1,0 +1,501 @@
+customer_id,company_name,industry,segment,region,billing_email,credit_limit,created_at,is_active
+94366ae4-c6b2-4556-bb46-8c8df9354f71,"Rodriguez, Figueroa and Sanchez",FinTech,SMB,Southeast,jillrhodes@miller.com,250000,2021-02-14,True
+5bc74bb5-2227-46fa-bfc4-aea79c4607c5,Wagner Inc,Unknown,SMB,Unknown,jennifermiles@robinson-lawrence.com,250000,2021-08-03,True
+26867c91-78c1-4fc7-9af8-daf60a13a0c6,Wolfe LLC,Legal Tech,SMB,Southeast,eric51@james.com,25000,2021-04-21,True
+0998cb51-d2ef-4285-baa7-ab7ee473007d,"Baker, Williams and Stevens",HR Tech,SMB,Midwest,dudleynicholas@carter.com,10000,2021-08-24,True
+e52ef2ae-510c-47ae-bdb4-69e183049815,"Lee, Jones and Stanley",InsurTech,SMB,International,tracie31@ramirez-reid.com,250000,2021-04-09,True
+16389580-81b8-40aa-a866-47160954a17b,Wood and Sons,FinTech,Mid-Market,Northeast,jacqueline19@jackson.biz,100000,2021-05-23,True
+b013178b-a14f-4987-8005-9c83267b685a,Mayo-Bowman,HR Tech,SMB,International,gabriellecameron@perez.com,10000,2021-11-08,True
+b6d69626-9fd9-4d64-b7dd-f075bb3145f6,Adams-Clark,E-Commerce,SMB,International,jason76@ellis.net,50000,2021-01-29,True
+444a50f9-ebd1-421d-bba8-12c9901933e4,"Baker, Richards and Hurst",FinTech,SMB,Northeast,icox@snyder.com,50000,2021-04-19,True
+e66f6c84-c592-405a-bb05-9b9f4ab73dff,"Moore, Becker and Carlson",InsurTech,Mid-Market,Southeast,djames@king.com,250000,2021-10-03,True
+fa154336-4ff5-46c5-b0b3-0795667b7a6b,"Dyer, Potter and Mack",InsurTech,SMB,Southeast,daniel62@smith-bowen.com,100000,2021-02-16,True
+69bfa70f-4c3e-48cc-b54e-75143faa7e2a,"Gill, Romero and Rodriguez",HealthTech,SMB,International,meagan89@hernandez.net,100000,2021-11-02,True
+196e6397-d289-4e5a-9607-cd7deab92f8f,"Sellers, George and Burns",Legal Tech,Enterprise,Northeast,hickmannatasha@allen-allen.org,250000,2021-05-17,True
+6f1aa534-6fb3-42ca-9111-c9a3ed3d3dae,Miller Group,HR Tech,SMB,n/a,spenceamanda@anderson.net,25000,2021-09-17,True
+c37cdb31-8853-482d-9c12-c030dbc381d1,Baker PLC,Legal Tech,Mid-Market,Southeast,ibrandt@vaughn.com,250000,2021-09-29,True
+6cff730f-8bf6-4874-82a7-621229b36b80,Lam-Hayes,HR Tech,SMB,Midwest,jeffreymorgan@spencer.com,50000,2021-05-03,True
+07a184eb-b889-44c8-94a8-34f824db4a3d,Jones Inc,HealthTech,SMB,Northeast,chad34@washington.org,25000,2021-03-07,True
+d4cf9388-ada2-4e8f-baab-2491925378f5,"Kennedy, Mueller and Aguirre",EdTech,Enterprise,West,clintonhopkins@henderson-owens.com,25000,2021-06-09,True
+7a063d7c-fe0e-4f09-9344-c5c413ab59d3,"Valdez, Lucas and Brown",HR Tech,Mid-Market,Northeast,lauren13@lee.com,10000,2021-10-29,True
+602a0838-25b8-419a-973c-edf3716722b4,White-Ford,N/A,SMB,Northeast,ramosmichelle@garcia.com,25000,2021-05-23,True
+b5ea50e1-373a-4fc2-a78b-9e81a8a8410b,House and Sons,E-Commerce,Mid-Market,Southwest,richardolson@barrera-martin.com,100000,2021-07-28,True
+31ab1285-ba06-4515-b6a7-7f87b64570c5,Baker-Bowers,HealthTech,SMB,West,smitchell@cowan.com,10000,2021-02-01,True
+0d1f1aaf-e1ea-47bc-ba27-dc913aa92ca6,Phillips Inc,HR Tech,SMB,Southeast,adkinsbrian@woods.com,100000,2021-04-04,True
+8dcd6be1-9a0b-4d05-ade6-3e5bb6620f53,"Miller, Lopez and Larson",E-Commerce,SMB,Southwest,richarddavid@sanchez.biz,250000,2021-01-08,True
+0457b56d-748e-47de-838a-3c54f3075dce,"Silva, Mills and Donovan",E-Commerce,SMB,Southeast,elizabethedwards@foster-powers.com,25000,2021-07-14,True
+232db2fa-494c-4507-add3-25f506c5de0b,  Stewart-Walton,PropTech,Mid-Market,International,smithchristine@ferrell.com,100000,2021-03-21,True
+b11358ad-1d48-4b77-8727-d83df98a8a46,Mahoney Inc,E-Commerce,Mid-Market,Southwest,mikemoore@warner.net,10000,2021-10-27,True
+73777335-702c-4df9-a13f-cf130ef04d93,Contreras PLC,EdTech,Mid-Market,Southeast,sarah12@wilson-rodriguez.net,25000,2021-07-26,True
+317a3391-3c79-40b3-9899-7d039fbf6325,Nelson PLC,E-Commerce,SMB,Northeast,jenniferharris@farrell.com,250000,2021-06-11,True
+612239d2-3774-4f2d-97ea-f35f2e358cb1,Walters LLC,E-Commerce,SMB,Midwest,smithkellie@whitney.biz,50000,2021-08-23,True
+44c4ed35-85dc-49af-8d86-d07714262f94,"Smith, Jones and Ware",N/A,SMB,Southeast,amydavenport@tran.com,50000,2021-02-05,True
+fe8f01b9-eeaa-49ac-b738-72eda21922d6,Nolan and Sons,HR Tech,SMB,Southwest,elizabethgomez@henson.com,250000,2021-01-05,True
+84a816ad-3858-4c64-a5fc-c007a51d178c,Hancock and Sons,Legal Tech,SMB,Southeast,vjohnson@patton-jenkins.com,250000,2021-03-21,True
+2e11ca23-5f9d-4fc0-baa9-75438e23b5b3,Moore-Haynes,E-Commerce,SMB,International,ebrennan@gonzalez.com,50000,2021-01-27,True
+dfa0411d-4bc6-40f9-bbb6-96d4c5b36266,Hoover-Savage,InsurTech,SMB,Midwest,andrewlee@ramirez-jones.com,50000,2021-03-24,True
+18067f81-dded-4b56-9a7c-6da5bae9197f,May-Ross,InsurTech,SMB,International,sheila14@carpenter.com,50000,2021-10-26,True
+fe9cd101-5858-4d6f-9ba5-2c0ab47d9b9c,Carlson LLC,InsurTech,SMB,Northeast,samuel81@lam-lee.com,25000,2021-12-08,True
+0251b4ac-0f9d-4573-beb4-6b7a37652ea8,"Graham, Meyer and Drake",InsurTech,Mid-Market,Southeast,michaeljones@mccall.com,25000,2021-07-31,True
+f3dc2bfc-b170-493a-9ddc-e614a0c99ba5,"Mccullough, Hunter and Estrada  ",HR Tech,SMB,International,richard48@lee.biz,50000,2021-03-23,True
+0c1565d1-e935-4f0a-8ad3-e95c72f16713,"Adkins, Thompson and Carroll",HealthTech,SMB,West,akelley@mitchell-jordan.org,100000,2021-06-29,True
+5903dd61-2b21-405a-9c1c-b197cddde5f1,"Pena, Marshall and Ramos",E-Commerce,Mid-Market,West,williamleon@jackson.org,50000,2021-06-29,True
+b9f19ffe-ddd9-428b-9a14-2b52879fc3f8,Davis-Crane,InsurTech,Mid-Market,Midwest,emilywalker@hernandez.com,50000,2021-04-02,True
+318b634b-4f17-4fbd-a1f8-8552bbd5abfe,Carr-Mack,,SMB,Midwest,operry@lee.com,10000,2021-07-17,True
+c17ed8ab-e5d7-4079-89b2-08c569f382b7,Douglas Inc,E-Commerce,Mid-Market,Northeast,osbornejeffery@holmes.com,25000,2021-07-06,True
+1f83571b-7496-4365-a065-f6abe9da650c,Anderson-Marshall,HR Tech,Mid-Market,Northeast,stephanie79@mcclain.info,50000,2021-12-08,True
+1865e2a3-48c7-423b-82c4-0339cf4c3d06,Manning Group,InsurTech,Mid-Market,Southeast,pgreen@ramirez.com,25000,2021-11-12,True
+b399d909-b9a1-4b79-a845-674d40a195b5,Gonzales-Reeves,InsurTech,SMB,Midwest,josephflores@miller.com,250000,2021-12-02,True
+41d7b22c-7105-4ae9-9060-47c93f2c02ec,"Lewis, Perry and Rivera",PropTech,SMB,West,nperry@price-carrillo.com,25000,2021-12-04,True
+178a5b06-e279-49af-8a06-9fcb0f2ef13e,"James, Smith and Bell",HR Tech,Enterprise,Southeast,acastaneda@adkins.com,25000,2021-03-17,True
+f7e1ccc2-0514-4bae-b70d-e11a5f74efbd,ROBINSON-GRAHAM,PropTech,Mid-Market,West,priceelizabeth@ramsey-pittman.com,25000,2021-12-23,True
+dbd8ba82-847f-45ca-936b-26528984b94c,"Ferguson, Meadows and Vargas",InsurTech,Mid-Market,Northeast,millerroy@white-green.com,10000,2021-08-06,True
+3acc10d5-c954-437e-a637-f943d242e4ae,Gibson LLC,PropTech,SMB,Northeast,aramirez@conley-ruiz.net,250000,2021-10-14,True
+d25001fd-4c10-4eeb-ae12-060db952aea2,Cooke LLC,PropTech,Mid-Market,Southwest,debraharrington@williams.com,100000,2021-03-23,True
+7a2b85d9-a591-42ee-ac25-30c54ab709e2,"Hernandez, Martinez and Caldwell",PropTech,Mid-Market,International,stevenscott@jackson-lawson.com,100000,2021-11-17,True
+c987316b-1092-46d1-8d1c-b5c5062d33a6,Oconnell Inc,PropTech,SMB,Midwest,hickmanbarbara@sanders-espinoza.com,10000,2021-03-12,True
+4adae61b-d40d-47d3-827b-877b06064cea,"Vaughn, Burton and Garcia",InsurTech,Mid-Market,Northeast,melissa91@patton.com,100000,2021-08-01,True
+f6a90d80-5dec-4c82-94f3-b91b0ccedeb5,Hunter LLC,InsurTech,Mid-Market,,atkinsonlynn@hamilton.info,50000,2021-06-02,True
+92b57bce-3a03-4665-8295-33839248ec75,"Hernandez, Thompson and Boyd",InsurTech,Mid-Market,Southwest,christina87@graham-simon.com,50000,2021-08-12,True
+b5b478b6-9f42-45b0-b036-16a2e92223df,Christian-Rivas,InsurTech,Mid-Market,West,ramirezshannon@hudson-barnett.com,25000,2021-11-15,True
+7047b717-bf9d-4638-9966-8d78d6979b65,Snyder LLC,InsurTech,Mid-Market,Northeast,tonykelly@peterson-beard.com,100000,2021-04-04,True
+8de8ecab-f8e1-46ec-bfcc-954deb1d50e8,"Smith, Vaughan and Miller",InsurTech,SMB,Midwest,wfreeman@vaughn.info,100000,2022-05-10,True
+d8f17986-8044-4ecc-b8da-9437072c33cf,Mcguire-Davis,N/A,Enterprise,Midwest,richardsanchez@perkins.biz,10000,2022-01-16,True
+e310eb3e-e295-456b-8245-eba329e885a5,"Pierce, Bell and Chavez",E-Commerce,Mid-Market,Southeast,john13@wilson-herrera.com,250000,2022-04-22,True
+76f5dd00-591f-478e-93a7-2e5c6ff4a311,Robinson Group,Legal Tech,SMB,Southwest,jenny89@hooper-wall.com,25000,2022-06-09,True
+c719f478-b354-4e11-8034-c266c754d92e,Ward LLC,FinTech,Mid-Market,West,ericksondavid@mccann.com,10000,2022-10-31,True
+4d59f976-edb2-4750-91cd-e20a94e135ed,"Raymond, Little and Mullins",E-Commerce,Mid-Market,International,salasaudrey@mendoza-peterson.com,250000,2022-01-22,True
+0158afbc-b40e-4f08-bc9e-8a18bb669926,Everett-Woods,InsurTech,SMB,International,moralescharles@parks.com,100000,2022-02-24,True
+dbe5b360-9a3f-4da9-938c-02a5af7e9bd5,Mcknight Inc,HR Tech,Mid-Market,International,yobrien@perez.info,250000,2022-11-30,True
+e13b4e98-4bca-4a04-88b0-0f6d42a94773,Dalton-Branch,PropTech,Mid-Market,Southwest,ashley09@garcia.com,10000,2022-05-23,True
+2a9da8e3-b693-457e-9b39-be0d78fce243,"Miller, Allen and Arnold",E-Commerce,Mid-Market,International,aaronhayes@harrison.com,50000,2022-04-04,True
+36217d30-dc73-4ac9-890d-5f7e537ce277,"Heath, Jones and Hall",HR Tech,SMB,Southwest,kristin93@wilson-walker.com,10000,2022-09-22,True
+8c029d56-6a58-4aab-babf-ffef6600d8ea,Serrano-Jones,HealthTech,SMB,Southwest,lauralarson@morse.com,100000,2022-08-18,True
+6d5d863f-f6cb-48c4-bcc6-c993442702ed,"Powell, Nelson and Fernandez",HealthTech,SMB,Southeast,cmiller@navarro-munoz.com,100000,2022-10-11,True
+8066950b-2c1a-487b-904c-ca65ac98b42c,Perez Ltd,InsurTech,Mid-Market,Midwest,keyemily@johnston-hines.com,50000,2022-04-29,True
+cbc4a5e2-8180-419f-966e-7b074cad5806,Stone-Ramos,E-Commerce,Mid-Market,International,howard96@olsen.biz,100000,2022-05-22,True
+808b6c36-0183-4b23-b577-9791f40c1a14,Morris-Garcia,Legal Tech,Mid-Market,Midwest,marksteele@bates-morales.net,10000,2022-12-29,True
+41d7739e-b2c5-40ad-852c-22190b2fb31b,Gibson LLC,Legal Tech,SMB,Midwest,marcus68@sandoval.info,100000,2022-02-22,True
+dca7d9ef-6e6e-4bc5-8b35-af39c8df63f2,Brown-Stone,Legal Tech,SMB,Southeast,wgarrett@harris.com,100000,2022-02-28,True
+b2b2a893-bb26-4010-b13b-7cf5eb23f0ce,Kim-Wolfe,InsurTech,Mid-Market,International,johnsoncrystal@mckinney.net,250000,2022-06-05,True
+c2d07422-d305-4c85-9b9c-8882b0dad494,Tran Inc,E-Commerce,Mid-Market,Southwest,victoriadurham@valentine-holland.com,250000,2022-07-14,True
+ed1f6d08-66d7-49f2-9ecd-4fd8e7342646,Cantu-Carter,PropTech,Mid-Market,West,robert77@bryant.biz,250000,2022-02-20,True
+ed1dc33b-7398-4c48-ba30-ecde161739e9,Weeks PLC,E-Commerce,SMB,Northeast,michellehill@morgan-french.com,10000,2022-03-22,True
+bb8f68c5-5061-4cd4-9d68-408d64e66d89,  Campbell LLC,PropTech,SMB,International,cgrimes@washington.biz,10000,2022-12-18,True
+26cade13-ea87-4391-823a-8213d2f916c7,Cantu-Kane,Legal Tech,Mid-Market,International,ashleyhall@williams-garner.biz,10000,2022-10-06,True
+bd397938-d8b4-4d9b-85e2-cfddba85c887,Mcneil-Sparks,EdTech,Mid-Market,Northeast,tylerjohnson@sanford.info,250000,2022-10-19,True
+a57a062c-3fc6-49d7-b052-eb21ed2e8d1c,Fox Group,PropTech,Mid-Market,International,bowenrobert@booker.com,250000,2022-09-10,True
+eeef76bc-4956-4006-ae10-086f5d19dede,Hanson-Sanders,FinTech,Mid-Market,Southwest,christianmelissa@james.info,250000,2022-10-28,True
+09d8eb0b-5901-4cc2-b7c4-88c93372d5fc,"Johnson, Jones and Welch",Legal Tech,Mid-Market,Southeast,wendy16@hodges.com,50000,2022-04-03,True
+c4fcf2ce-bd8b-42f5-993d-6ff230c3d5ce,Jackson-Evans,InsurTech,SMB,Northeast,williamslaura@howard-jordan.com,50000,2022-12-10,True
+259d3148-e9f8-49bc-aab1-dbaa998805b0,"Jenkins, Maldonado and White",EdTech,Mid-Market,Midwest,christianpitts@vega.com,250000,2022-01-19,True
+0938bdc3-1a5d-41f9-aa42-feec1afc9d43,Little-Stevens,HR Tech,SMB,West,nolansteven@byrd-moore.info,10000,2022-12-03,True
+6fdcfc3f-4385-4e30-b710-558e9bf71f5b,Huerta-Evans,PropTech,SMB,Midwest,dvaughn@gonzalez-cruz.info,100000,2022-01-27,True
+04858c0c-313b-4ee5-b316-e4e323c52823,Young PLC,EdTech,SMB,International,bailey40@foster.com,250000,2022-05-03,True
+58ac05a2-7dbe-41f4-9a56-3fcbe42c33a1,"Mcgee, Wall and Leach",Legal Tech,Mid-Market,Northeast,catherinegomez@lee.com,10000,2022-08-25,True
+360e2c8d-204d-4559-a17d-2dc43917ee9e,"Davis, Burton and Williams",EdTech,Mid-Market,Southwest,xjohnson@anderson.biz,100000,2022-08-30,True
+bd011496-6c2d-4fbf-8dca-9cf6dd3f9273,Gonzalez PLC,EdTech,Enterprise,Southwest,alyssa42@sloan-raymond.com,10000,2022-05-22,True
+132a0ea3-41ed-4e13-8f82-64185cea3bcb,"Harrell, Brock and Mcdonald",InsurTech,Mid-Market,Midwest,taylortammy@ramsey.net,50000,2022-10-28,True
+ac4dc53b-8eea-4ffa-a32e-ce4f6b30bf82,Davis-Foster,PropTech,SMB,West,amanda75@curry.com,250000,2022-07-13,True
+7bac539b-4fa2-46a5-a914-4835332689a3,Leonard Group,HR Tech,Enterprise,Southeast,harveysherry@herman-walker.com,100000,2022-01-23,True
+04c821fb-ba66-40a9-b0e7-d91c19e0eab8,"Colon, Blankenship and Turner",PropTech,Mid-Market,West,cwilson@torres.com,25000,2022-09-11,True
+f07036c8-4ceb-4246-bae4-68359293d177,Young PLC,EdTech,Mid-Market,Northeast,paulwatson@horton.com,250000,2022-08-22,True
+cfeff74e-fce2-404a-b33a-112975cd78dc,PENA-BASS,EdTech,Mid-Market,Midwest,rcrosby@vaughn.info,10000,2022-06-18,True
+579ae187-1a4c-4770-9dde-f02e891eb467,Sampson-Foley,InsurTech,Mid-Market,West,pollardmichael@howard.com,10000,2022-05-01,True
+7580520e-e315-4647-a1ce-2cd2bc15158e,Davis-Lewis,Legal Tech,Mid-Market,West,williamsmatthew@buchanan.com,10000,2022-08-16,True
+e85a130e-1d93-434c-a774-4b8030832d01,"Clark, Robinson and Kane",Legal Tech,SMB,Northeast,kim90@garrison-thomas.com,25000,2022-05-06,True
+7aa1b3cf-9880-4ee5-aaf2-2349af6cef7d,"King, Thompson and Guerrero",EdTech,SMB,West,andersonmichael@chapman.com,250000,2022-03-15,True
+fcedcca0-8c8f-4251-bc48-308bef88efcf,Williams-Harmon,Legal Tech,Mid-Market,West,reesethomas@palmer-rodriguez.net,25000,2022-02-07,True
+8c54a764-4413-4eee-8fdd-228177fcd202,Dougherty Inc,HR Tech,SMB,West,stephen00@boone-simmons.com,50000,2022-04-12,True
+552fb013-458f-4b92-be9e-313f3863aac4,Joseph-Wallace,PropTech,SMB,Midwest,morriseddie@hill.org,50000,2022-01-12,True
+53ca978a-03bb-49e1-a0a1-05f282edeb6c,"Joseph, James and Harper",InsurTech,Mid-Market,International,shawn96@mcguire.net,250000,2022-09-12,True
+e65f4eb6-980b-4990-b792-f1ded2546023,"Glenn, Jordan and Beasley",Legal Tech,SMB,Midwest,dmorgan@perry-davis.biz,50000,2022-12-14,True
+cd8d26d8-0632-40de-bf09-0fa28b3f8a05,Ortega-Brooks,EdTech,Enterprise,,gloriawells@decker.biz,50000,2022-03-09,True
+5ed9fa32-c841-4a35-9067-2ad61f077dbd,Garner LLC,Legal Tech,SMB,Southeast,angelawillis@hoffman.biz,50000,2022-09-29,True
+5b02523c-bb6f-4963-9b99-bc7c7b12369f,"Williams, Roberts and Edwards",Legal Tech,SMB,West,lanejason@olson.net,50000,2022-02-28,True
+77f2636d-3677-47ee-9fc2-11a72cc1578d,Wilson-Ramirez,HealthTech,Enterprise,International,lindsaybruce@austin.com,250000,2022-07-07,True
+544196d9-6930-4441-8710-8957cc3a7548,White Ltd,N/A,SMB,International,sandra50@kane.biz,100000,2022-11-23,True
+107ee789-db55-49f9-8ddc-f2e39084c32c,Thomas Ltd,HealthTech,SMB,Southwest,davisalyssa@barnes-peterson.com,250000,2022-04-24,True
+56acec89-d404-4966-b356-6a65b085007d,Griffith-Frank,PropTech,SMB,West,wareeric@williams.biz,10000,2022-06-05,True
+d10afdbf-3201-425b-8f5b-871d410f4869,Lawson-Perry,HealthTech,Enterprise,Southeast,kariwilson@rodriguez-gregory.org,250000,2022-08-03,True
+4e7537dc-d954-4040-9c21-3c0eba57a7fd,Rose-Parker,EdTech,Mid-Market,West,randallgreene@harris.com,50000,2022-01-17,True
+3c852f14-f3d8-45bc-8ef2-c7f25678c468,Roberts-Wilson,E-Commerce,Enterprise,Midwest,lburgess@james.com,250000,2022-11-27,True
+5d90b56d-7177-4ffc-8b0d-21e08984de1c,"Hansen, Barnett and Gomez",InsurTech,Enterprise,West,chensley@smith-morse.com,250000,2022-01-11,True
+bcd5b4fa-e981-4b8a-a40b-082d180509f4,"Patterson, Sullivan and Bowman",HR Tech,SMB,Southwest,darius05@solis.info,250000,2022-04-17,True
+6e0dbb5d-9d60-4c50-9d1e-d37a2b48e663,"Gillespie, Davis and Richard",E-Commerce,SMB,Unknown,ryanmorales@foster.com,250000,2022-05-09,True
+fa5c95b7-7f14-4405-966a-e075eca31c50,Cook and Sons,HealthTech,SMB,Northeast,dixondaniel@lee.com,250000,2022-06-15,True
+fc1f6bac-8237-4bf2-8add-3359f5b1da03,GARCIA LLC,EdTech,Mid-Market,International,glennhernandez@jones.info,50000,2022-09-20,True
+86a3f467-1be9-4e27-899a-4bdcdd7d4271,"Wolf, Cole and Glass",PropTech,Enterprise,Northeast,michelle52@jones-ramos.com,250000,2022-06-04,True
+960e367f-fd32-4cfd-9680-aebdf4aba0b2,Vargas-Bell,FinTech,SMB,West,collinsshannon@wood.com,100000,2022-02-07,True
+da64c861-859e-4299-9bdf-09f1d1b89934,"Lin, Wyatt and Gilbert",HR Tech,SMB,Midwest,jford@huang.com,50000,2022-07-15,True
+b14098f4-9ffb-4378-b56a-84e743037ea2,Jacobs-Mason,Legal Tech,Mid-Market,Northeast,hayeslisa@haas-miller.com,250000,2022-04-21,True
+de3fff8b-16f3-443e-b69f-5764c75ccb1d,Wright Group,E-Commerce,Mid-Market,West,nwarren@cox.biz,100000,2022-06-10,True
+27504d0f-9acf-44be-89c2-615ebd10e665,Schroeder-Shelton,HR Tech,Mid-Market,West,mccormickdeborah@rivera.biz,10000,2022-08-10,True
+5d4ecad6-5696-4ffc-8ec8-ef5d4407d2de,King-York,HR Tech,Mid-Market,Southwest,mathewaguilar@rangel.biz,10000,2022-07-30,True
+4dc467fc-9b63-4d08-9f01-11c7a9918ea5,Larson Inc,InsurTech,Mid-Market,Midwest,angelica52@warner.net,250000,2022-09-17,True
+7edc4ec3-d7d3-4a2e-9489-dd220758ca84,Lucas Group,PropTech,SMB,Southwest,andrew42@peterson.com,250000,2022-04-26,True
+ab93daef-a122-47bb-bfc2-45852fdf7e11,Cooke and Sons,FinTech,Mid-Market,International,phillipskristin@wise.com,50000,2022-06-23,True
+69867f9a-30a9-406d-a3d0-8454d56a51be,"Rogers, Miranda and Anderson",EdTech,Mid-Market,West,lmoore@wise.info,10000,2022-02-16,True
+0e2c155d-dc4a-42cf-afe5-d2a824ba93c7,Jenkins Ltd,E-Commerce,SMB,Southeast,tarabishop@bowers.info,250000,2022-11-02,True
+790f38e2-5ab4-4f4c-a8af-d4f7de05e2ef,Richardson PLC,FinTech,Mid-Market,Northeast,smurray@shaw-barnes.com,100000,2022-09-06,True
+9134137d-c313-4a9c-b52b-6395f0a604cd,Solis and Sons,InsurTech,Mid-Market,Northeast,brett75@villa.com,250000,2022-09-07,True
+a976884a-a7c3-44b8-899d-5951d5b35bae,Miller-Martin,Legal Tech,SMB,Southwest,jwhitehead@davis-lozano.info,25000,2022-03-12,True
+ff118d22-d2ac-4c62-be49-29613e795653,Arias-Perry,Legal Tech,SMB,International,pshaw@vang-brooks.com,250000,2022-12-27,True
+93caa81c-9d96-4484-9f3b-cddd4d433750,Galvan-Combs,HR Tech,Enterprise,Northeast,lacey20@lowery-kennedy.com,10000,2022-06-10,True
+be2b4033-7034-49d3-8a56-49bb53e146cc,"Harrison, Gilbert and Bullock",InsurTech,SMB,Northeast,scottmary@bentley.com,25000,2022-11-13,True
+a5486a5b-ee13-4aa6-95c8-1220a3a2948b,Turner Inc,HR Tech,Mid-Market,Southeast,robertbauer@brown-copeland.info,10000,2022-07-22,True
+81cbdd44-d8e3-4b83-8863-e37b8d91c0d8,"Herrera, Chen and Andrews",HR Tech,Mid-Market,Northeast,kellysmith@allen-butler.com,250000,2022-04-10,True
+89654f94-82ce-4300-bd3c-8b4ec3f958eb,"Villegas, Jones and Fox",HR Tech,Enterprise,International,myerstheodore@hughes.com,25000,2022-05-12,True
+61f6f47b-e014-447e-a1bb-748eeac02748,Cooper Ltd,EdTech,Mid-Market,Southeast,ingramjill@anderson-bell.com,100000,2022-10-16,True
+eef9f605-30d8-4ab2-bf1c-31d0261992c7,"Thompson, Maxwell and Marshall",PropTech,Enterprise,International,zwelch@brown.com,50000,2022-03-19,True
+1b6f0abd-dbbd-486a-b35b-97c14feaeb97,Harris-Moody,PropTech,SMB,Midwest,stewartkyle@hays-daniels.com,10000,2022-06-08,True
+4221d233-08e0-4e4f-853f-7469504c757e,Mullins and Sons,FinTech,Mid-Market,Northeast,michael05@martinez-richardson.biz,10000,2022-11-11,True
+3fae6e95-66ce-4010-83bb-57431ded2a55,"Gonzales, Huber and Morgan",InsurTech,Mid-Market,International,tylerjimenez@adams.biz,250000,2022-11-30,True
+2069857c-4b83-4dc3-a641-b3ec4b3b0e2d,"Carney, White and Carter",PropTech,Enterprise,West,millerdonna@griffin-robbins.com,50000,2022-02-13,True
+3965ab19-1a20-486f-9aa0-2193a454af8a,"Wallace, West and Acosta",,Enterprise,Southwest,christina64@whitney.biz,50000,2022-05-25,True
+a0763a88-ab32-4c0c-978f-cc4070926392,Palmer-Brady,HR Tech,SMB,International,stephaniethomas@gregory.com,10000,2022-10-13,True
+74f59f7c-0414-4577-8025-15106fc0519c,"Diaz, Reyes and Bradley",Legal Tech,Enterprise,Southwest,erikarush@wallace-jones.com,250000,2022-12-06,True
+f0b84564-a512-4e52-9827-cd34d3991a98,"Richardson, Edwards and Ramirez",HR Tech,Mid-Market,International,johnsonjacob@hughes.com,10000,2022-06-08,True
+d85e0e26-1cb2-467a-adf7-d0ed43698a71,"Griffin, Davies and Mitchell",HR Tech,Mid-Market,International,igonzalez@hayes.info,10000,2022-11-27,True
+8bd82577-1f48-4c2a-8b9d-3bd1ddfa25a6,Cochran LLC,n/a,SMB,Southeast,jenna88@vance-york.com,25000,2022-04-26,True
+48a4e492-dd79-4a51-ad80-bcf6b59b29a4,Hicks-Martinez,EdTech,Mid-Market,Northeast,laurayoung@johnson-spencer.com,250000,2022-01-20,True
+06b883b8-e4e1-43ef-9bc5-cbfe59bee016,Lara-Arnold,EdTech,SMB,Southeast,jonesraymond@higgins.org,25000,2022-08-13,True
+7580a9e6-b035-464a-9fba-d65ce8007989,Martinez LLC,HR Tech,SMB,West,coleerin@anderson-calderon.net,100000,2022-04-30,True
+739529eb-a638-44fc-9e81-e3c44e4fd578,"Matthews, Saunders and Anderson",Legal Tech,Mid-Market,Southeast,guerraapril@martin-morris.com,100000,2022-08-25,True
+14b0f007-e73c-4912-b6d9-16c60efc1cdb,Meza-Stone,InsurTech,SMB,Southeast,meghan43@huber.org,25000,2022-05-09,True
+7ccd8d11-44d7-4d35-9659-ea0e8c4d46cf,"Davis, Davidson and Vargas",PropTech,Mid-Market,Northeast,georgeweber@morgan.com,10000,2022-05-26,True
+40644e0a-dbf9-4342-adf2-190f7f28cbb2,Williams Ltd,EdTech,Enterprise,Southeast,debra96@fowler.com,25000,2022-08-19,True
+f9e58abe-8e9b-4deb-b1b7-d68265ac602c,"Frye, Webb and Ballard",FinTech,SMB,Midwest,eevans@brown.com,50000,2022-04-25,True
+9acb341b-840e-4321-bee3-dcf42e7eed9a,Lawson-Edwards,HR Tech,SMB,Midwest,jessica56@hodges.net,25000,2022-12-28,True
+c023040f-8f55-47b7-aee3-7afe26fc2598,Flores Group,FinTech,SMB,Southeast,adamsjohn@williams.org,250000,2022-09-28,True
+6695aa02-a2c7-4c58-8f3e-6b48e6b954bb,Wright-Grimes,Legal Tech,SMB,Southeast,lisapeck@edwards.net,100000,2022-02-02,True
+7c48fbfd-d9d3-4b77-8db5-527233f2dffe,Jimenez-Parker,PropTech,SMB,Southwest,davisphillip@levy-lewis.com,50000,2023-08-08,True
+d97dfb00-e723-4051-bc95-64fd50bc5b1b,  Williams Group,InsurTech,Mid-Market,Southwest,amitchell@jordan.com,250000,2023-10-06,True
+893d2476-7265-4989-b9e3-42d69ac9b844,Diaz-Morales,FinTech,SMB,International,michaelroberts@gordon-duran.com,10000,2023-07-02,True
+d347b169-97c3-4e7d-9b1c-d3000a0a06bd,"Becker, Wilson and Hester",HR Tech,Mid-Market,Northeast,vbrooks@mcmillan.net,50000,2023-03-10,True
+1dc9ee50-e6a6-4ae2-b9c8-3fb20ebb59ef,Porter-Williams,HR Tech,SMB,International,jenniferbrock@bryant.com,25000,2023-03-11,True
+eacbc715-d253-4c4c-898d-552a41377f3a,"Flores, Long and Jensen",Unknown,SMB,Southeast,brittney88@burns.com,50000,2023-09-21,True
+37ba5804-0d52-4294-986c-351476363cdf,Rivera-Rodriguez,PropTech,Mid-Market,Southeast,ysilva@wiggins.com,10000,2023-12-02,True
+ffd14efd-f421-403d-8845-8068f76395ed,"Patton, Parsons and Lane",HealthTech,SMB,West,silvageorge@griffith.com,100000,2023-06-23,True
+d4bf8f57-b544-4a2f-98cc-797bd0ad0164,Armstrong Ltd,PropTech,SMB,Southwest,leescott@hernandez-vaughn.biz,100000,2023-02-10,True
+d49f6514-7287-460b-a92c-7b5da80f4bec,"Hampton, Knapp and Salas",EdTech,SMB,Northeast,thorntonapril@nguyen.com,100000,2023-11-05,True
+ec328cd9-7b7b-427b-afe0-b7039b30f00c,Stevens PLC,EdTech,SMB,Northeast,amy49@lee-wright.net,250000,2023-08-11,True
+83a8dc9e-20cd-4569-ad52-24c78f66ce0b,Walker-Dudley,FinTech,Mid-Market,Midwest,kellie37@castillo-castro.com,25000,2023-01-16,True
+a7308722-22f1-46a7-90c9-1581122114ff,Martinez-Rhodes,N/A,SMB,International,zhuang@blevins-ballard.com,250000,2023-01-17,True
+256891a4-b440-4d23-8535-19ffee1c585a,Roberts Ltd,PropTech,SMB,Northeast,reedscott@burgess-lewis.net,100000,2023-06-10,True
+191e70ec-91b4-45cc-a58b-582c0a3ef5f5,Fitzpatrick-Horton,E-Commerce,SMB,Southeast,danielyang@sanchez.net,250000,2023-03-02,True
+8954c112-1aad-4d68-9d0a-70b1e1909357,Little Inc,Legal Tech,SMB,Southwest,gutierrezjennifer@maldonado.com,100000,2023-04-13,True
+a15b42d0-e38f-47ef-82a2-cebbfb21f9cb,"Spence, Moore and Delgado",HealthTech,Enterprise,West,mwoods@morris-brewer.com,50000,2023-12-08,True
+f1964097-f070-47a9-a145-a08ce448eac2,"Andrews, Nichols and Sharp",HealthTech,SMB,Midwest,gentrygregory@peck.biz,25000,2023-07-05,True
+ece094c8-b2d8-487e-8640-e2eeb6ff61ef,Lopez-Curry,HealthTech,Mid-Market,Southeast,nancy04@morrison.info,250000,2023-10-21,True
+c0b34377-05c3-45e6-9c2d-600cec3ef211,"Daniels, Snyder and Mays",EdTech,SMB,Midwest,znelson@rivera.info,100000,2023-09-27,True
+f22ee783-cdb6-4dcf-82b7-d1004e16f1d5,"Scott, Lopez and Doyle",InsurTech,SMB,Midwest,ashley32@chase.net,250000,2023-06-26,True
+9ef4a6ee-3d5b-4d4c-a59f-41cdd6a64cce,Miller-Caldwell,EdTech,SMB,Southwest,tinawoods@smith.com,10000,2023-09-23,True
+8e03ae71-06a6-4c59-acb3-7a47742ab9c8,Molina-Finley,EdTech,Enterprise,Southeast,brandi90@valdez-schwartz.com,50000,2023-02-10,True
+ac11e201-a20c-486c-a981-d6b824dc423e,"Wilson, Parker and Sullivan",Legal Tech,SMB,Southwest,hannah45@walker.info,250000,2023-10-25,True
+441078f9-9e73-408c-bdfa-1f223be74611,"Zhang, Brooks and Miles",HR Tech,Mid-Market,Northeast,ztodd@petersen.org,250000,2023-05-16,True
+e6b04e55-5103-4a00-ad8e-01cc97fe205c,Fox PLC,InsurTech,SMB,International,christian91@poole.com,50000,2023-09-05,True
+a12b46f6-ed8c-4470-8bac-c6b9df775672,"Herrera, Martin and Bond",InsurTech,SMB,Northeast,nwilson@aguilar.com,100000,2023-04-15,True
+d6e1c5c0-b8c5-4b81-8bfb-b95b96ff2c78,Anderson-Perry,EdTech,Mid-Market,International,hansenemily@cummings-foster.com,100000,2023-03-08,True
+5d52edb1-c604-404d-b457-42048baa43f0,"Robinson, Jones and Henderson",HealthTech,SMB,Midwest,weaverbrian@andersen.com,10000,2023-05-29,True
+cc2a726f-26e0-4018-8a4b-a8555fd5819b,Ortiz-Mack,InsurTech,Enterprise,Southeast,ybrooks@kane-knox.biz,50000,2023-04-08,True
+6e1fa0a3-3f33-4152-bc8a-b87fff032e15,Vega Ltd,PropTech,SMB,Midwest,desireebailey@haney.net,100000,2023-09-16,True
+c4120628-d972-41aa-baf1-983a2270887b,Luna and Sons,E-Commerce,SMB,Northeast,avilatiffany@nunez-stephens.net,100000,2023-05-27,True
+f460c572-2154-4d7e-aadc-e860b9aead8f,Morrow-Wright,HealthTech,Enterprise,International,eric31@pacheco.org,10000,2023-07-25,True
+076479ae-f6d2-4905-9a06-3f15f3241eac,Allen Inc,E-Commerce,SMB,West,wheelersean@warner.biz,50000,2023-11-16,True
+4aa426f6-decd-4611-a829-729364d07b32,Young-Robinson,HealthTech,SMB,Midwest,taylorvictoria@cabrera.org,50000,2023-03-15,True
+b4a332ef-6b06-486c-9943-d0553681e8fb,Ray-Barton,InsurTech,SMB,Southeast,joel28@gutierrez.com,250000,2023-08-22,True
+3478378f-e0bd-4374-bbcc-5d4749e7ca87,"Fry, Hobbs and Buck",EdTech,Mid-Market,Southeast,dpeters@david-powers.net,50000,2023-10-31,True
+2378c8b2-9ca4-42f1-862e-e5b31ee2359e,Horton-Russell,PropTech,SMB,Northeast,nicholas87@atkinson.com,100000,2023-10-26,True
+c9e52a4e-df2c-4508-a8f6-8742d6037701,Melendez-Hart,FinTech,SMB,International,igrant@sanchez-harris.com,250000,2023-04-27,True
+893787b5-baf8-42a2-b353-f5fd46ff05e3,Boone-Davis,PropTech,Mid-Market,Southwest,brettbennett@morrison.org,25000,2023-01-17,True
+d7739982-f244-402d-9af0-78428feb0fe9,"Powers, Robinson and Clark",HealthTech,SMB,West,kevin03@hayden.info,100000,2023-09-14,True
+ae97fd6d-f51f-41f8-a909-b26f8dfdc960,Dominguez Ltd,PropTech,Mid-Market,Northeast,randyallen@rowe-james.net,250000,2023-06-16,True
+91b0efd3-113b-4343-a705-a7153a80ae83,"Howard, Green and Hunt",PropTech,SMB,Southeast,zowens@harrison.com,250000,2023-07-01,True
+9c7dbf4b-c4c8-44a2-b97f-5e81be30e16d,Gutierrez-Hart,Legal Tech,SMB,Southeast,joycesmith@donovan.com,50000,2023-05-28,True
+088822c1-0e4b-467a-9bcf-8662cfab8088,Rivera Group,PropTech,SMB,International,victorpena@morgan.info,250000,2023-07-14,True
+a628a0c2-a9fa-47bb-9257-c38d0700595d,Jackson-Norton,InsurTech,Enterprise,Southeast,donaldpayne@stark.com,10000,2023-06-27,True
+2a24763f-6db0-4fd4-b518-9895c055cdef,"Johnson, Bradford and Landry",Legal Tech,SMB,Southwest,duranrobert@hall.net,50000,2023-03-12,True
+47b0b354-1bc9-4bb9-b5c2-1b4d214e0bd5,Brooks-Williamson,E-Commerce,Mid-Market,Southwest,bhopkins@patel.com,10000,2023-07-31,True
+2e26f126-8eac-4fb8-ac3d-69fd1df6b7ec,Moreno LLC,PropTech,Mid-Market,Northeast,andre62@hull.com,25000,2023-07-28,True
+f962512f-5e32-4ab7-ab5c-d64a3b50b87d,Lee PLC,PropTech,SMB,Midwest,lisa46@watson.info,10000,2023-11-30,True
+35ea3c63-cfa1-4354-971f-d68f8d2e04c9,"Sanchez, Terry and Evans",FinTech,SMB,Southeast,valdezmichele@davis.biz,100000,2023-09-11,True
+ab886c93-404e-48d7-94ba-ce2cdc437093,"Alvarez, Walsh and Warner",Legal Tech,SMB,Southwest,porterryan@knight-hodge.com,50000,2023-05-26,True
+98cf08d8-3ee5-4d29-81e2-1164f24ba5de,"Ellison, Hall and Valenzuela",PropTech,SMB,Southwest,enelson@frost.com,10000,2023-06-19,True
+4ec1034d-7991-4f2b-a3ea-d909673b8ce5,Mcfarland LLC,PropTech,Mid-Market,Northeast,alibrenda@nicholson.org,250000,2023-12-12,True
+3c44ecea-fd28-4680-a2ab-dbf10f19bb8b,Knight Group,EdTech,Mid-Market,West,patrick21@mcgee.com,10000,2023-07-25,True
+cb7c1a2c-b5df-43a4-b897-4612e9e60d85,Peterson PLC,EdTech,SMB,,unovak@walters.info,50000,2023-06-18,True
+36fc42ac-07b9-4827-98c3-89f69603be9a,Kelly Group,FinTech,SMB,Southeast,llopez@james.com,50000,2023-03-23,True
+182f1723-b0f8-4dff-8ca7-a8f8156d7fe0,"Jones, Adams and James",Legal Tech,Mid-Market,Midwest,jodistewart@davis.info,25000,2023-09-02,True
+0e386a11-0de1-4374-93b9-15032ac4cf29,Juarez-Garcia,HR Tech,Mid-Market,West,lopezshane@hunt.net,25000,2023-05-07,True
+d0f1fe3a-b62a-4aec-9366-c38e5223fcd0,Carlson LLC,HealthTech,Mid-Market,Midwest,asmith@maxwell-hardy.net,10000,2023-10-08,True
+eaa07f68-ec61-452a-8ed7-756d05b8218b,Armstrong and Sons,E-Commerce,SMB,Midwest,rjackson@adams-thomas.com,25000,2023-10-26,True
+d1182062-5898-48b7-b275-3d3673fc95ce,Hill-Evans,PropTech,SMB,Southwest,wardsheryl@weber.com,250000,2023-08-25,True
+14e13158-8f84-403d-856b-ee9e0c56b9f0,Torres Group,Legal Tech,SMB,Northeast,meagan65@cook-ochoa.org,10000,2023-08-05,True
+71a9a55f-9231-4f03-8dab-7b75e3fdf0d2,Evans PLC,HealthTech,SMB,Northeast,timothythompson@novak-carter.info,50000,2023-07-29,True
+c93674d7-0a21-4fa0-b7b5-b0e70285e1ba,"Casey, Nguyen and Ramirez",EdTech,Enterprise,International,kdiaz@vargas.com,100000,2023-08-18,True
+be937ee8-0086-4519-8935-a780b69fd5e7,"Saunders, Johnson and Acosta",InsurTech,Mid-Market,International,samuelcarter@jones.info,50000,2023-03-02,True
+a0a55df6-9010-4cd5-8166-3ed7b8f2e22a,Schultz and Sons,InsurTech,Mid-Market,Southeast,donna66@cole.info,50000,2023-08-26,True
+cdbc11cc-71b7-4871-ba9d-b954971a4057,"Morales, Hunter and Knapp",InsurTech,Mid-Market,Southeast,ystephens@miles-burnett.org,25000,2023-02-27,True
+c39b7bdf-2446-49c3-bdc3-afd2fcf281ce,"Rocha, Rodriguez and Wright",InsurTech,Enterprise,Northeast,gabriel90@terrell.com,250000,2023-01-18,True
+71b6a08b-5399-4e68-8dcf-16f1ffae16b1,Rodriguez-Garcia,FinTech,SMB,West,williamstone@watts.info,10000,2023-03-13,True
+74e2ffd7-f6e8-4c33-a25d-87460d48ca0d,"Chapman, Mason and Cooper",Legal Tech,Enterprise,Southwest,webbkenneth@wilson.com,50000,2023-05-02,True
+1aa9a774-5478-47b2-a39d-48dea826afec,Collins-Gibson,EdTech,Mid-Market,West,adrianabailey@kim.info,250000,2023-03-31,True
+590de763-141f-4f7c-8802-81d6a1cd9a89,Jones-Williams,InsurTech,SMB,Midwest,johnsonmatthew@byrd.com,250000,2023-06-13,True
+f38a4e20-d1fa-4103-99c4-4485a6178cd2,"Thompson, Moore and Castro",InsurTech,SMB,Southwest,zhall@lopez.com,50000,2023-12-29,True
+25e52f08-7b0c-41e8-b37f-fb9bd5ce36d0,"Mendez, Gonzalez and Vargas",PropTech,Mid-Market,West,nsmith@ramirez.com,25000,2023-05-11,True
+8c5898a1-1144-44d3-ae8e-20e40d7baa15,"Garcia, Wiggins and Lopez",HealthTech,Mid-Market,Northeast,james14@huffman.org,10000,2023-05-18,True
+fdd8cf68-20e2-4cf8-95b0-c3a33a87dce8,Carr-Matthews,FinTech,SMB,Southwest,michael79@cervantes.com,100000,2023-04-17,True
+ee10948e-32e1-4bff-92e7-80fc5cd60c3e,"Lawrence, Powers and Edwards",HR Tech,Enterprise,Southeast,kevinwhite@thomas.org,10000,2023-09-03,True
+fd3ddd22-9767-42e0-91a0-1a4b64419f5c,Henderson-Tucker,E-Commerce,SMB,Midwest,angelaburns@lopez.org,250000,2023-11-29,True
+13ba3a6d-4631-4162-8a35-6b99762c3782,Glenn Inc,Legal Tech,Enterprise,West,ytaylor@wagner.biz,100000,2023-06-13,True
+d6e5911e-4f55-49f6-901b-dd9f88256813,"Larsen, Burns and Miller",HR Tech,SMB,Southeast,flynnjeffre.y@hill.com,250000,2023-10-24,True
+c054f1b1-bbf9-4fea-a6da-853485ebfd45,Norman PLC,Legal Tech,SMB,West,hdunn@wilson.com,250000,2023-12-02,True
+cfd4e382-895c-418b-886c-69f4ea194216,"Carson, Williams and Ball",HR Tech,Mid-Market,International,veronicagarcia@potter.info,25000,2023-06-30,True
+a202778e-1342-4ae9-9321-8131ea903ee4,Bailey-Montoya,PropTech,Enterprise,International,hgrimes@clark.org,10000,2023-12-09,True
+26883115-16b6-4655-8d95-aee775087055,"Bell, Page and Chen",FinTech,Mid-Market,Southeast,christinaglover@trujillo.com,25000,2023-09-16,True
+a0ba3fb4-63ea-4191-85e7-6a61c9762d9c,"Campbell, Ryan and Morris",FinTech,Mid-Market,Southwest,keith48@ochoa.biz,10000,2023-01-04,True
+ff0b734e-1554-4bb4-b8cf-89e1b5891217,Riddle Ltd,n/a,Mid-Market,,jacquelineanderson@dawson.biz,25000,2023-02-24,True
+9606c247-2981-4cfc-aa4b-4a64139d6369,Thomas-Chen,EdTech,Mid-Market,Midwest,ebrooks@norton.com,100000,2023-02-10,True
+f33d0c42-3f68-4d5f-9802-7021ca5c2c4c,"Mayer, Wood and Clements",InsurTech,SMB,International,brandi17@beck.net,10000,2023-12-01,True
+1fd94f4e-a6c8-4783-8530-94945fb5a1f1,Robinson-Jordan,FinTech,SMB,Southwest,troymorris@morgan-lane.org,25000,2023-02-12,True
+7ea51f27-7d9f-4d7e-8423-a7f7bdaa4563,Kramer-Shannon,InsurTech,SMB,Northeast,williamsconnie@smith-noble.com,25000,2023-04-19,True
+20eacb4d-86a8-47ef-9dbc-c4b4b11defb3,Bryant-Braun,PropTech,Enterprise,International,sharris@khan.com,250000,2023-12-03,True
+1cd12b3f-f0f3-417c-a4c7-e32ab3a36299,Davis-Ward,Unknown,Mid-Market,International,watsonrebecca@williams.com,50000,2023-03-25,True
+c123a004-e366-420a-b43d-b7cdedbf7803,"Lyons, Young and Rios",InsurTech,Mid-Market,West,smiththomas@wheeler.info,10000,2023-09-14,True
+0c16c2da-65f4-4571-bf8b-d48baf9ceace,Smith LLC,HR Tech,SMB,Northeast,mcneilrobert@woods.biz,250000,2023-07-23,True
+9c28dda4-7304-4c57-a381-e5faf1b4d9e2,Cross Inc,n/a,Mid-Market,West,edwardsnicole@reyes.com,100000,2023-08-10,True
+ab1c41cb-bbc1-4368-86a0-b6f48c0983c0,Moreno Inc,InsurTech,Mid-Market,Southeast,scottbowen@goodman.info,25000,2023-07-14,True
+218a778c-6e11-4e70-be44-92c47e1d8f3c,Miller Inc,EdTech,SMB,Northeast,karenlawrence@bell-jordan.com,100000,2023-07-04,True
+858af229-736b-44bb-8730-ab49870532eb,Hill Inc,HealthTech,SMB,West,angelagreene@mitchell.com,10000,2023-01-14,True
+6eb422fb-627f-4e15-b735-71eac49ee83f,Holmes PLC,HealthTech,Mid-Market,,juliephillips@bowers.info,10000,2023-10-14,True
+5cb500ef-ba0f-4e26-afbd-894654cf0f4c,Rodriguez-Porter,E-Commerce,SMB,West,ricetiffany@peck-anderson.org,50000,2023-09-10,True
+414aafab-88d4-474f-b295-c4cb52a1b0f2,Diaz-Vega,EdTech,SMB,West,xbest@smith.com,25000,2023-11-17,True
+a8a18d9d-8f1c-4e05-8742-856566e99c8b,Lewis-Livingston,E-Commerce,SMB,Northeast,ohunter@mason.com,250000,2023-07-14,True
+3cc1cc2f-be5c-4d3d-94ef-d6b2feb8c170,"Herrera, Jensen and Ramirez",HR Tech,SMB,International,christian32@murphy.com,50000,2023-11-05,True
+3ec4c540-9677-4d37-a1e1-4d0c05b9bf22,Hale-Blair,E-Commerce,SMB,West,brianmiller@wilson-salazar.com,100000,2023-10-22,True
+0d8f1c14-56d8-4a4b-b3d4-683f35467142,Wade-Barrett,HR Tech,Mid-Market,West,davidzimmerman@smith.net,25000,2023-10-31,True
+710cc070-7f43-44d2-b976-53c6f0f623ff,"Green, Watson and Brady",EdTech,Mid-Market,International,jessica10@roman-nelson.com,100000,2023-05-30,True
+8c3fd442-57b3-475e-a0c9-2f24b447e8bb,Joseph-Ray,HealthTech,Mid-Market,West,crawfordwilliam@porter.com,50000,2023-05-04,True
+50b337f7-7649-4564-8adc-ad3f485cceaf,Moore-Ayala,EdTech,Mid-Market,Northeast,perezwilliam@trevino.com,250000,2023-07-25,True
+24c0a270-5a24-4fc1-a2a2-3fda3b325088,Ruiz Group,InsurTech,Mid-Market,Midwest,haroldhorne@tran.biz,250000,2023-11-23,True
+9a6f7cb6-a34e-420d-aedc-a27754d03448,Morris Group,HealthTech,Mid-Market,Midwest,joseph19@wilson-nunez.com,250000,2023-11-27,True
+da17d3cb-85f8-42b8-b578-000e3b2a9774,Walker PLC,InsurTech,SMB,West,finleycasey@cline-ayala.com,25000,2023-09-19,True
+11651e80-d0d8-4b98-8cd7-28d0fcd69c3c,Miller-Bryant,E-Commerce,SMB,International,james94@dean.info,50000,2023-01-13,True
+38557cc4-bf5e-4a34-8a2a-dd65780dc5d9,Oconnor PLC,Legal Tech,Enterprise,Northeast,edwardrandolph@hall.com,50000,2023-06-09,True
+9a59d145-ff4e-4827-8dd9-8f5afae28921,Smith-Sandoval,E-Commerce,SMB,Northeast,dalton83@vasquez-brown.com,50000,2023-02-04,True
+dc4b4ec8-ddcb-4b16-81eb-e10db554b6fb,"Ramirez, Williams and Hall",n/a,Mid-Market,International,xhaynes@villegas-miller.com,25000,2023-09-22,True
+c20c08e3-df70-47c8-9c8f-123ac2451ca3,"Anderson, Wilkins and Jones",EdTech,SMB,West,grahamtamara@carter.biz,25000,2023-04-06,True
+c9e4b3cb-95dc-4364-a4d5-a9ee5cb8f4ec,"Decker, Nguyen and Chavez",InsurTech,Mid-Market,Southeast,charlesharris@rodriguez.com,10000,2023-12-27,True
+84120c76-8372-4564-9908-a2f841a1c6b7,Martinez-Howard,Legal Tech,Mid-Market,Northeast,shannonford@davis.com,250000,2023-04-06,True
+5fc5fccd-d673-438d-bc84-5dd1dc56e99b,"Terry, Williams and Huff",E-Commerce,SMB,West,eddie35@palmer-byrd.com,250000,2023-07-18,True
+e13d03a3-1b41-465e-ab27-832e697ca9bb,Johnson Group,HealthTech,Mid-Market,Southwest,jhawkins@davis.com,50000,2023-11-11,True
+1fb6d769-ba95-4b76-845a-26080df46a1b,Smith and Sons,EdTech,SMB,Northeast,jamesmorales@mccoy.com,250000,2023-07-18,True
+736ced69-a63e-485a-9892-482bf47fbc70,Johnson Inc,EdTech,SMB,West,rachelramos@davis.com,25000,2023-10-12,True
+0929640f-6631-4e1e-ae7a-59d3644182af,Dunlap Inc,Legal Tech,SMB,West,sandrahamilton@foster.com,10000,2023-09-06,True
+7ebb72cb-dcd9-4803-8f07-456f20158022,Lewis-Lopez,InsurTech,Mid-Market,West,sean20@harvey.biz,100000,2023-09-08,True
+4978c403-ddb0-4927-8bf7-13c08b240763,"Mendoza, Miller and Reyes",FinTech,SMB,Northeast,zgonzalez@wright.com,25000,2023-08-23,True
+6d15cfbe-5b2e-496c-85b1-a4275d2cfdf2,Casey-Howard,PropTech,SMB,Northeast,kcooper@morris.org,50000,2023-10-05,True
+d2cb4727-df7e-4aee-9533-49493f37587f,Johnson LLC,FinTech,SMB,Southeast,stokesthomas@wang-key.com,25000,2023-06-02,True
+35d433b2-f43c-463e-a3f9-e35483e458f7,Wright and Sons,FinTech,SMB,Northeast,amanda03@bradford.com,25000,2023-04-18,True
+10de7c95-19ef-4c3c-bb92-2c40ffdb8e74,Young LLC,HR Tech,Mid-Market,West,robin05@elliott.info,25000,2023-04-16,True
+68dfb838-61d5-49e6-b86c-1e9f7ec51f04,"Parker, Henry and Davis",HR Tech,Mid-Market,Southeast,carolynsmith@smith-hardin.com,50000,2023-10-21,True
+2f4e7bff-3eed-48ca-a055-ce4db9e0ea06,Peterson and Sons,HealthTech,Mid-Market,West,brian29@stark.com,25000,2023-12-26,True
+cd3f88da-ec00-4743-a090-8b82140d74ac,Brooks Ltd,E-Commerce,SMB,Southeast,vwillis@morris-daugherty.biz,100000,2023-03-14,True
+ef195584-3e39-47a2-bdd4-8df81eb75eff,"Yu, Banks and Thompson",Legal Tech,SMB,Northeast,jeffrey92@parker-barker.com,10000,2023-07-26,True
+ea83f474-c5de-4adf-a923-5c37ca70b8a3,Daniel Ltd,Legal Tech,Enterprise,West,xrosales@johnson.org,10000,2023-02-17,True
+8c42c0fd-f226-4fc8-9eca-9084692c6db6,Bowman Inc,PropTech,Mid-Market,Northeast,vtaylor@young.com,100000,2023-04-19,True
+a533d57d-df12-411a-852d-5430225cbc9d,"Mcclure, Davis and Fletcher",HR Tech,SMB,Southwest,sean43@steele.com,50000,2023-12-16,True
+f25cf6d3-dac5-48bb-ba8a-bc1a42a63d15,Le Inc,FinTech,Mid-Market,Unknown,akim@wilkerson.biz,10000,2023-08-08,True
+8e903bcb-7486-417f-920a-5fb4a801e0d6,Payne-Garcia,EdTech,SMB,Midwest,kkramer@chang.com,10000,2023-07-10,True
+0495b33b-e813-4bd0-bb0a-73ee0fe2b5f6,Smith-Green,EdTech,Mid-Market,International,jonesgeorge@martin-jones.com,10000,2023-12-27,True
+a11eb4c5-f7d2-47d3-a48f-6e9528593892,Wheeler-Austin,E-Commerce,SMB,Southeast,bbush@martin.com,10000,2023-12-23,True
+75a2a3fb-f885-426a-ac4f-b96c17d39963,Harris-Lee,HealthTech,SMB,Southeast,donna43@williams.net,10000,2023-02-22,True
+af6fb3b3-3d88-4a41-bf3a-97d84349d4f4,Hernandez-Ward,HR Tech,SMB,Southeast,qmiller@greene.com,10000,2023-09-29,True
+dadd5aa5-cadc-4e91-9d7e-aba7b224dbd4,"Carter, Miller and Anthony",EdTech,Mid-Market,International,kristen77@baker.com,250000,2023-12-18,True
+0e1d883a-3ef6-4de9-8bb9-daf6dc3cec86,Wood-Griffin,E-Commerce,SMB,Northeast,scott43@elliott-hernandez.com,100000,2023-06-11,True
+550d1dc9-f21f-41a3-9a6f-f2f322a6bbc0,Barnett PLC,E-Commerce,SMB,Southwest,larellano@spencer.net,50000,2023-12-20,True
+20bd30bf-faf5-46e0-b279-83bf742564a8,Sheppard-Mcdaniel,Legal Tech,Mid-Market,Southeast,parmstrong@evans-foster.com,10000,2023-05-03,True
+cffa68d2-cc11-4803-8ee2-052914964603,"Duncan, Black and Duncan",HealthTech,Mid-Market,Northeast,davidtodd@rush.com,50000,2023-06-12,True
+f8726372-31da-457b-ae8d-b0d341c246d0,Martinez Group,InsurTech,Mid-Market,West,mcneilryan@hernandez.com,10000,2023-10-28,True
+3bfe1ed4-f3e9-4fef-91c3-ba8846d641b1,Hughes Group,Legal Tech,Enterprise,West,melissa87@buchanan.org,250000,2023-08-01,True
+d7fd47d9-fc66-4de4-93a3-1123af283083,"Harrington, Rodriguez and Hernandez",InsurTech,Mid-Market,Southwest,buckleyanna@floyd.com,10000,2023-09-19,True
+d62ae605-671f-4e9c-ae63-180c2f2d2d73,Baker-Pena,EdTech,SMB,International,rjohnson@thomas-franklin.biz,10000,2023-06-08,True
+b111a2d1-e073-4b18-a185-4794276f3b4c,Foster LLC,E-Commerce,SMB,West,brandonalvarez@prince-smith.com,10000,2023-06-08,True
+26dfc4c7-9017-40c2-97a9-6fc5efdab110,Ramirez-Vasquez,EdTech,Mid-Market,,comptonjeremy@mccann-ramos.com,250000,2023-09-22,True
+827c8078-075c-4584-af9b-c6c71d932307,Daniel-Jacobs,Legal Tech,SMB,Midwest,lopezjason@figueroa-malone.com,10000,2023-06-21,True
+0a9b0bb2-b191-49b9-8358-2e38b59a0c43,Robertson and Sons,Legal Tech,SMB,Southwest,collinswilliam@deleon.org,250000,2023-07-04,True
+7b9e4fbb-170e-4bf2-82bc-0627d7eb5a0f,Thompson and Sons,EdTech,SMB,Northeast,wrightstephen@bush-hill.info,10000,2023-04-27,True
+3d020421-9fb1-40c1-b0da-eb3fa873aab6,"Sanders, Leblanc and Maldonado",FinTech,Enterprise,n/a,nathanwheeler@horne.org,25000,2023-04-02,True
+a7e74aaa-4017-4ec7-97fe-17f18050eb27,"Bailey, Martin and Kline",FinTech,Enterprise,International,mitchellpaul@nash.com,25000,2023-08-02,True
+76fd93a2-4b89-4380-a625-6117ef58f7d2,"Perez, Clark and Pearson",HR Tech,SMB,Midwest,hancocktammy@smith.org,10000,2023-04-02,True
+3970b3c5-9844-44ff-8981-b4fcdb64ab23,Walker PLC,FinTech,SMB,West,jennifer46@york-stevens.com,50000,2023-06-17,True
+b357b3c0-f3c0-4831-924d-a2b3568e1075,Turner-Meyer,Unknown,SMB,Midwest,asilva@key.net,50000,2023-10-30,True
+a686af2e-c9cb-4b05-8b31-fbf813237a4a,"Wheeler, Campbell and Cohen",E-Commerce,Mid-Market,Southeast,rbrown@nguyen.com,10000,2023-04-30,True
+05873d6a-0ac4-4f4e-8271-35c31c752030,Hernandez and Sons,FinTech,SMB,International,trujilloleah@powell.com,50000,2023-02-23,True
+fc266a0e-05fa-4b78-8600-90b053dfe5e3,"Jimenez, Phillips and Meadows",E-Commerce,Enterprise,Southeast,cprice@erickson.com,25000,2023-09-24,True
+1e407849-2168-45fd-8f79-0ca1ab5943e9,"Nichols, Glover and Knox",HR Tech,Mid-Market,Southwest,william28@carter.com,100000,2023-02-08,True
+3bc6df90-01fd-4c9a-8c87-be5d28a1af0e,"Green, Stokes and Hines",FinTech,Enterprise,Southeast,staceylam@davis.com,100000,2023-12-25,True
+de678621-ab5b-45f2-ab86-d87b2e3042d0,French-Rivera,HR Tech,SMB,Northeast,brenda71@brown-walters.org,250000,2023-02-25,True
+196ac35a-af84-4058-ae6d-97fceb7de14f,"Jones, Preston and Mason",EdTech,SMB,Northeast,amoreno@pitts.com,25000,2023-08-20,True
+0d6b6c6a-564a-4b62-98df-5636189e4933,Cooper PLC,Legal Tech,SMB,International,tthomas@maxwell.com,250000,2023-01-21,True
+9691a4a2-ff7b-4405-bd24-ac7c7b6c8f95,"Hatfield, Edwards and Brown",HR Tech,Mid-Market,Midwest,whill@johnston.info,50000,2023-05-14,True
+9951899d-0259-4697-b22a-3eeacc02f2fb,Anderson Group,,Enterprise,Southwest,epowell@smith-ferguson.com,100000,2023-02-22,True
+c53ca796-cdbc-4d53-8bbb-a0f6b4d3f297,Mcclain PLC,EdTech,SMB,Southeast,andrewsmith@wright.com,50000,2023-12-18,True
+93f48951-3e6b-4287-b40b-0e02cb593ccd,Reyes PLC,HealthTech,SMB,N/A,gary04@bryant-meyer.net,100000,2023-03-07,True
+5f77d355-0f16-4f1b-bd7c-b72fff787a5d,Hamilton-Mcdaniel,HR Tech,Enterprise,Northeast,matthewvalenzuela@christensen-martin.biz,100000,2023-09-12,True
+e9459ebe-4220-46e1-977c-f80f726acd2a,Perez Ltd  ,EdTech,Enterprise,Midwest,jasonjohnson@jackson.com,10000,2024-06-06,True
+d4fd3021-f3c2-4401-969c-90733059f16d,Mcdowell-Scott,E-Commerce,SMB,Southwest,wheelerbrandon@valdez.com,100000,2024-02-05,True
+96e15d36-bdcc-4a22-8522-4ae75d5cf740,"Wilson, Wallace and Martinez",E-Commerce,Mid-Market,Northeast,thomas23@jennings.com,50000,2024-05-02,True
+9aed3dc0-5ed9-4678-9ab7-0613c5d84a87,"Meyer, Dean and Haynes",PropTech,Mid-Market,Midwest,grivas@higgins.com,50000,2024-06-01,True
+2522ef00-a52e-4a30-8a93-f3f9dfe35450,Gonzalez-Gonzalez,Legal Tech,Enterprise,Southwest,marie35@ortiz.com,25000,2024-02-10,True
+7769a0b8-3d8d-449a-a6fa-a7c478635963,"Fitzpatrick, Rivera and Smith",E-Commerce,Mid-Market,International,meadowsmary@snyder.com,25000,2024-05-27,True
+28af5c9f-f963-4558-9a90-47ca23922514,"Cummings, Conway and Newman",InsurTech,Mid-Market,Southeast,shinton@marshall-garcia.com,50000,2024-05-31,True
+85efe9a5-b1f3-4e6b-9cef-0a5d3907fbcf,Phelps LLC  ,EdTech,SMB,West,ronald11@smith.com,10000,2024-01-24,True
+873302da-a2ec-4e8b-9ec7-489e2e2623c1,Howard-Kim,,SMB,Southwest,natalie15@white-morales.info,25000,2024-03-23,True
+e79c5b7c-5217-432a-b379-3474d1b711ba,Houston-Vaughn,EdTech,Enterprise,Northeast,pmarsh@wilson.com,10000,2024-04-05,True
+f511911a-17e2-40ac-88c3-d6f808c935e5,Garcia PLC,InsurTech,SMB,Midwest,rpham@white-james.com,100000,2024-06-12,True
+f276ca15-1069-41ab-a531-126443227e6a,"Johnson, Cohen and Roberson",HR Tech,Enterprise,International,timothyfreeman@alexander-brown.com,50000,2024-02-27,True
+16f6d726-ffb6-4285-87c2-c8722bafa8e4,Bush Ltd,EdTech,Mid-Market,Midwest,tiffanysantiago@stone-watts.org,250000,2024-04-10,True
+4676f2a4-9699-4e55-a369-04d7f3c42982,Reynolds Ltd,FinTech,SMB,Southwest,timothyalvarado@cruz.org,100000,2024-02-06,True
+f1728763-a116-43e7-b82a-ba3740869dfa,Smith and Sons,HealthTech,Enterprise,Southeast,kchristian@walton.com,50000,2024-04-24,True
+9707686e-464d-40c5-8ffd-4715bbabffe2,CORDOVA-WILLIAMS,HealthTech,Mid-Market,,andreagray@miller.org,100000,2024-02-12,True
+cc34b198-ad6c-49e0-ac6a-edd28d87a7f5,Miller-Jimenez,PropTech,SMB,West,david70@powell.net,250000,2024-06-15,True
+20d9ba0d-9f86-494c-93fb-946aa86923c3,"Smith, Davis and Munoz",E-Commerce,SMB,Northeast,pamela83@powers.com,10000,2024-01-19,True
+309648c4-bb43-4d45-a8f9-aede9f3c3ddb,Richard LLC,InsurTech,SMB,Northeast,xmoran@chavez.com,100000,2024-06-29,True
+05f2f454-0dd6-41a0-a3bc-be1dbed6ca82,Kelly-Schultz,EdTech,SMB,Northeast,amy51@prince.com,25000,2024-04-14,True
+cec5fc53-4842-4024-a1b8-d2d91ff5ef2a,"Newton, Ortiz and King",Legal Tech,SMB,,jacobconrad@lewis-summers.com,50000,2024-01-01,True
+69f0c913-ce8e-497f-b3cc-a740e815ac8e,"Morgan, Sherman and Williams",Legal Tech,Mid-Market,West,bartonshannon@lawrence.com,25000,2024-06-12,True
+228ab8c0-698c-4016-b940-cbe2640a9b84,"Fitzgerald, Tran and Reynolds",HealthTech,SMB,West,xglass@holt.com,50000,2024-01-24,True
+0b079d73-1b5b-4150-a9ea-a1f2b9014cfb,Hughes PLC,InsurTech,Enterprise,Midwest,william66@moon.com,100000,2024-04-29,True
+a120a8b9-49d9-4d4e-80a6-9e61cb69462c,Chavez-Anderson,Legal Tech,SMB,International,vmorrison@evans.net,50000,2024-05-18,True
+102aca15-b7ea-4c58-8f22-5e3692b4e745,"Robinson, Clark and Klein",E-Commerce,Mid-Market,Southwest,samantha22@daniels.com,100000,2024-05-26,True
+e79516fa-58d7-41ea-beb6-437880d7176e,"Castillo, Duncan and Contreras",PropTech,SMB,Unknown,icraig@rich-henderson.com,100000,2024-02-14,True
+d1d39045-9f5c-41d1-ad8c-c8c2580929ee,"Rodriguez, James and Brown",EdTech,Mid-Market,N/A,gonzalezkaren@terrell.com,100000,2024-02-21,True
+043c7f11-d126-44fa-ada0-3d8ed0d9b87b,Franco Ltd,EdTech,SMB,International,james80@cervantes-garcia.net,100000,2024-05-22,True
+65e0960b-a165-4f84-9304-8979a15fa247,Newton PLC,HR Tech,Mid-Market,Northeast,yyoung@roberts.biz,250000,2024-04-17,True
+4071c987-b351-4617-82a6-33ef069c852f,Frye-Daugherty,EdTech,Mid-Market,Northeast,tammy00@king.info,10000,2024-03-14,True
+047ed844-7174-48a7-ba34-6de7bd49d02c,Pruitt Ltd,HR Tech,SMB,International,kari89@parsons.com,10000,2024-02-14,True
+558b9eb5-1b58-4550-8a12-93a1b0757259,Thompson-Fleming,EdTech,Mid-Market,n/a,sydneymoss@bennett.com,10000,2024-05-01,True
+1accd43c-5214-420e-85cf-588caab86b88,"Baker, Martin and Singleton",n/a,SMB,West,riverajenna@williams.org,25000,2024-02-04,True
+8a6954ab-0f68-47c6-83de-0bd8e8eb1cb5,Ayala Ltd,PropTech,SMB,International,tracy98@jones-zimmerman.net,25000,2024-04-23,True
+318df19f-ab58-4191-a24d-565f11824c40,Krueger PLC,InsurTech,Mid-Market,Midwest,hartmanerik@herrera.com,25000,2024-01-17,True
+68d5c5ea-35a7-42a0-a78d-3c143586d842,"Rivera, Ward and Robinson",InsurTech,Enterprise,Unknown,wbarajas@smith.org,25000,2024-01-15,True
+c29126a8-4355-4197-a83c-e7367ec43326,"Sanchez, Williams and Blackwell",PropTech,SMB,Southeast,hmoon@scott-ramsey.com,250000,2024-04-11,True
+2238fdd6-b5be-4174-8b7f-d64cba28f045,"Short, Brooks and Lang",HealthTech,SMB,West,stucker@lee.com,100000,2024-05-30,True
+f3548dae-5323-42bb-9c3c-cb45ddd58dc3,"Ferguson, Sims and Clark",HR Tech,Enterprise,International,michellecoleman@harris.biz,10000,2024-04-08,True
+4b8006d8-96d1-4cd0-a740-c4f303a99c8d,"Montoya, Jones and Parks",E-Commerce,Mid-Market,International,stevensmartin@jones.com,250000,2024-01-06,True
+d369e9e6-ed56-462c-ad46-8d37eccb82b2,"Jones, Underwood and Bartlett",FinTech,SMB,Southeast, ohughes@hamilton-smith.com,50000,2024-06-30,True
+8eb139e0-1d66-444e-9189-bb7c8f3e2bc3,"Smith, Cortez and Brown",InsurTech,Enterprise,West,haynescharles@rodriguez.com,250000,2024-06-08,True
+b24aaed8-e938-488e-a79b-f666dac80e2a,Hubbard-Kim,n/a,Mid-Market,Southwest,bshort@moore-robinson.biz,10000,2024-05-03,True
+3bc2a2cd-3b7a-43c5-8a21-18abfa1c5840,"Phillips, Walters and Evans",Legal Tech,Enterprise,Midwest,susan08@thomas.biz,50000,2024-02-18,True
+14097b28-7c96-4537-908e-b80920b59179,"Kelley, Miller and Clark",E-Commerce,Mid-Market,Southwest,jason82@white.com,25000,2024-01-07,True
+fc6b9a7d-c197-409c-a5e4-d122ddac5988,Wilson Ltd,Legal Tech,SMB,West,yorksarah@murray.com,250000,2024-02-18,True
+69affea3-4774-4eea-b9e3-d9818cfc0bde,Garcia-Swanson,E-Commerce,Mid-Market,West,wlynn@lambert.com,250000,2024-03-17,True
+322460d3-2934-47de-b956-99b0dce6a478,Harvey-Mccullough,EdTech,SMB,International,todd59@torres.com,25000,2024-06-23,True
+0e4bc179-5c64-43f9-a734-72839b1bd27f,Benjamin-Jackson,HealthTech,SMB,Midwest,john36@larsen-taylor.com,50000,2024-03-07,True
+2e8ded1c-d8d2-4081-aaa5-f413980a8db4,Ford-Howard,PropTech,SMB,International,tony12@obrien.com,10000,2024-04-30,True
+d0900dd2-b3ff-4249-a729-9da3e615266d,"Gonzalez, Gross and Sims",HealthTech,SMB,Midwest,mcclainmelissa@johnson.org,25000,2024-02-05,True
+bb484faf-5f7c-4319-b947-30a98cf73d1a,Escobar PLC,HR Tech,Mid-Market,West,amy87@rowe.org,25000,2024-01-21,True
+73a65510-6edd-4090-aeff-731467679114,"Vincent, Anderson and Mason",EdTech,SMB,West,sanderswayne@allen.com,25000,2024-05-27,True
+156499cf-134a-4dce-a42a-7507818c074a,"Taylor, Moore and Knight",PropTech,Mid-Market,Southeast,jillwebb@williams-juarez.com,100000,2024-04-19,True
+72f629cf-d795-4ddb-ad2a-f4c361efc3d5,Baker and Sons,Unknown,Mid-Market,Northeast,barnettapril@hughes-hardin.com,250000,2024-02-18,True
+3e6e431e-871a-4711-8619-11b026a23e13,HOOPER LLC,E-Commerce,Enterprise,Midwest,padillaadrienne@davenport-baker.net,250000,2024-03-19,True
+e9a79611-7197-48ba-ad2f-bd8d64eafcb4,"Thompson, Valdez and Diaz",FinTech,SMB,International,blacknicholas@black.com,100000,2024-06-24,True
+04aa5f7e-dd1e-4adb-8859-66479b2b1e0d,Sparks-Eaton,HR Tech,SMB,Southeast,shawdon@hall.com,100000,2024-01-05,True
+52b4b103-5145-4eea-8854-00479838f91a,Hernandez and Sons,EdTech,SMB,Southwest,carolyn13@shepherd-cortez.info,10000,2024-04-06,True
+b23f11f1-d3e7-4c2e-9f77-712ef4a47fff,"Mendoza, Clark and Martin",Legal Tech,Mid-Market,Southwest,cjohnson@berry.com,10000,2024-01-13,True
+4714e351-9179-4d77-a31f-5d1c157852d3,"Hunt, Macdonald and Thomas",InsurTech,SMB,Midwest,jonathanwhite@greene-elliott.com,10000,2024-03-18,True
+e9cfef04-f4de-48e2-920d-3ad044100435,"Luna, Nicholson and Valentine",HealthTech,SMB,Southwest,shanehaney@jackson-greer.org,10000,2024-05-10,True
+d214a98f-f7e0-4384-910f-b694b13d9dab,Norton and Sons,HealthTech,Mid-Market,West,gary57@garza.com,50000,2024-05-13,True
+d43d7303-63db-48ad-8b71-dbc72d83183f,Harris PLC,HR Tech,SMB,Northeast,mserrano@thompson.org,100000,2024-03-25,True
+3834d381-1125-475c-aa2b-7af25c72b6c3,Rich PLC,FinTech,Enterprise,Southwest,davisdonna@ryan.biz,10000,2024-05-10,True
+b274b3db-02f7-42da-8716-db2c84018d06,"Fisher, Golden and Wolfe",HealthTech,Mid-Market,West,zperez@clarke-james.org,100000,2024-01-13,True
+c0edfe1a-ac08-47e7-bb14-5e4aada43a97,"Velez, Hood and Johnston",EdTech,Enterprise,Midwest,eanderson@kent.com,10000,2024-01-25,True
+5c3e8c14-223a-493e-a4be-a9c242977de3,"Mcdowell, Ortiz and Lopez",Unknown,Mid-Market,Southeast,lanedavid@brooks.com,250000,2024-03-09,True
+02cad997-9dd1-420d-8962-d25d1c558346,Cox-Moore,HealthTech,SMB,Northeast,jose86@diaz.com,50000,2024-04-08,True
+02a103f5-6a12-45a1-bf3b-122e46277003,Arnold-Grant,PropTech,Mid-Market,Southeast,mitchellpeters@hinton-lane.biz,10000,2024-02-10,True
+86763b40-906f-455c-b08c-fef9e3bcee27,"Taylor, Shields and Wilson",PropTech,Mid-Market,Southeast,seanlyons@garcia.biz,250000,2024-01-08,True
+1cd237ea-60a7-4872-9ab2-d1994bdc37d3,Owen-Mendez,EdTech,SMB,West,martintamara@brock.info,50000,2024-01-04,True
+2d2065a4-834c-4027-abca-8081dd98ab73,"Graham, Brown and Walker",E-Commerce,Mid-Market,Midwest,lynchjenny@mendez-meyer.org,250000,2024-01-25,True
+91114529-3e94-4446-b439-d4dd249c6d32,Bautista and Sons,E-Commerce,Mid-Market,International,mgonzales@galvan.org,250000,2024-06-05,True
+89567f93-3ca1-4ee4-89ee-158c9a7f0232,"Black, Hall and Jackson",EdTech,SMB,West,warddiana@miller.biz,100000,2024-03-23,True
+a96aec7e-a786-4560-8034-f32d9cb3fa65,Caldwell-Sullivan,Legal Tech,SMB,International,aprilmclaughlin@calhoun.com,10000,2024-04-27,True
+c6f328de-e821-4414-a6b4-cd14c6b98e09,"Gallegos, Herman and Bailey",PropTech,SMB,Midwest,jeremy37@andrews-green.biz,10000,2024-01-27,True
+62810b17-b235-44d3-a1ea-f1700dad9c3e,"Rodriguez, Jones and Phillips",FinTech,SMB,Northeast,prattsue@li.biz,50000,2024-05-10,True
+0a2dc4bb-a94c-41af-b543-47039cb5e800,"Webb, Sanchez and Morgan",PropTech,SMB,Northeast,lmaldonado@olson.com,50000,2024-05-23,True
+e4a0dd77-4ff0-44ea-bb77-aed899c243b2,Schultz-Gamble,PropTech,SMB,West,laurengutierrez@black-smith.com,25000,2024-01-01,True
+19c2b3f3-a953-4647-b762-aded7f3fd592,Mitchell Group,Legal Tech,SMB,Unknown,charles27@gomez-shannon.com,100000,2024-01-28,True
+71322a74-6164-42b2-8eac-f32eefc9e698,Valentine Ltd,E-Commerce,Enterprise,West,victorgonzalez@allen.com,25000,2024-03-27,True
+c07a3d03-63ec-42bc-9db3-5065f57530a8,"Kelly, Maxwell and Wilson",InsurTech,Mid-Market,International,loweelizabeth@smith.info,100000,2024-04-27,True
+ab3bdf5e-79c6-4643-9a1d-13138c0c0006,Oliver-Vasquez,EdTech,SMB,,travis84@walker-ray.com,100000,2024-05-10,True
+cf5e7ff3-024a-4997-bbfa-18c2980f4526,"Lloyd, Mendoza and Fernandez",EdTech,SMB,Southeast,phillip27@wolfe.com,250000,2024-03-23,True
+77d39d20-d85e-421a-bc04-17bba7984a9a,"Smith, Craig and Gray",InsurTech,Mid-Market,International,nguyenchloe@lopez-baker.com,50000,2024-03-16,True
+af20a03c-7a91-467c-a71e-e8acabe7ff19,Mullen-Cooper,EdTech,Mid-Market,International,victorclark@goodwin.info,250000,2024-03-21,True
+88c82bc1-0b60-4240-a6e0-603b6656510a,Duncan PLC,E-Commerce,Mid-Market,Midwest,lisale@peters.com,25000,2024-06-30,True
+5068cfc0-dca3-48c5-aa6a-e776e1d6710a,Marsh Ltd,EdTech,Mid-Market,Midwest,thomassmith@porter-cowan.net,250000,2024-05-02,True
+222625cd-bbd2-46d3-a592-e7c0d35f4ed2,"Le, Floyd and Evans",InsurTech,Enterprise,Southwest,rosshannah@lewis.info,10000,2024-05-13,True
+12d2fd1b-6baa-486f-b413-a786b5594c51,"Davis, Garner and Green",InsurTech,Mid-Market,Southeast,ann45@jenkins.org,50000,2024-06-23,True
+220eb6c9-170e-44af-8a5c-12ea1c3bccfb,Ray Ltd,FinTech,SMB,,tiffanymitchell@nunez-freeman.info,250000,2024-02-27,True
+68c93c91-83aa-4a3a-93b5-05f8cce40d64,James LLC,InsurTech,Mid-Market,International,jwelch@davidson.biz,100000,2024-04-09,True
+f572f131-2297-4e74-934b-d2ddf3b189de,"Salazar, Sullivan and Meadows",HR Tech,SMB,International,martinjeremy@delgado-page.org,100000,2024-02-27,True
+3ebc4220-76f8-438c-8f93-2c3fac4f6420,"Foster, Barron and Norman",HR Tech,Mid-Market,Southwest,julie87@jackson-dickerson.com,25000,2024-03-16,True
+d40e3a9c-489d-4ade-8c4e-651890e97d2a,"Young, King and Manning",HealthTech,SMB,Southwest,clarkrandy@brown.net,50000,2024-05-22,True
+320326af-1d93-4fb4-a48c-6b6751969069,Johnson Group,EdTech,SMB,Midwest,garciachristine@pena.com,10000,2024-02-09,True
+41da2135-3514-4ed4-9be0-06fb858e826d,Wright LLC,FinTech,Mid-Market,International,isims@roberson.com,250000,2024-04-01,True
+077b7119-fe9a-4bb5-a29d-e513698a7b09,Mcdonald-Pitts,HR Tech,Enterprise,Southwest,amy28@garza.org,100000,2024-05-19,True
+4420ec82-9fd4-4a3d-b0bf-99d7ee007cfe,Mills-Fowler,HealthTech,Enterprise,International,regina78@ballard.com,25000,2024-06-07,True
+d3bd1fe2-a56a-41fe-a199-8036f3bab0d8,Gutierrez-Moore,FinTech,SMB,Southeast,smithlisa@cooper.net,250000,2024-03-03,True
+bd5ce5f5-314b-4ca9-869d-4e5a58c6fb25,Watts Group,HR Tech,Mid-Market,Northeast,xevans@yates-harper.com,50000,2024-01-07,True
+db53cc8a-376d-4753-8c77-a9d82b5f5fa4,"Brooks, Jenkins and Castro",HR Tech,Mid-Market,Unknown,twright@brewer.com,10000,2024-01-25,True
+6dcdcfd5-4106-4818-8fd2-3b1a68695702,Garrett-Black,FinTech,SMB,International,justin84@lopez-jones.com,100000,2024-01-27,True
+3a335a3e-07b4-4925-987b-79ebd5bfdd6a,Rodriguez-Gibson,InsurTech,Enterprise,International,nnelso.n@lopez-smith.com,10000,2024-01-23,True
+defeb0c0-3997-4dd8-83c5-b5364dc941ca,"Johnson, Compton and Campbell",EdTech,Mid-Market,Southwest,jenniferacosta@davis.info,100000,2024-04-09,True
+ef21774f-7712-4c20-b4fd-7b14b24c1d14,Peterson LLC,InsurTech,SMB,International,dbolto.n@moody.com,10000,2024-05-29,True
+efa068c9-d277-480c-94e2-3ce88b04fbf0,Adams Group,HealthTech,Mid-Market,Midwest,danielshunter@roth-clayton.com,10000,2024-03-13,True
+3820107c-3ed7-4597-bd0c-4191ac9a30ca,"Wright, Wise and Ramos",PropTech,Mid-Market,Northeast,gonzalezjill@boyd.info,25000,2024-04-10,True
+090e78db-5552-481e-b1dd-3440ae881cb1,Maldonado-Collins,Legal Tech,SMB,International,eric08@martinez.com,50000,2024-01-03,True
+e96bcae2-ab3a-400f-a9a8-38f2808a8a9d,Boyer and Sons,EdTech,SMB,Southwest,youngryan@jackson.org,10000,2024-03-19,True
+b34ba019-b067-4ed9-b05d-f247e7320b52,Foster and Sons,HR Tech,Enterprise,Southwest,novakbianca@alvarez.com,250000,2024-03-05,True
+59fcca03-2882-4ca4-b2c7-c4662866e965,Moore Inc,EdTech,Mid-Market,Northeast,sarah00@newman-miles.com,250000,2024-04-28,True
+6864b888-4b83-45e3-80f0-e987af5e9936,Freeman LLC,HealthTech,SMB,Northeast,linda73@norris.com,50000,2024-04-01,True
+fdb0cdee-ee4a-4f2c-83c0-403501612c48,Roach-Washington,E-Commerce,Mid-Market,Southeast,ihansen@henry.com,250000,2024-06-17,True
+78294e54-d96a-456a-bd0f-a333a197b77f,"Mcdonald, Dillon and George",EdTech,SMB,Midwest,caseymoore@weiss-weaver.info,50000,2024-03-04,True
+0003f10c-0a8d-4013-bb83-e9fde8c3a517,Parsons PLC,InsurTech,SMB,International,bgross@vincent.com,100000,2024-04-24,True
+6881b9ec-a745-4840-a92d-e68ecc2aff75,"Coffey, Fuentes and Lee",Legal Tech,SMB,International,jcannon@campbell.com,25000,2024-05-17,True
+0b419107-f604-47ea-8135-13a26b837813,"Hopkins, Williams and Pace",HealthTech,Enterprise,Southwest,morganharris@lee-johnson.biz,250000,2024-04-13,True
+6c5d4239-01a6-4446-9b38-4d1c2a33b1ff,"Burns, Hanson and Garza",E-Commerce,Mid-Market,Southwest,diazcatherine@smith.info,25000,2024-04-03,True
+265b1e02-d99e-4d7d-bf44-ce0242f9cf84,Mcdonald Ltd,Legal Tech,Mid-Market,Northeast,wardjulia@short-bauer.com,25000,2024-06-06,True
+9679fb4f-59e8-49ac-8286-67f5adbc8328,"Baker, Williams and Jones",EdTech,SMB,Southwest,christian38@garcia.net,100000,2024-04-01,True
+7c727a9b-4d1f-4819-bc92-240d0539d5ac,Lopez-Fox,PropTech,SMB,Unknown,ashleymeza@curry.org,50000,2024-04-09,True
+0924328c-6f92-4327-b709-e6d788d31a4e,Craig-Park,PropTech,SMB,International,kandrade@pierce.com,250000,2024-06-11,True
+dfa3f865-a969-46d2-bdd9-5cb21055e825,"Moore, Murillo and Ramos",Legal Tech,Mid-Market,West,rachel85@gutierrez-schultz.com,10000,2024-05-12,True
+d85e53de-1c39-4509-ae48-a7fa8b248791,"Allen, Gardner and Brooks",E-Commerce,SMB,Midwest,michael77@smith-johnson.com,250000,2024-01-02,True
+a991f240-d742-4415-8c19-76a58efbdf87,"Smith, Taylor and Zamora",EdTech,SMB,Southwest,evansjeffrey@smith-short.com,25000,2024-02-10,True
+4686b1ac-b4e8-443e-8190-854153fffd77,"Dixon, Duncan and Duncan",HealthTech,SMB,Midwest,johnsonmichael@baker.com,100000,2024-05-02,True
+5add44a5-026e-4819-a38a-9606fd624618,Scott LLC,EdTech,SMB,Unknown,duncanashley@navarro.com,250000,2024-01-11,True
+fcad2060-9d12-47e9-a898-9dd20bf73aa5,Thompson-Petersen,EdTech,SMB,Southeast,larsonkevin@stokes.com,250000,2024-06-12,True
+0d995b72-6008-4c48-9a78-c7b00d391c52,Hobbs-Hamilton  ,Legal Tech,SMB,Southwest,kanejeremy@atkinson.biz,25000,2024-02-26,True
+0140e177-cb23-498a-87f8-3c8b3aa13495,Torres Inc,EdTech,Mid-Market,Southeast,amber25@wolfe.biz,25000,2024-06-24,True
+81de0d04-bf7f-4fc4-bac4-143fabb3baa9,Mullins-Johnston,PropTech,SMB,West,walkerkeith@hernandez-rogers.info,25000,2024-05-13,True
+475da0e6-b52f-495e-930f-d8f34c1959b6,"Mcgee, Kelley and Baker",InsurTech,Mid-Market,Southeast,xshaw@anderson.info,10000,2024-05-16,True
+9a154487-8ef1-49ac-9b83-e90bbc90b128,Pearson-Gonzalez,HealthTech,Mid-Market,Southwest,johnadam.s@morris-glass.com,100000,2024-05-13,True
+e5e10dc9-f9c7-4f9b-a823-7df0da5ddde5,Powers Group,FinTech,SMB,West,michael55@rios.com,250000,2024-06-27,True
+d8b2a1c0-3947-403d-995c-042ab6e8fec3,"Underwood, Lang and Hanson",InsurTech,SMB,Southeast,owilliams@jennings.com,250000,2024-05-19,True
+033d72d6-9caf-4740-9249-00a8e2ed5a1b,Singh and Sons,N/A,Mid-Market,Northeast,mistywilkins@cooper.com,25000,2024-06-25,True
+585b34da-08e5-428f-8ea7-30814b4bf0e7,Ruiz-Rivera,InsurTech,SMB,International,jamesmills@dunn-dean.com,250000,2024-04-18,True
+7dc2fb92-617e-4063-be73-46d77347f1c1,"Hale, Smith and Aguilar",Legal Tech,SMB,Southeast,scottbrian@mccormick.com,100000,2024-02-15,True
+dc64676f-0e8c-4f93-9029-1afa0141fa2e,Marshall Inc,PropTech,SMB,Midwest,pricejoseph@ward.biz,25000,2024-06-17,True
+93b915bf-75d4-4e81-89f2-3c1dd4b5ebde,Whitney PLC,E-Commerce,Mid-Market,Southeast,mckeetodd@schmidt.info,50000,2024-05-20,True
+f9f9a1ea-d07a-4bec-929c-39afb3385565,"House, Smith and Wright",FinTech,Enterprise,Northeast,matthew62@reed.com,100000,2024-06-02,True
+42db45e8-7ec2-41dd-accd-2615d0b1e0d5,"Turner, Ferrell and Irwin",HealthTech,SMB,,lisa46@raymond.com,100000,2024-06-06,True
+fb676f83-9dd1-48a3-8109-7b5508c75cbb,Peterson Group,Legal Tech,Mid-Market,Southeast,christopherreyes@salazar.com,25000,2024-06-17,True
+069130a0-4d4b-4974-9b74-26f41e87fdf6,"Hernandez, Waller and Browning",Legal Tech,Mid-Market,Southwest,shane23@taylor.com,25000,2024-06-21,True
+97cdda5d-2d50-4fa0-bf1a-988d6c2a5bdd,Barker-Roach,E-Commerce,Enterprise,Northeast,russellstout@douglas.com,50000,2024-06-20,True
+b71ac4a6-4a18-41ea-b410-a3120d038dab,Jones-Patel,E-Commerce,Mid-Market,Northeast,whitemary@acosta.biz,250000,2024-05-29,True
+3602bc3c-22eb-40fb-a97f-7b50085c0cce,Turner-Reese,Legal Tech,Enterprise,West,edwin31@lopez.org,50000,2024-02-14,True
+93f39882-ea55-4eaf-a0d1-48cc7ea978ca,Obrien-Salazar,HealthTech,Mid-Market,Midwest,jerryjohnson@watts.com,50000,2024-05-17,True
+723c4129-9994-4046-b194-8629bceffdb3,"Mathis, Harrison and Banks",Legal Tech,Enterprise,Southwest,melissahenry@martin.com,50000,2024-04-27,True
+0a78fc03-038e-4950-9014-28d13ffd742a,Duran-Smith,FinTech,SMB,West,stephanie33@jones.org,25000,2024-03-21,True
+099586cd-a8f8-4506-b753-520ed22fc81d,Watts-Delacruz,HR Tech,SMB,Midwest,ronaldparsons@moss.org,50000,2024-01-20,True
+2f641678-65cf-4b6c-8633-326836cc345d,"Armstrong, Herrera and Davidson",EdTech,SMB,Southwest,meyershannon@rich.net,25000,2024-05-07,True

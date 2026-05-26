@@ -1,0 +1,56 @@
+employee_id,first_name,last_name,department,role,salary,hire_date,is_active,created_at,manager_id
+6cc5b973-aa70-4cbd-b596-052e774fb9db,Amanda,Terrell,Engineering,Software Engineer,155100.0,2023-06-12,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+58d46af8-bfa9-4a18-9132-04adb90cb4d4,Benjamin,Hughes,Engineering,Senior Engineer,133900.0,2022-11-13,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+3f424cc4-345f-4596-b4e6-7cf419778d39,Kathy,Estes,Engineering,Tech Lead,163800.0,2019-07-15,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+6f846295-3793-411c-b490-996e1386ee71,James,Gonzales,Engineering,Staff Engineer,117000.0,2023-02-05,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+c76109fc-e827-4dd2-898d-fd7e52e304ee,Nicole,Ayala,Engineering,Engineering Manager,124300.0,2023-05-17,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+448593ba-6525-4519-b9f4-e01cd3f4dee1,Justin,Jackson,Engineering,Software Engineer,159400.0,2020-12-13,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+653187e8-5567-4864-9f3c-027e6f7641c8,Kelly,Ellison,Engineering,Senior Engineer,129100.0,2019-09-04,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+c0d25518-99d7-4022-9d35-20f1d9333a60,Hannah,Mckee,Engineering,Tech Lead,110400.0,2022-08-29,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+59682f8f-d8ef-4d39-aa2c-d6406f5adfe8,Steven,Lucas,Engineering,Staff Engineer,173600.0,2022-07-22,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+1cb4ada3-8567-4de8-8393-e6f5119757e2,Christopher,Mason,Engineering,Engineering Manager,124400.0,2020-09-16,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+3bb57d67-d8c2-40dd-aea2-ec3946400ff6,Hector,Richards,Engineering,Software Engineer,118700.0,2022-03-02,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+6680d30a-5d3d-4781-804a-210f357c5c5a,Patricia,Payne,Engineering,Senior Engineer,135200.0,2020-03-28,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+9d351248-ea37-4484-b62d-f11be64b1036,Phillip,Morris,Engineering,Tech Lead,150600.0,2021-03-15,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+fc603d2c-2629-4e62-8ace-7e6b96127a57,Angel,Chavez,Engineering,Staff Engineer,157800.0,2022-03-24,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+8b777a8d-013b-4a74-87a9-607075b2d893,Peggy,Huang,Engineering,Engineering Manager,110000.0,2020-08-16,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+95b6b365-d69a-497e-9339-5e49feca2bca,Nicole,Davis,Engineering,Software Engineer,103300.0,2020-11-19,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+9afd21c2-3ea4-49ea-8eb1-ee8ac20a0152,Mario,Wong,Engineering,Senior Engineer,141400.0,2019-04-11,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+b907f2eb-2fec-4e45-9500-e3355414f6d4,Jennifer,Martin,Engineering,Tech Lead,113600.0,2021-03-27,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+3f10bff5-e227-40ab-9335-9fb18046abff,Jessica,Davis,Engineering,Staff Engineer,159600.0,2019-09-25,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+14e1ed10-7c79-421c-bb8b-7cd37045c5d7,Jasmin,Walters,Engineering,Engineering Manager,133300.0,2020-02-10,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+8f6fad63-f355-446e-b786-bbc74b59c540,Christopher,Zimmerman,Engineering,Software Engineer,148700.0,2020-02-06,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+60828f38-d721-4cff-8bfd-21b129c48bc1,Jessica,Hester,Engineering,Senior Engineer,179700.0,2021-12-09,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+febd3702-75bb-4d31-9406-06d6077e77cb,Cheryl,Moore,Sales,Account Executive,76400.0,2023-05-10,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+6fe75d67-c663-4675-b2dd-8ffcb0322e74,Andrea,Williams,Sales,Sales Manager,131600.0,2022-03-25,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+46e02a49-1185-47e6-970d-da04bf292e8f,George,Rogers,Sales,SDR,130500.0,2021-05-17,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+2f1a010e-766a-49c5-8c83-88895749e582,Monica,Huffman,Sales,Enterprise AE,87100.0,2020-12-06,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+2c9f6479-ee3d-4688-9ffe-b1be3bcd0563,Fernando,Thomas,Sales,VP of Sales,72200.0,2020-09-16,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+502607c1-4bd0-4e7d-97d5-215928598803,Kayla,Williams,Sales,Account Executive,101500.0,2021-06-24,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+61f93895-346c-4a06-9d7c-90614153bbb6,Kyle,Cross,Sales,Sales Manager,109600.0,2020-04-23,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+e63c13c3-8f6b-4adc-94ed-97c49dd65a79,Susan,Roberts,Sales,SDR,103600.0,2023-04-01,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+79fd4b59-f7ba-4f96-a37c-4ccdfbe11de6,Henry,Roach,Sales,Enterprise AE,77700.0,2023-02-23,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+faacab81-edf2-48e5-9a24-31f85f630cfe,Susan,Smith,Sales,VP of Sales,155400.0,2019-10-30,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+768eac63-6647-4acb-9db3-0b7cd9858d17,Kathy,Smith,Sales,Account Executive,143800.0,2019-01-29,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+b3306055-139e-47d2-886b-68934f2929de,Tyler,Jimenez,Sales,Sales Manager,142400.0,2020-09-16,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+ab9e4393-716d-4da8-8023-ece248a1ba78,Lindsey,Franklin,Sales,SDR,72000.0,2020-03-04,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+5a083476-3d7e-4dbe-ad27-901eacc49de6,Trevor,Robinson,Sales,Enterprise AE,89100.0,2022-01-24,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+4ab9ec0a-142f-42db-8299-1c0a8b711eb6,Donna,Chavez,Customer Success,CSM,79200.0,2021-09-16,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+84fff8a8-b790-4b17-b72f-baa54666d6d6,Scott,Burke,Customer Success,Senior CSM,119600.0,2022-11-24,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+68171313-7d9c-4576-9974-18090540cdb0,Adam,Khan,Customer Success,CS Director,66000.0,2022-04-08,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+ce003641-6dd7-4fd3-96c9-1bbce68a49f7,Joshua,Fuller,Customer Success,Implementation Specialist,94000.0,2020-06-07,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+56ca0d44-9b4b-4312-8e15-765d47a52993,Lori,Clark,Customer Success,Technical CSM,80600.0,2023-06-05,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+14f1e968-e44a-4214-9904-44893256165b,Jack,Brown,Customer Success,CSM,79900.0,2021-08-10,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+c149d519-5743-4dd9-87e7-ca5448ab6c19,Michael,Thomas,Customer Success,Senior CSM,65500.0,2021-03-06,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+0e28519f-6d46-455d-b0ca-eb811fab1145,Antonio,Lane,Customer Success,CS Director,101500.0,2022-09-13,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+1b75aab9-4579-4482-bdd6-ad5d0f4cc509,Carrie,Rivera,Customer Success,Implementation Specialist,70900.0,2020-08-22,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+202d4f49-c6de-4809-a4de-8b425c958547,Christopher,Rodriguez,Customer Success,Technical CSM,100700.0,2020-04-18,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+e3d63446-7d62-4166-8cfa-3641c22317d8,Victoria,Martin,G&A,Controller,161400.0,2022-12-24,True,2021-01-01,
+17b62911-8923-46da-871d-16b105fc8eb3,Justin,Guerrero,G&A,HR Manager,130500.0,2022-05-07,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+cc5ffb4a-ec3c-4d0f-a990-e15a8cfe64bf,Holly,Armstrong,G&A,Operations Mgr,109800.0,2021-10-22,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+09f7c9e7-8f01-4161-9432-aa6981316934,Anna,Burch,G&A,CEO,169700.0,2022-12-30,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+34de3033-613e-48d0-9d7c-56028c87417b,Kara,Ward,G&A,CFO,119600.0,2021-12-20,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+d3c77eee-0849-4f25-bf1d-9d512d3b3f1e,Barry,Mack,G&A,COO,158400.0,2023-03-05,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+c19d9573-5ebe-4c3b-be04-2b8727418f98,Marcus,Merritt,G&A,Executive Assistant,135500.0,2020-12-21,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+36b5f6a7-9bbe-4da4-96c5-17474ba228b0,Lori,Chang,G&A,Recruiter,128400.0,2021-10-23,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8
+b7112428-1765-473b-a90c-fa6dfc172708,Megan,Brown,G&A,Finance Analyst,89900.0,2020-06-11,True,2021-01-01,e3d63446-7d62-4166-8cfa-3641c22317d8

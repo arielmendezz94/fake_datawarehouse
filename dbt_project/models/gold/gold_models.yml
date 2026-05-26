@@ -1,0 +1,58 @@
+
+version: 2
+
+models:
+  - name: mart_income_statement_monthly  # <-- Replace with your actual SQL filename if different
+    description: "Gold layer financial mart providing a robust, gap-free monthly Income Statement (P&L). Features calendar-padded months, Year-To-Date (YTD) calculations, and historical time-comparison lag metrics."
+    columns:
+      - name: entry_month
+        description: "The calendar month of the financial reporting row, formatted as the first day of the month (YYYY-MM-DD)."
+        tests:
+          - not_null
+
+      - name: entry_quarter
+        description: "The calendar quarter corresponding to the transaction month context (e.g., YYYY-01-01, YYYY-04-01)."
+        tests:
+          - not_null
+
+      - name: entry_year
+        description: "The extracted calendar year integer matching the entry month."
+        tests:
+          - not_null
+
+      - name: account_type
+        description: "The high-level accounting category. Filtered strictly to 'REVENUE', 'COGS', or 'OPEX'."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['REVENUE', 'COGS', 'OPEX']
+
+      - name: account_subtype
+        description: "The granular micro-level expense or income sub-classification matching the general ledger asset tracking configuration."
+
+      - name: account_name
+        description: "The official human-readable label of the general ledger account used to group the records."
+        tests:
+          - not_null
+
+      - name: period_amount
+        description: "The transactional financial balance generated strictly within this calendar month. Coalesces missing periods to 0.0 via the calendar spine matrix."
+
+      - name: ytd_cumulative_amount
+        description: "The Year-To-Date running total balance for this specific account name. This window sum automatically resets back to 0.0 on January 1st of every calendar year."
+
+      - name: prior_month_amount
+        description: "The financial period amount from the immediate previous month (Month-over-Month reference lag), used for fast variance calculations."
+
+      - name: prior_year_same_month_amount
+        description: "The financial period amount from the exact same calendar month of the prior year (Year-over-Year reference lag), used for seasonality calculations."
+
+      - name: account_type_sort_key
+        description: "An explicit integer sorting order hierarchy (1: REVENUE, 2: COGS, 3: OPEX) designed to enforce standard accounting layouts in BI dashboard visualizers."
+        tests:
+          - not_null
+
+      - name: financial_statement_line_item
+        description: "Standardized human-readable financial labels converting raw types into official board-room vocabulary ('Gross Revenue', 'Cost of Goods Sold', 'Operating Expenses')."
+        tests:
+          - not_null

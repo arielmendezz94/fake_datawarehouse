@@ -1,0 +1,26 @@
+# Python
+.venv/
+__pycache__/
+*.pyc
+
+# dbt
+dbt_project/target/
+dbt_project/dbt_packages/
+dbt_project/logs/
+
+# Large seed files (over GitHub 100MB limit)
+db/seed/orders.csv
+db/seed/order_products__prior.csv
+
+# Database data directory
+db/data/
+db/logs/
+
+# Logs
+logs/
+
+# Claude memory (private)
+.claude/
+
+# VS Code
+.vscode/

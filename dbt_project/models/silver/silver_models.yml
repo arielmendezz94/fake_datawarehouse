@@ -1,0 +1,550 @@
+
+version: 2
+
+models:
+  - name: dim_customers  # <-- Replace with your actual SQL file name
+    description: "Silver layer model that cleanses, types, and enriches raw staging customer records for analytical use."
+    columns:
+      - name: customer_id
+        description: "The unique primary key for the customer."
+        tests:
+          - unique
+          - not_null
+
+      - name: company_name
+        description: "The registered name of the customer organization."
+
+      - name: Industry
+        description: "The sector or industry the customer operates in. Defaults to 'Unknown' if missing."
+
+      - name: segment
+        description: "The business segment assigned to the customer account."
+
+      - name: region
+        description: "The geographic region of the customer. Defaults to 'Unknown' if missing."
+
+      - name: billing_email
+        description: "The primary email address used for billing and invoicing."
+
+      - name: email_domain
+        description: "The extracted domain portion of the billing email (everything after the @ sign)."
+
+      - name: credit_limit
+        description: "The maximum credit allowance for the customer, cast to double precision floating-point."
+
+      - name: created_at
+        description: "The date the customer record was created, formatted as YYYY-MM-DD."
+
+      - name: is_active
+        description: "Boolean flag indicating if the customer account is currently active."
+
+
+  - name: dim_products
+    description: "Silver layer dimension model providing a cleaned, trimmed, and standardized master list of products."
+    columns:
+    - name: product_id
+      description: "The unique primary key for the product."
+      tests:
+        - unique
+        - not_null
+
+    - name: product_name
+      description: "The name of the product, trimmed of leading and trailing whitespace."
+      tests:
+        - not_null
+
+    - name: product_category
+      description: "The categorical classification of the product, trimmed of whitespace."
+
+    - name: unit_price
+      description: "The base price per unit of the product, cast to double precision floating-point."
+
+    - name: product_description
+      description: "A detailed textual explanation of the product features, trimmed of whitespace."
+
+    - name: is_active
+      description: "Boolean flag indicating if the product is currently available for sale."
+
+    - name: created_at
+      description: "The date the product record was created, truncated to YYYY-MM-DD date format."
+      tests:
+        - not_null
+
+
+  - name: dim_employees  # <-- Replace with your actual SQL filename if different
+    description: "Silver layer dimension model providing enriched employee records, containing standardized data types and self-joined manager information."
+    columns:
+      - name: employee_id
+        description: "The unique primary key identifying the employee."
+        tests:
+          - unique
+          - not_null
+
+      - name: first_name
+        description: "The employee's first name, stripped of leading and trailing spaces."
+
+      - name: last_name
+        description: "The employee's last name, stripped of leading and trailing spaces."
+
+      - name: full_name
+        description: "The complete name of the employee, formed by joining the first and last name with a space."
+        tests:
+          - not_null
+
+      - name: employee_department
+        description: "The department or business unit to which the employee is assigned."
+
+      - name: employee_role
+        description: "The employee's job title or role, trimmed of whitespace."
+
+      - name: salary
+        description: "The annual compensation of the employee, cast to a double-precision floating-point number."
+
+      - name: hire_date
+        description: "The official date the employee started working at the company, truncated to YYYY-MM-DD."
+        tests:
+          - not_null
+
+      - name: is_active
+        description: "Boolean indicator showing if the employee is currently employed."
+
+      - name: created_at
+        description: "The record creation date, truncated to YYYY-MM-DD format."
+
+      - name: manager_id
+        description: "The employee ID belonging to this employee's direct manager. Contains NULL for top-level executives."
+
+      - name: manager_name
+        description: "The full name of the employee's direct manager, extracted using a self-join. Displays NULL if the employee has no manager."
+
+      - name: manager_role
+        description: "The trimmed job title/role of the employee's direct manager. Displays NULL if the employee has no manager."
+
+  - name: dim_accounts  # <-- Replace with your actual SQL filename if different
+    description: "Silver layer dimension model providing a cleaned, trimmed, and strongly typed Chart of Accounts for financial reporting."
+    columns:
+      - name: account_id
+        description: "The unique primary key identifying the financial account."
+        tests:
+          - unique
+          - not_null
+
+      - name: account_code
+        description: "The numerical code assigned to the account (e.g., 1000 for Assets), cast to an integer."
+        tests:
+          - not_null
+
+      - name: account_name
+        description: "The official name of the account, trimmed of whitespace."
+        tests:
+          - not_null
+
+      - name: account_type
+        description: "The top-level financial category (e.g., Asset, Liability, Equity, Revenue, Expense), trimmed of whitespace."
+
+      - name: account_subtype
+        description: "The secondary classification providing more detail (e.g., Current Assets, Long-Term Debt), trimmed of whitespace."
+
+      - name: is_active
+        description: "Boolean flag indicating if this account is currently active and open for transactions."
+
+
+  - name: dim_vendors  # <-- Replace with your actual SQL filename if different
+    description: "Silver layer dimension model providing a cleaned, uppercase-standardized, and strongly typed master list of vendors."
+    columns:
+      - name: vendor_id
+        description: "The unique primary key identifying the vendor."
+        tests:
+          - unique
+          - not_null
+
+      - name: vendor_name
+        description: "The official name of the vendor, trimmed of whitespace and converted to UPPERCASE for naming consistency."
+        tests:
+          - not_null
+
+      - name: vendor_category
+        description: "The business category or classification of the vendor, trimmed and converted to UPPERCASE."
+
+      - name: payment_term_days
+        description: "The number of days allowed to pay the vendor invoice (e.g., 30 for Net 30), cast to an integer."
+
+      - name: expense_account_code
+        description: "The default financial account code used to book expenses for this vendor, cast to an integer."
+
+      - name: is_active
+        description: "Boolean flag indicating if the vendor is currently active and authorized for business transactions."
+
+      - name: created_at
+        description: "The date the vendor record was originally created, truncated to YYYY-MM-DD date format."
+        tests:
+          - not_null
+
+  - name: fct_invoices
+    description: "Silver layer transactional fact table combining invoice headers and line-item details with embedded financial metrics, AR aging categories, and time dimensions."
+    columns:
+      - name: invoice_id
+        description: "The unique identifier for the invoice header. Multiple line items can share the same invoice_id."
+        tests:
+          - not_null
+
+      - name: customer_id
+        description: "The foreign key linking this transaction to the customer dimension table."
+        tests:
+          - not_null
+
+      - name: subscription_id
+        description: "The foreign key linking this invoice to the underlying customer subscription record."
+
+      - name: sales_rep_id
+        description: "The foreign key tracking which internal sales representative managed this transaction."
+
+      - name: invoice_type
+        description: "The category of the invoice (e.g., RENEWAL, NEW), standardized to UPPERCASE."
+
+      - name: invoice_date
+        description: "The calendar date the invoice was issued, truncated to YYYY-MM-DD."
+        tests:
+          - not_null
+
+      - name: due_date
+        description: "The calendar deadline for payment, truncated to YYYY-MM-DD."
+
+      - name: invoice_status
+        description: "The lifecycle state of the invoice (e.g., PAID, OVERDUE), trimmed and standardized to UPPERCASE."
+        tests:
+          - not_null
+
+      - name: currency
+        description: "The ISO currency code utilized for the transaction (e.g., USD, EUR)."
+
+      - name: invoice_created_at
+        description: "The date the invoice header record was originally generated in the source system."
+
+      - name: product_id
+        description: "The foreign key linking this specific transaction item to the product dimension table."
+
+      - name: product_description
+        description: "Textual itemized details regarding the specific line item, converted to UPPERCASE."
+
+      - name: quantity
+        description: "The discrete number of units or hours billed for this specific line item, cast to an integer."
+
+      - name: unit_price
+        description: "The base currency price per individual unit, cast to double-precision floating-point."
+
+      - name: discount_pct
+        description: "The percentage discount applied strictly to this line item row, cast to an integer."
+
+      - name: gross_amount
+        description: "The final line-level financial value (subtotal) calculated after factoring in quantity, unit price, and discounts."
+
+      - name: invoice_header_total
+        description: "The total aggregate value of the entire invoice header (including all lines, taxes, and shipping fees)."
+
+      - name: line_discount_amount
+        description: "The absolute currency value of the discount applied strictly to this line item row."
+
+      - name: calculated_line_net_amount
+        description: "The actual revenue kept on this line item after subtracting discounts. Used for reliable revenue audits."
+
+      - name: is_paid_invoice
+        description: "Boolean indicator showing true if the invoice status is 'PAID' and false otherwise."
+
+      - name: payment_term_days_window
+        description: "The total number of days allowed for payment, calculated as the difference between due date and invoice date."
+
+      - name: days_past_due
+        description: "Tracks exactly how many days an unpaid invoice has been late relative to the current calendar date."
+
+      - name: ar_aging_bucket
+        description: "Accounts Receivable aging bucket categorization (e.g., '1-30 Days Overdue', 'Paid') for operational cash flow tracking."
+
+      - name: silver_inserted_at
+        description: "Data lineage timestamp indicating precisely when this row was processed and loaded into the Silver layer."
+
+      - name: invoice_month
+        description: "The first day of the invoice month, useful for fast month-over-month aggregations."
+
+      - name: invoice_quarter
+        description: "The first day of the invoice quarter, useful for fast quarterly financial metrics."
+
+      - name: invoice_year
+        description: "The extracted calendar year of the invoice date as an integer value."
+  
+
+  - name: fact_payments  # <-- Replace with your actual SQL filename if different
+    description: "Silver layer model providing a cleaned, trimmed, and strongly typed master ledger of customer payments."
+    columns:
+      - name: payment_id
+        description: "The unique primary key identifying the individual payment transaction."
+        tests:
+          - unique
+          - not_null
+
+      - name: invoice_id
+        description: "The foreign key linking the payment back to its associated invoice header record."
+        tests:
+          - not_null
+
+      - name: customer_id
+        description: "The foreign key linking the payment directly to the master customer record."
+        tests:
+          - not_null
+
+      - name: payment_date
+        description: "The calendar date the payment was successfully processed, truncated to YYYY-MM-DD."
+        tests:
+          - not_null
+
+      - name: amount
+        description: "The financial value of the cash collected, cast to double-precision floating-point."
+
+      - name: payment_method
+        description: "The channel used for the transaction (e.g., CREDIT_CARD, WIRE_TRANSFER), trimmed and standardized to UPPERCASE."
+
+      - name: currency
+        description: "The ISO currency code utilized for the payment (e.g., USD, EUR)."
+
+      - name: created_at
+        description: "The date the payment record was originally generated in the source system, truncated to YYYY-MM-DD."
+
+  - name: fact_journal_entries 
+    description: "Silver layer general ledger fact table providing a comprehensive, cleaned master list of journal entries enriched with account details, normal accounting balances, and period controls."
+    columns:
+      - name: entry_id
+        description: "The unique primary key identifying the individual journal entry row."
+        tests:
+          - unique
+          - not_null
+
+      - name: transaction_ref
+        description: "The parent transaction reference identifier linking matching debit and credit entry legs together."
+        tests:
+          - not_null
+
+      - name: transaction_type
+        description: "The operational classification of the entry source (e.g., INVOICE, BILL, PAYMENT, ADJUSTMENT)."
+
+      - name: account_id
+        description: "The foreign key mapping this entry to the master chart of accounts dimension table."
+        tests:
+          - not_null
+
+      - name: account_code
+        description: "The alphanumeric or integer identifier of the general ledger account."
+        tests:
+          - not_null
+
+      - name: entry_date
+        description: "The official posting date the financial transaction takes effect, truncated to YYYY-MM-DD."
+        tests:
+          - not_null
+
+      - name: debit_amount
+        description: "The absolute financial increase or decrease amount applied to the debit leg, cast to double precision."
+
+      - name: credit_amount
+        description: "The absolute financial increase or decrease amount applied to the credit leg, cast to double precision."
+
+      - name: description
+        description: "A free-text audit memo explaining the operational reason for posting this specific entry line."
+
+      - name: created_at
+        description: "The raw date tracking when this specific log was first generated in the source ERP system."
+
+      - name: account_name
+        description: "The official human-readable label of the account pulled from dim_accounts."
+
+      - name: account_type
+        description: "The core financial summary bucket classification (e.g., Revenue, COGS, OpEx, Asset, Liability, Equity)."
+
+      - name: account_subtype
+        description: "The micro-level financial categorization providing deeper balance sheet or income statement detail."
+
+      - name: account_is_active
+        description: "Boolean flag showing true if the underlying chart of accounts line is open for entries and false if frozen."
+
+      - name: net_amount
+        description: "The absolute raw mathematical differences calculated strictly as Debit minus Credit. Does not reflect normal balance behavior."
+
+      - name: is_debit
+        description: "Boolean indicator identifying true if the posting row represents a debit value change and false if a credit."
+
+      - name: entry_month
+        description: "The first calendar day of the entry month, ideal for running standard MoM trend calculations."
+
+      - name: entry_quarter
+        description: "The first calendar day of the entry quarter, ideal for setting up standard corporate fiscal evaluations."
+
+      - name: entry_year
+        description: "The extracted calendar year integer matching the entry date."
+
+      - name: silver_inserted_at
+        description: "Lineage timestamp showing exactly when this record was processed into the silver layer data warehouse."
+
+      - name: standard_balance_amount
+        description: "The true financial reporting value. It automatically flips the arithmetic sign (Debit - Credit vs Credit - Debit) using standard accounting rules to prevent revenue looking negative."
+
+      - name: is_closed_accounting_period
+        description: "An operational accounting control flag identifying true if the entry belongs to a locked historical month relative to the current run date."
+
+  - name: fact_subscriptions  # <-- Replace with your actual SQL filename if different
+    description: "Silver layer transactional fact table tracking subscription lifecycles, MRR/ARR values, account maturity stages, and renewals."
+    columns:
+      - name: subscription_id
+        description: "The unique primary key identifying each individual subscription record."
+        tests:
+          - unique
+          - not_null
+
+      - name: customer_id
+        description: "The foreign key linking this subscription to the customer dimension table."
+        tests:
+          - not_null
+
+      - name: product_id
+        description: "The foreign key linking this subscription to the product dimension table."
+        tests:
+          - not_null
+
+      - name: plan_name
+        description: "The name of the specific product plan or tier (e.g., Premium, Basic)."
+
+      - name: status
+        description: "The current operational state of the subscription (e.g., ACTIVE, CHURNED), trimmed and capitalized."
+        tests:
+          - not_null
+
+      - name: mrr
+        description: "Monthly Recurring Revenue generated by the subscription, cast to double precision."
+
+      - name: arr
+        description: "Annualized Recurring Revenue, calculated dynamically as MRR multiplied by 12."
+
+      - name: start_date
+        description: "The official calendar start date of the subscription, truncated to YYYY-MM-DD."
+        tests:
+          - not_null
+
+      - name: end_date
+        description: "The calendar expiration or churn date. Contains NULL if the subscription is active."
+
+      - name: created_at
+        description: "The system timestamp tracking when the subscription record was first created."
+
+      - name: updated_at
+        description: "The system timestamp tracking when the subscription record was last modified."
+
+      - name: is_active
+        description: "Boolean indicator identifying true if the subscription status is currently 'ACTIVE'."
+
+      - name: is_churned
+        description: "Boolean indicator identifying true if the subscription status is currently 'CHURNED'."
+
+      - name: tenure_months
+        description: "The rounded total number of months the customer has held this subscription, derived via Postgres date subtraction."
+
+      - name: start_month
+        description: "The first day of the subscription's starting month, used for Cohort and MoM growth analysis."
+
+      - name: end_month
+        description: "The first day of the subscription's ending or current month context."
+
+      - name: start_year
+        description: "The extracted calendar year integer matching the subscription start date."
+
+      - name: silver_inserted_at
+        description: "Data lineage timestamp capturing exactly when this record was compiled and loaded into the Silver layer."
+
+      - name: lifetime_revenue_to_date
+        description: "Estimated gross value collected from this subscription line over its lifecycle, calculated as MRR multiplied by tenure months."
+
+      - name: days_until_renewal_or_expiration
+        description: "The countdown window in days until the contract expires or renews. Contains NULL for open-ended or churned accounts."
+
+      - name: account_lifecycle_stage
+        description: "SaaS classification bucket segmenting accounts by time maturity (e.g., NEW_CUSTOMER, RAMPING, MATURE_LOYAL, CHURNED)."
+
+      - name: active_mrr_baseline
+        description: "The reliable next-month recurring revenue foundation. Evaluates to the current MRR value if active, and hardcodes 0.0 if churned."
+
+  - name: fact_payroll
+    description: "Silver layer conformed table for employee payroll distributions. Standardizes datatypes and generates time dimensions from payment logs."
+    columns:
+      - name: payroll_id
+        description: "Primary key for this table."
+        tests:
+          - unique
+          - not_null
+
+      - name: employee_id
+        description: "Foreign key referencing the employee directory."
+        tests:
+          - not_null
+
+      - name: gross_pay
+        description: "Total earnings before taxes and deductions."
+        
+      - name: effective_tax_rate
+        description: "Calculated tax percentage: tax_withheld / gross_pay. Returns null if gross_pay is 0."
+
+      - name: pay_type
+        description: "Cleaned, upper-cased payment classification string."
+        tests:
+          - accepted_values:
+              values: ['SALARY', 'BONUS', 'HOURLY', 'COMMISSION', 'SEVERANCE']
+              quote: true
+
+
+  - name: int_vendor_bills__enriched
+    description: >
+      Silver layer core model for vendor invoicing and accounts payable. 
+      Normalizes multi-currency raw staging records, evaluates current payment liabilities, 
+      and computes real-time aging components (Days Past Due) relative to execution runtime.
+    columns:
+      - name: bill_id
+        description: "Primary key. Unique identifier generated for each vendor bill."
+        tests:
+          - unique
+          - not_null
+
+      - name: vendor_id
+        description: "Foreign key establishing identity links to upstream vendor master metadata dimensions."
+        tests:
+          - not_null
+
+      - name: expense_account_id
+        description: "Foreign key mapping directly to accounts defined in the Chart of Accounts (COA)."
+        tests:
+          - not_null
+
+      - name: amount
+        description: "Gross value assigned to the payable record transaction."
+        tests:
+          - not_null
+
+      - name: status
+        description: "Cleaned and standardized operational workflow string state value."
+        tests:
+          - not_null
+          - accepted_values:
+              values: ['PAID', 'OPEN', 'PENDING', 'VOID', 'REJECTED']
+              quote: true
+
+      - name: is_overdue
+        description: "Boolean flag tracking if a bill's due_date has slipped past current execution runtime without processing confirmation."
+        tests:
+          - not_null
+          - accepted_values:
+              values: [true, false]
+
+      - name: days_past_due
+        description: "Computed mathematical interval monitoring aging velocity. Always returns 0 if target is settled or within terms."
+        tests:
+          - not_null
+
+      - name: silver_inserted_at
+        description: "Data lineage metadata tracking when row processing occurred in the intermediate warehouse runner."
+        tests:
+          - not_null

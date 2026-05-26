@@ -1,0 +1,9 @@
+product_id,product_name,product_category,unit_price,description,is_active,created_at
+b355e1c4-d914-48f1-89b9-ea6c5554ddf8,Starter,Subscription,99.0,Monthly plan — up to 5 seats,True,2020-12-01
+bf16ac86-1f74-4c16-9753-ce0f595f2600,Growth,Subscription,299.0,Monthly plan — up to 25 seats,True,2020-12-01
+9f3d57a1-d96e-4856-ae46-be466aa84503,Pro,Subscription,599.0,Monthly plan — up to 100 seats,True,2020-12-01
+58c8fb57-4bff-422d-9b08-8e3f27d2d550,Business,Subscription,1199.0,Monthly plan — unlimited seats,True,2020-12-01
+89b24ab9-242d-4912-9ecb-04dbc3963341,Enterprise,Subscription,2499.0,Custom enterprise subscription,True,2020-12-01
+f7320b96-c6e3-428b-9d13-6d1cf55cd73a,Onboarding,Professional Services,2500.0,Guided onboarding — 10 hours,True,2020-12-01
+25a8b8fe-e8ef-49ec-bec2-13b0d64f92b8,Training,Professional Services,1500.0,Live training workshop — 4 hours,True,2020-12-01
+b67be188-16af-4ca0-847e-57d3e8982a9b,Custom Dev,Professional Services,5000.0,Custom feature development,True,2020-12-01
