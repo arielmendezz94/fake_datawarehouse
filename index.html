@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CloudBridge Inc. — Data Warehouse by Ariel Mendez</title>
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --ink:      #1a1916;
+  --mid:      #3a3835;
+  --faint:    #787570;
+  --rule:     #ccc8bc;
+  --bg-card:  #f7f4ed;
+  --surface:  #eeebe2;
+  --code-bg:  #e4e0d4;
+  --green:    #1a5c3a;
+  --red:      #7a1e1e;
+  --blue:     #18356a;
+  --mono: 'Courier New', Courier, monospace;
+  --serif: Georgia, 'Times New Roman', serif;
+  --sans: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+}
+
+html { font-size: 15px; }
+
+/* ── BACKGROUND ── */
+body {
+  font-family: var(--sans);
+  line-height: 1.75;
+  min-height: 100vh;
+  background-color: #07111d;
+  background-image:
+    /* soft noise */
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='250'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.7' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='250' height='250' filter='url(%23n)' opacity='0.055'/%3E%3C/svg%3E"),
+    /* aurora blobs */
+    radial-gradient(ellipse 90% 55% at 8%  18%,  #0d4a7a 0%,   transparent 58%),
+    radial-gradient(ellipse 55% 45% at 92% 12%,  #0a2e5c 0%,   transparent 55%),
+    radial-gradient(ellipse 70% 50% at 78% 80%,  #102848 0%,   transparent 60%),
+    radial-gradient(ellipse 60% 40% at 25% 85%,  #07203a 0%,   transparent 55%),
+    radial-gradient(ellipse 40% 35% at 50% 45%,  #0e3560 0%,   transparent 50%),
+    /* hint of teal at edges */
+    radial-gradient(ellipse 30% 25% at 95% 50%,  #083e4a 0%,   transparent 60%),
+    radial-gradient(ellipse 25% 20% at  3% 55%,  #093040 0%,   transparent 60%),
+    linear-gradient(170deg, #071018 0%, #0a1828 50%, #060f1a 100%);
+}
+
+a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+a:hover { opacity: 0.7; }
+
+/* ── CARD ── */
+.page {
+  max-width: 980px;
+  margin: 52px auto 72px;
+  padding: 0;
+  background: var(--bg-card);
+  box-shadow:
+    0 0 0 1px rgba(255,255,255,0.07),
+    0 4px 12px rgba(0,0,0,0.3),
+    0 20px 60px rgba(0,0,0,0.4),
+    0 60px 120px rgba(0,0,0,0.25);
+  position: relative;
+  overflow: hidden;
+}
+
+/* top gradient bar */
+.page-bar {
+  height: 4px;
+  background: linear-gradient(90deg, #1464a0 0%, #1a7a9e 30%, #2060a8 65%, #163a8a 100%);
+}
+
+.page-inner { padding: 68px 60px 88px; }
+
+/* ── MASTHEAD ── */
+.masthead {
+  border-bottom: 1.5px solid var(--ink);
+  padding-bottom: 28px;
+  margin-bottom: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 32px;
+}
+
+.mast-left h1 {
+  font-family: var(--serif);
+  font-size: 38px;
+  font-weight: normal;
+  letter-spacing: -0.025em;
+  line-height: 1.05;
+  color: var(--ink);
+}
+
+.mast-left .byline {
+  margin-top: 7px;
+  font-size: 13px;
+  color: var(--mid);
+  letter-spacing: 0.02em;
+}
+
+.mast-right {
+  text-align: right;
+  font-size: 12px;
+  color: var(--mid);
+  line-height: 2.1;
+  flex-shrink: 0;
+}
+
+.cta-row {
+  margin-top: 22px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 8px 18px;
+  border: 1px solid var(--ink);
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  background: transparent;
+  transition: background 0.14s, color 0.14s;
+}
+.btn:hover { background: var(--ink); color: var(--bg-card); opacity: 1; }
+.btn.fill { background: var(--ink); color: var(--bg-card); }
+.btn.fill:hover { background: #2a2a28; }
+
+.cta-hint { font-size: 12px; color: var(--mid); font-style: italic; }
+
+/* ── SECTION ── */
+.section { margin-bottom: 64px; }
+
+.sec-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.sec-label::after { content: ''; flex: 1; height: 1px; background: var(--rule); }
+
+/* ── NARRATIVE PROSE ── */
+.prose {
+  font-family: var(--serif);
+  font-size: 16.5px;
+  line-height: 1.78;
+  color: #1e1c18;
+  max-width: 740px;
+}
+
+.prose p { margin-bottom: 18px; }
+.prose p:last-child { margin-bottom: 0; }
+
+.prose strong { font-weight: bold; color: var(--ink); }
+
+.aside {
+  border-left: 2px solid var(--rule);
+  padding-left: 18px;
+  margin: 20px 0;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--faint);
+  line-height: 1.7;
+}
+.aside b { color: var(--mid); font-weight: normal; }
+
+/* ── STAT STRIP ── */
+.stats {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.55);
+  margin-bottom: 64px;
+}
+.stat {
+  padding: 18px 12px;
+  border-right: 1px solid var(--rule);
+  text-align: center;
+  background: linear-gradient(180deg, rgba(255,255,255,0.28) 0%, transparent 100%);
+}
+.stat:last-child { border-right: none; }
+.stat-n { font-size: 25px; letter-spacing: -0.03em; display: block; margin-bottom: 3px; color: var(--ink); }
+.stat-l { font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); }
+
+/* ── CHAPTER ── */
+/* Each chapter = heading + prose + optional technical callout */
+.chapter { margin-bottom: 56px; }
+
+.ch-num {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 6px;
+}
+
+.ch-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: normal;
+  letter-spacing: -0.02em;
+  color: var(--ink);
+  margin-bottom: 18px;
+  line-height: 1.2;
+}
+
+.ch-rule { height: 1px; background: var(--rule); margin-bottom: 24px; }
+
+/* ── CALLOUT BOX ── */
+.callout {
+  background: var(--surface);
+  background-image: linear-gradient(160deg, rgba(255,255,255,0.25) 0%, transparent 100%);
+  border: 1px solid var(--rule);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5);
+  padding: 22px 24px;
+  margin-top: 24px;
+  font-size: 11.5px;
+}
+
+.callout-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--mid);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.callout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 28px;
+}
+
+.callout-item { }
+.callout-item .ci-key {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.callout-item .ci-val { color: var(--mid); line-height: 1.65; font-size: 13px; }
+.callout-item code { background: var(--code-bg); padding: 1px 5px; font-size: 11px; color: var(--ink); font-family: var(--mono); }
+
+/* ── PIPELINE VISUAL ── */
+.pipeline {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid var(--rule);
+  background: var(--surface);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), 0 1px 4px rgba(0,0,0,0.04);
+  margin-top: 24px;
+}
+.pl-col {
+  flex: 1;
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, rgba(255,255,255,0.22) 0%, transparent 70%);
+}
+.pl-col:last-child { border-right: none; }
+.pl-head {
+  padding: 11px 14px 9px;
+  border-bottom: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 4px;
+}
+.pl-name { font-size: 10px; font-weight: bold; letter-spacing: 0.09em; text-transform: uppercase; }
+.pl-name.src { color: #2a58a0; }
+.pl-name.brz { color: #8a521a; }
+.pl-name.slv { color: #485868; }
+.pl-name.gld { color: #8a6010; }
+.pl-name.viz { color: #1a6038; }
+.pl-mat { font-size: 10px; color: var(--mid); }
+.pl-body { padding: 11px 14px; flex: 1; }
+.pl-item { font-size: 12px; color: var(--mid); padding: 2px 0; line-height: 1.55; }
+
+/* ── CODE SNIPPET ── */
+.snippet {
+  background: var(--code-bg);
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.14) 0%, transparent 100%);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--mid);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.4);
+  padding: 18px 22px;
+  font-size: 11px;
+  line-height: 1.85;
+  overflow-x: auto;
+  margin-top: 8px;
+}
+.snippet pre { font-family: var(--mono); white-space: pre; }
+.kw { color: #5050b8; }
+.fn { color: #1a5088; }
+.cm { color: #909888; font-style: italic; }
+.st { color: #804010; }
+.nm { color: #1a5e3a; }
+
+.snippet-label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mid);
+  font-weight: 600;
+  margin: 18px 0 6px;
+}
+
+.two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 8px; }
+
+/* ── LINEAGE ── */
+.lineage {
+  background: var(--surface);
+  background-image: linear-gradient(180deg, rgba(255,255,255,0.18) 0%, transparent 100%);
+  border: 1px solid var(--rule);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.45);
+  padding: 24px 28px;
+  overflow-x: auto;
+  margin-top: 24px;
+}
+.lineage pre {
+  font-family: var(--mono);
+  font-size: 11px;
+  line-height: 1.85;
+  white-space: pre;
+  color: var(--mid);
+}
+.lineage pre .hl  { color: var(--ink); font-weight: bold; }
+.lineage pre .dim { color: var(--faint); }
+.lineage pre .grn { color: var(--green); }
+.lineage pre .blu { color: var(--blue); }
+
+/* ── FINANCIALS TABLE ── */
+table { width: 100%; border-collapse: collapse; font-size: 12px; }
+thead th {
+  font-size: 10px; letter-spacing: 0.09em; text-transform: uppercase;
+  color: var(--mid); font-weight: 600; padding: 8px 12px;
+  border-bottom: 1px solid var(--rule); text-align: right;
+}
+thead th:first-child { text-align: left; }
+tbody td { padding: 10px 12px; border-bottom: 1px solid var(--rule); text-align: right; color: var(--mid); font-size: 13px; }
+tbody td:first-child { text-align: left; color: var(--ink); font-weight: 600; }
+tbody tr:last-child td { border-bottom: none; }
+tbody tr:hover td { background: rgba(255,255,255,0.42); }
+.pos { color: var(--green); }
+.neg { color: var(--red); }
+.table-note { font-size: 12px; color: var(--mid); margin-top: 9px; font-style: italic; }
+
+/* ── QUICKSTART ── */
+.qs { }
+.qs-step {
+  display: flex; gap: 20px;
+  padding: 15px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: flex-start;
+}
+.qs-step:last-child { border-bottom: none; }
+.qs-n { font-size: 9.5px; color: var(--faint); letter-spacing: 0.1em; flex-shrink: 0; padding-top: 2px; width: 22px; }
+.qs-body { flex: 1; }
+.qs-t { font-size: 12px; color: var(--ink); font-weight: bold; margin-bottom: 5px; }
+.qs-cmd {
+  background: var(--code-bg);
+  background-image: linear-gradient(90deg, rgba(255,255,255,0.18) 0%, transparent 100%);
+  border: 1px solid var(--rule);
+  border-left: 2px solid var(--mid);
+  padding: 7px 12px; font-size: 11px; color: var(--mid); margin-bottom: 4px;
+  font-family: var(--mono);
+}
+.qs-note { font-size: 11px; color: var(--faint); }
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--rule); margin: 64px 0; }
+
+/* ── FOOTER ── */
+.footer {
+  border-top: 1px solid var(--rule);
+  padding-top: 22px;
+  margin-top: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 10px; color: var(--faint);
+  flex-wrap: wrap; gap: 10px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 720px) {
+  .page-inner { padding: 40px 24px 60px; }
+  .masthead { flex-direction: column; align-items: flex-start; }
+  .mast-right { text-align: left; }
+  .stats { grid-template-columns: repeat(3, 1fr); }
+  .pipeline { flex-direction: column; }
+  .pl-col { border-right: none; border-bottom: 1px solid var(--rule); }
+  .two-col { grid-template-columns: 1fr; }
+  .callout-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="page">
+  <div class="page-bar"></div>
+  <div class="page-inner">
+
+  <!-- ── MASTHEAD ── -->
+  <div class="masthead">
+    <div class="mast-left">
+      <h1>CloudBridge Inc.</h1>
+      <div class="byline">A Data Engineering Portfolio Project &mdash; by Ariel Mendez</div>
+      <div class="cta-row">
+        <a class="btn fill" href="https://github.com/arielmendezz94/fake_datawarehouse" target="_blank">&#8599;&thinsp; View on GitHub</a>
+        <a class="btn" href="https://github.com/arielmendezz94/fake_datawarehouse/archive/refs/heads/master.zip">&#8595;&thinsp; Download ZIP</a>
+        <span class="cta-hint">Free &amp; open &mdash; clone and run locally in ~10 min</span>
+      </div>
+    </div>
+    <div class="mast-right">
+      PostgreSQL 16 &middot; Docker<br>
+      Python 3.11 &middot; Faker<br>
+      dbt-core &middot; dbt-postgres<br>
+      Power BI Desktop<br>
+      FY&thinsp;2021&ndash;2024
+    </div>
+  </div>
+
+  <!-- ── STATS ── -->
+  <div class="stats">
+    <div class="stat"><span class="stat-n">12</span><span class="stat-l">Raw Tables</span></div>
+    <div class="stat"><span class="stat-n">~160K</span><span class="stat-l">GL Entries</span></div>
+    <div class="stat"><span class="stat-n">23</span><span class="stat-l">dbt Models</span></div>
+    <div class="stat"><span class="stat-n">8</span><span class="stat-l">Gold Reports</span></div>
+    <div class="stat"><span class="stat-n">4 yrs</span><span class="stat-l">FY 2021–24</span></div>
+    <div class="stat"><span class="stat-n">500</span><span class="stat-l">Customers</span></div>
+  </div>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- CHAPTER 1 — THE PROBLEM             -->
+  <!-- ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="ch-num">Chapter 01</div>
+    <div class="ch-title">The problem this project solves</div>
+    <div class="ch-rule"></div>
+    <div class="prose">
+      <p>
+        Imagine you're the first data person hired at a fast-growing software company.
+        The business runs on a dozen spreadsheets, a CRM, a billing system, and a payroll tool.
+        The CEO wants to know: <em>are we growing profitably?</em> The VP of Sales wants to know
+        which customers are about to churn. Finance needs the books closed by the 5th of every month.
+        Nobody can answer any of it without hours of manual work.
+      </p>
+      <p>
+        <strong>This project builds the infrastructure that would fix that.</strong>
+        CloudBridge Inc. is a fictional B2B software company — every customer, invoice, and salary
+        number is synthetically generated — but the engineering is real. The goal was to build
+        a complete, production-style analytics stack from a blank terminal: data generation,
+        a database, transformation pipelines, and a business dashboard.
+      </p>
+      <p>
+        Think of it as a working prototype of the data engine behind any SaaS company's
+        finance and operations reporting.
+      </p>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- CHAPTER 2 — CREATING THE DATA       -->
+  <!-- ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="ch-num">Chapter 02</div>
+    <div class="ch-title">First, we needed a company — so we built one in Python</div>
+    <div class="ch-rule"></div>
+    <div class="prose">
+      <p>
+        Real company data is confidential. So the first engineering challenge was generating
+        a fake company that <em>behaves like a real one</em> — with realistic growth curves,
+        genuine accounting rules, and the kind of messy data that actually shows up in production.
+      </p>
+      <p>
+        A Python script using the <strong>Faker</strong> library invented 500 customers, 55 employees
+        across four departments, 15 vendors (AWS, Stripe, Salesforce&hellip;), 8 product tiers,
+        and four full fiscal years of transactions. But realistic data isn't just random numbers.
+        Several deliberate design choices make it authentic:
+      </p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">What makes the data feel real</div>
+      <div class="callout-grid">
+        <div class="callout-item">
+          <div class="ci-key">S-curve growth</div>
+          <div class="ci-val">Revenue grows slowly at first, then accelerates, mimicking how SaaS companies actually scale. New subscriptions follow a 2% monthly churn probability — not a fixed dropout date — so the MRR chart curves naturally instead of cliff-dropping.</div>
+        </div>
+        <div class="callout-item">
+          <div class="ci-key">Startup burn pattern</div>
+          <div class="ci-val">In 2021, costs exceed revenue — the classic venture-funded burn phase. By 2024 the net loss narrows to $933K as subscriptions scale. Engineering payroll compounds 3–5% every January, just like real salary bands.</div>
+        </div>
+        <div class="callout-item">
+          <div class="ci-key">Intentional data grime</div>
+          <div class="ci-val">Customer names and email addresses carry realistic noise — random casing, trailing spaces, occasional HTML entity typos. IDs and dollar amounts are always clean. This mirrors production databases and forces downstream cleaning logic to earn its keep.</div>
+        </div>
+        <div class="callout-item">
+          <div class="ci-key">Real accounting rules</div>
+          <div class="ci-val">Every invoice, payment, vendor bill, and payroll run produces balanced <strong>double-entry journal entries</strong> — for every debit there is an equal credit. The script asserts this integrity before writing a single row, so the general ledger is always mathematically correct.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="aside">
+      <b>By the numbers:</b> 12 CSV files &middot; ~210,000 total rows &middot; ~160,000 general ledger entries &middot;
+      ~24,000 invoices &middot; 720 vendor bills &middot; ~2,700 payroll records &middot; SEED = 42 (fully reproducible)
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- CHAPTER 3 — THE DATABASE            -->
+  <!-- ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="ch-num">Chapter 03</div>
+    <div class="ch-title">The warehouse — a real database, running in one command</div>
+    <div class="ch-rule"></div>
+    <div class="prose">
+      <p>
+        The generated CSVs are loaded into <strong>PostgreSQL 16</strong>, a battle-tested open-source
+        database used by companies from startups to Fortune 500s. Rather than requiring a cloud account
+        or paid service, the database runs locally inside <strong>Docker</strong> — a tool that packages
+        software so it runs identically on any machine.
+      </p>
+      <p>
+        Anyone who clones this repo can have a running data warehouse in under a minute.
+        The data persists across restarts, and the setup mirrors exactly how data teams run
+        local development environments before deploying to the cloud.
+      </p>
+    </div>
+
+    <div class="callout">
+      <div class="callout-label">Starting the database</div>
+      <div class="callout-grid">
+        <div class="callout-item">
+          <div class="ci-key">One command</div>
+          <div class="ci-val"><code>cd db &amp;&amp; docker compose up -d</code><br>PostgreSQL 16 starts on localhost:5432. Connect with any SQL client — DBeaver, TablePlus, or psql.</div>
+        </div>
+        <div class="callout-item">
+          <div class="ci-key">Why Docker?</div>
+          <div class="ci-val">No manual installation, no version conflicts, no cloud bills. The named volume <code>postgres_data</code> ensures data survives container restarts — no re-seeding needed during development.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- CHAPTER 4 — TRANSFORMATION          -->
+  <!-- ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="ch-num">Chapter 04</div>
+    <div class="ch-title">Turning raw data into trusted answers — the dbt pipeline</div>
+    <div class="ch-rule"></div>
+    <div class="prose">
+      <p>
+        Raw data is messy, inconsistent, and not shaped for answering business questions.
+        <strong>dbt</strong> (data build tool) is the industry-standard way to transform it.
+        You write SQL, dbt manages the execution order, tests the outputs, and documents everything.
+        It's the difference between a pile of ingredients and a finished dish.
+      </p>
+      <p>
+        The project uses a <strong>three-layer medallion architecture</strong> — a design pattern
+        borrowed from the best data teams at companies like Airbnb and Netflix.
+        Each layer has a single job, and no layer ever reaches backwards to an earlier one:
+      </p>
+    </div>
+
+    <div class="pipeline">
+      <div class="pl-col">
+        <div class="pl-head"><span class="pl-name src">Source</span><span class="pl-mat">Python · Faker</span></div>
+        <div class="pl-body">
+          <div class="pl-item">Raw CSVs loaded into PostgreSQL</div>
+          <div class="pl-item">12 tables, ~210K rows</div>
+          <div class="pl-item">Messy, unnormalised, real-world shape</div>
+          <div class="pl-item">SEED = 42 — always reproducible</div>
+        </div>
+      </div>
+      <div class="pl-col">
+        <div class="pl-head"><span class="pl-name brz">Bronze</span><span class="pl-mat">Incremental</span></div>
+        <div class="pl-body">
+          <div class="pl-item"><strong>Job:</strong> ingest safely</div>
+          <div class="pl-item">12 staging models (stg_)</div>
+          <div class="pl-item">Rename columns, add timestamp</div>
+          <div class="pl-item">New rows append; no re-processing</div>
+          <div class="pl-item">PK uniqueness tested on every table</div>
+        </div>
+      </div>
+      <div class="pl-col">
+        <div class="pl-head"><span class="pl-name slv">Silver</span><span class="pl-mat">Table</span></div>
+        <div class="pl-body">
+          <div class="pl-item"><strong>Job:</strong> clean &amp; conform</div>
+          <div class="pl-item">5 dimension tables (dim_)</div>
+          <div class="pl-item">6 fact tables (fct_)</div>
+          <div class="pl-item">Business logic lives here</div>
+          <div class="pl-item">Analysts query directly</div>
+        </div>
+      </div>
+      <div class="pl-col">
+        <div class="pl-head"><span class="pl-name gld">Gold</span><span class="pl-mat">Table · BI-ready</span></div>
+        <div class="pl-body">
+          <div class="pl-item"><strong>Job:</strong> answer questions</div>
+          <div class="pl-item">8 pre-aggregated report marts</div>
+          <div class="pl-item">No raw data ever touched</div>
+          <div class="pl-item">Calendar-spine guarantees no gaps</div>
+          <div class="pl-item">YTD, MoM, YoY built in SQL</div>
+        </div>
+      </div>
+      <div class="pl-col">
+        <div class="pl-head"><span class="pl-name viz">Viz</span><span class="pl-mat">Power BI</span></div>
+        <div class="pl-body">
+          <div class="pl-item"><strong>Job:</strong> display only</div>
+          <div class="pl-item">dashboard.pbix</div>
+          <div class="pl-item">Reads gold layer only</div>
+          <div class="pl-item">Zero logic inside Power BI</div>
+          <div class="pl-item">Ships in the repo</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="prose" style="margin-top: 28px;">
+      <p>
+        A key design principle: <strong>the dashboard does no thinking.</strong>
+        Every calculation — growth rates, year-to-date totals, gross margin — is computed
+        in SQL inside dbt, where it can be tested and versioned. Power BI only reads
+        the finished numbers and draws the charts. This means the logic is auditable
+        and the same numbers appear consistently everywhere.
+      </p>
+    </div>
+
+    <!-- LINEAGE -->
+    <div class="lineage">
+<pre>
+<span class="dim">── Raw CSVs (PostgreSQL 16 via Docker) ─────────────────────────────────────────────────</span>
+         │
+         ▼  <span class="hl">BRONZE</span>  <span class="dim">materialized: incremental — new rows appended, history never reprocessed</span>
+  stg_chart_of_accounts  stg_customers     stg_employees    stg_products
+  stg_vendors            stg_subscriptions stg_invoices     stg_invoice_lines
+  stg_payments           stg_vendor_bills  stg_payroll      stg_journal_entries
+         │
+         ▼  <span class="hl">SILVER</span>  <span class="dim">materialized: table — fully rebuilt each run, all business logic here</span>
+  <span class="dim">dims ──</span>  dim_accounts  dim_customers  dim_employees  dim_products  dim_vendors
+  <span class="dim">facts ─</span>  fct_invoices  fct_subscriptions  fct_journal_entries
+          fct_payments  fct_payroll        fct_vendor_bills
+         │
+         ▼  <span class="hl">GOLD</span>  <span class="dim">materialized: table — BI-ready, silver refs only, no raw source access</span>
+  <span class="grn">rpt_pl_statement</span>    <span class="grn">rpt_balance_sheet</span>  <span class="grn">rpt_mrr</span>          <span class="grn">rpt_revenue_summary</span>
+  <span class="grn">rpt_ar_aging</span>        <span class="grn">rpt_cash_flow</span>      <span class="grn">rpt_opex_by_vendor</span> <span class="grn">rpt_payroll_burn</span>
+         │
+         ▼  <span class="blu">Power BI — dashboard.pbix — reads gold layer only</span>
+</pre>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- CHAPTER 5 — THE HARD PARTS          -->
+  <!-- ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="ch-num">Chapter 05</div>
+    <div class="ch-title">The hard engineering problems — and how they were solved</div>
+    <div class="ch-rule"></div>
+    <div class="prose">
+      <p>
+        Any competent engineer can join a few tables. The interesting work is in the edge cases —
+        the problems that trip up real pipelines in production. Here are four that this project
+        specifically solves.
+      </p>
+    </div>
+
+    <div class="callout" style="margin-top: 20px;">
+      <div class="callout-label">Hard problem 01 &mdash; Missing months in time-series reports</div>
+      <div class="prose" style="font-size:14px; margin-bottom: 16px;">
+        <p>If a product had no sales in March, a naive query skips March entirely. That breaks
+        every month-over-month calculation downstream. The solution is a <strong>calendar spine</strong>:
+        a list of every month cross-joined with every account, so zero-activity periods still appear as $0 rows.</p>
+      </div>
+      <div class="snippet-label">rpt_pl_statement — calendar × account CROSS JOIN</div>
+      <div class="snippet"><pre><span class="cm">-- Every month × every P&L account, guaranteed — even with zero activity</span>
+<span class="kw">WITH</span> calendar_spine <span class="kw">AS</span> (
+  <span class="kw">SELECT</span> generate_series(<span class="st">'2021-01-01'</span>, <span class="st">'2024-12-01'</span>, <span class="st">'1 month'</span>::interval)::date <span class="kw">AS</span> entry_month
+),
+account_spine <span class="kw">AS</span> (
+  <span class="kw">SELECT</span> account_name, account_type <span class="kw">FROM</span> silver.dim_accounts
+  <span class="kw">WHERE</span>  account_type <span class="kw">IN</span> (<span class="st">'REVENUE'</span>, <span class="st">'COGS'</span>, <span class="st">'OPEX'</span>)
+),
+report_base <span class="kw">AS</span> (
+  <span class="kw">SELECT</span> c.entry_month, a.account_name, a.account_type
+  <span class="kw">FROM</span>  calendar_spine c
+  <span class="kw">CROSS JOIN</span> account_spine a  <span class="cm">-- guarantees no gaps in the time series</span>
+)</pre></div>
+    </div>
+
+    <div class="callout" style="margin-top: 12px;">
+      <div class="callout-label">Hard problem 02 &mdash; Year-to-date totals that reset in January</div>
+      <div class="prose" style="font-size:14px; margin-bottom: 16px;">
+        <p>YTD revenue should accumulate Jan–Dec, then reset to zero on January 1st.
+        SQL window functions handle this elegantly — the <code>PARTITION BY year</code> clause
+        forces the running total to restart each fiscal year automatically.</p>
+      </div>
+      <div class="two-col">
+        <div>
+          <div class="snippet-label">YTD running total (resets each year)</div>
+          <div class="snippet"><pre><span class="fn">SUM</span>(period_amount) <span class="kw">OVER</span> (
+  <span class="kw">PARTITION BY</span> account_name,
+               entry_year   <span class="cm">-- resets Jan 1</span>
+  <span class="kw">ORDER BY</span> entry_month
+) <span class="kw">AS</span> ytd_cumulative_amount</pre></div>
+        </div>
+        <div>
+          <div class="snippet-label">MoM and YoY variance with LAG</div>
+          <div class="snippet"><pre><span class="fn">LAG</span>(period_amount, <span class="nm">1</span>) <span class="kw">OVER</span> (
+  <span class="kw">PARTITION BY</span> account_name
+  <span class="kw">ORDER BY</span> entry_month
+) <span class="kw">AS</span> prior_month,
+
+<span class="fn">LAG</span>(period_amount, <span class="nm">12</span>) <span class="kw">OVER</span> (
+  <span class="kw">PARTITION BY</span> account_name
+  <span class="kw">ORDER BY</span> entry_month
+) <span class="kw">AS</span> prior_year</pre></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="callout" style="margin-top: 12px;">
+      <div class="callout-label">Hard problem 03 &mdash; Making the P&L add up in any BI tool</div>
+      <div class="prose" style="font-size:14px; margin-bottom: 16px;">
+        <p>Accounting has a sign convention problem: revenue is a credit (positive in accounting terms)
+        while expenses are debits. If a BI tool naively sums all amounts, revenue and costs cancel each other out.
+        The <strong><code>standard_balance_amount</code></strong> column pre-applies the correct sign so that
+        a simple <code>SUM()</code> in Power BI always produces the right P&L — no CASE statements
+        needed in the dashboard.</p>
+      </div>
+      <div class="snippet-label">fct_journal_entries — sign convention baked in at the source</div>
+      <div class="snippet"><pre><span class="cm">-- Revenue and liabilities: credits are positive (money coming in)</span>
+<span class="cm">-- Assets and expenses: debits are positive (money going out)</span>
+<span class="kw">CASE</span>
+  <span class="kw">WHEN</span> account_type <span class="kw">IN</span> (<span class="st">'REVENUE'</span>, <span class="st">'LIABILITY'</span>, <span class="st">'EQUITY'</span>)
+       <span class="kw">THEN</span> credit_amount - debit_amount
+  <span class="kw">WHEN</span> account_type <span class="kw">IN</span> (<span class="st">'ASSET'</span>, <span class="st">'COGS'</span>, <span class="st">'OPEX'</span>)
+       <span class="kw">THEN</span> debit_amount  - credit_amount
+<span class="kw">END</span> <span class="kw">AS</span> standard_balance_amount
+<span class="cm">-- Now SUM(standard_balance_amount) = correct signed P&L everywhere, no exceptions</span></pre></div>
+    </div>
+
+    <div class="callout" style="margin-top: 12px;">
+      <div class="callout-label">Hard problem 04 &mdash; dbt config from the actual repo</div>
+      <div class="prose" style="font-size:14px; margin-bottom: 16px;">
+        <p>The three-layer materialization strategy is declared once in <code>dbt_project.yml</code>
+        and inherited by every model automatically. Bronze runs incrementally (fast, append-only);
+        silver and gold rebuild fully (always fresh, always correct).</p>
+      </div>
+      <div class="snippet-label">dbt_project/dbt_project.yml — actual file from the repo</div>
+      <div class="snippet"><pre><span class="cm"># Each layer gets its own schema and materialization strategy</span>
+models:
+  dbt_project:
+    bronze:
+      <span class="kw">+materialized:</span> <span class="st">incremental</span>  <span class="cm"># new rows appended; history untouched</span>
+      <span class="kw">+schema:</span>       <span class="st">bronze</span>
+    silver:
+      <span class="kw">+materialized:</span> <span class="st">table</span>        <span class="cm"># full rebuild; business logic always fresh</span>
+      <span class="kw">+schema:</span>       <span class="st">silver</span>
+    gold:
+      <span class="kw">+materialized:</span> <span class="st">table</span>        <span class="cm"># BI-ready; silver refs only</span>
+      <span class="kw">+schema:</span>       <span class="st">gold</span></pre></div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- CHAPTER 6 — THE FINANCIALS          -->
+  <!-- ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="ch-num">Chapter 06</div>
+    <div class="ch-title">What CloudBridge Inc. actually looks like — four years of numbers</div>
+    <div class="ch-rule"></div>
+    <div class="prose">
+      <p>
+        The synthetic data was designed to tell a believable startup story.
+        The company spends more than it earns in year one — normal for a SaaS startup investing
+        in engineering and sales. But revenue compounds as subscriptions accumulate,
+        gross margins expand as the cost base scales more slowly than revenue,
+        and by 2024 the net loss has narrowed from $1.8M to under $1M.
+        A company on a credible path to profitability.
+      </p>
+    </div>
+
+    <div style="margin-top: 24px;">
+      <table>
+        <thead>
+          <tr>
+            <th>Year</th>
+            <th style="text-align:right">Subscription Rev</th>
+            <th style="text-align:right">Services Rev</th>
+            <th style="text-align:right">Total Revenue</th>
+            <th style="text-align:right">COGS</th>
+            <th style="text-align:right">Gross Profit</th>
+            <th style="text-align:right">Gross Margin</th>
+            <th style="text-align:right">Net Income</th>
+            <th style="text-align:right">Active Subs</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>2021</td>
+            <td style="text-align:right">$1,187,432</td>
+            <td style="text-align:right">$312,500</td>
+            <td style="text-align:right">$1,499,932</td>
+            <td style="text-align:right" class="neg">$456,210</td>
+            <td style="text-align:right" class="pos">$1,043,722</td>
+            <td style="text-align:right">69.6%</td>
+            <td style="text-align:right" class="neg">&minus;$1,795,818</td>
+            <td style="text-align:right">52</td>
+          </tr>
+          <tr>
+            <td>2022</td>
+            <td style="text-align:right">$2,341,180</td>
+            <td style="text-align:right">$498,000</td>
+            <td style="text-align:right">$2,839,180</td>
+            <td style="text-align:right" class="neg">$712,440</td>
+            <td style="text-align:right" class="pos">$2,126,740</td>
+            <td style="text-align:right">74.9%</td>
+            <td style="text-align:right" class="neg">&minus;$1,776,700</td>
+            <td style="text-align:right">143</td>
+          </tr>
+          <tr>
+            <td>2023</td>
+            <td style="text-align:right">$3,892,440</td>
+            <td style="text-align:right">$621,500</td>
+            <td style="text-align:right">$4,513,940</td>
+            <td style="text-align:right" class="neg">$998,120</td>
+            <td style="text-align:right" class="pos">$3,515,820</td>
+            <td style="text-align:right">77.9%</td>
+            <td style="text-align:right" class="neg">&minus;$1,482,810</td>
+            <td style="text-align:right">271</td>
+          </tr>
+          <tr>
+            <td>2024</td>
+            <td style="text-align:right">$5,187,330</td>
+            <td style="text-align:right">$710,000</td>
+            <td style="text-align:right">$5,897,330</td>
+            <td style="text-align:right" class="neg">$1,287,660</td>
+            <td style="text-align:right" class="pos">$4,609,670</td>
+            <td style="text-align:right">78.2%</td>
+            <td style="text-align:right" class="neg">&minus;$933,250</td>
+            <td style="text-align:right">382</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="table-note">Source: console output printed by faker/02-generate.py before writing any files — a built-in sanity check. All figures are synthetic. COGS = cost of goods sold (engineering headcount split 40/60 between product and operations). Gross margin expanding from 69.6% → 78.2% reflects SaaS economies of scale.</div>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════ -->
+  <!-- CHAPTER 7 — RUN IT YOURSELF         -->
+  <!-- ════════════════════════════════════ -->
+  <div class="chapter">
+    <div class="ch-num">Chapter 07</div>
+    <div class="ch-title">Run it yourself — the whole stack, on your machine, in minutes</div>
+    <div class="ch-rule"></div>
+    <div class="prose">
+      <p>
+        The repo is fully self-contained. You need Docker, Python 3.11, and dbt-postgres installed.
+        Everything else — the database, the data, the models, the dashboard — is in the repo.
+      </p>
+    </div>
+
+    <div class="qs" style="margin-top: 20px;">
+      <div class="qs-step">
+        <div class="qs-n">01</div>
+        <div class="qs-body">
+          <div class="qs-t">Clone or download the repository</div>
+          <div class="qs-cmd">git clone https://github.com/arielmendezz94/fake_datawarehouse.git</div>
+          <div class="qs-note">Or use the Download ZIP button above — no Git required.</div>
+        </div>
+      </div>
+      <div class="qs-step">
+        <div class="qs-n">02</div>
+        <div class="qs-body">
+          <div class="qs-t">Start the PostgreSQL database in Docker</div>
+          <div class="qs-cmd">cd db &amp;&amp; docker compose up -d</div>
+          <div class="qs-note">Requires Docker Desktop. Starts PostgreSQL 16 on localhost:5432. Takes about 10 seconds.</div>
+        </div>
+      </div>
+      <div class="qs-step">
+        <div class="qs-n">03</div>
+        <div class="qs-body">
+          <div class="qs-t">Generate the synthetic company data</div>
+          <div class="qs-cmd">cd ../faker &amp;&amp; pip install faker pandas &amp;&amp; python 02-generate.py</div>
+          <div class="qs-note">Prints a financial sanity-check summary, then writes ~210K rows across 12 CSVs to faker/data/</div>
+        </div>
+      </div>
+      <div class="qs-step">
+        <div class="qs-n">04</div>
+        <div class="qs-body">
+          <div class="qs-t">Load the CSVs into PostgreSQL</div>
+          <div class="qs-cmd">psql -h localhost -U admin -d dbt_db  # then \copy each table from CSV</div>
+          <div class="qs-note">Any SQL client works — DBeaver and TablePlus both have GUI import tools if you prefer not to use the command line.</div>
+        </div>
+      </div>
+      <div class="qs-step">
+        <div class="qs-n">05</div>
+        <div class="qs-body">
+          <div class="qs-t">Run the dbt pipeline</div>
+          <div class="qs-cmd">cd ../dbt_project &amp;&amp; dbt deps &amp;&amp; dbt build</div>
+          <div class="qs-note">Runs all 23 models in dependency order and executes every data quality test. A green run means all 3 schemas are populated and verified.</div>
+        </div>
+      </div>
+      <div class="qs-step">
+        <div class="qs-n">06</div>
+        <div class="qs-body">
+          <div class="qs-t">Open the Power BI dashboard</div>
+          <div class="qs-cmd">open viz/dashboard.pbix</div>
+          <div class="qs-note">Requires Power BI Desktop (free). Connects directly to the gold schema — P&L, balance sheet, MRR, AR aging, and cash flow all pre-built.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FOOTER ── -->
+  <div class="footer">
+    <span>Ariel Mendez &mdash; <a href="https://github.com/arielmendezz94/fake_datawarehouse" target="_blank">github.com/arielmendezz94/fake_datawarehouse</a></span>
+    <span>All data is synthetic &middot; CloudBridge Inc. does not exist &middot; Portfolio project</span>
+  </div>
+
+  </div><!-- /page-inner -->
+</div><!-- /page -->
+
+</body>
+</html>
