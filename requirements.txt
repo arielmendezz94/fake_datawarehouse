@@ -21,6 +21,7 @@ decorator                 5.3.1
 deepdiff                  8.6.2
 dotenv                    0.9.9
 executing                 2.2.1
+fastapi                   0.115.0
 Faker                     40.19.1
 greenlet                  3.5.1
 idna                      3.16
@@ -84,6 +85,7 @@ typing_extensions         4.15.0
 typing-inspection         0.4.2
 tzdata                    2026.2
 urllib3                   2.7.0
+uvicorn                   0.30.0
 wcwidth                   0.7.0
 wheel                     0.47.0
 zipp                      4.1.0

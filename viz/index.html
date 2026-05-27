@@ -1,0 +1,899 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CloudBridge Inc. — Executive Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+  <style>
+    /* ── Reset & Base ────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg:       #0f172a;
+      --surface:  #1e293b;
+      --border:   #334155;
+      --blue:     #3b82f6;
+      --green:    #10b981;
+      --red:      #ef4444;
+      --orange:   #f59e0b;
+      --purple:   #8b5cf6;
+      --cyan:     #06b6d4;
+      --text:     #f1f5f9;
+      --muted:    #94a3b8;
+      --sidebar-w: 220px;
+    }
+    html, body { height: 100%; font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); font-size: 14px; }
+
+    /* ── Layout ──────────────────────────────────────────────── */
+    #shell { display: flex; height: 100vh; overflow: hidden; }
+
+    /* ── Sidebar ──────────────────────────────────────────────── */
+    #sidebar {
+      width: var(--sidebar-w); min-width: var(--sidebar-w);
+      background: var(--surface); border-right: 1px solid var(--border);
+      display: flex; flex-direction: column; padding: 0;
+      overflow-y: auto;
+    }
+    .logo {
+      padding: 20px 16px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo-title { font-size: 15px; font-weight: 700; color: var(--text); }
+    .logo-sub { font-size: 11px; color: var(--muted); margin-top: 2px; }
+    .status-dot {
+      display: inline-block; width: 7px; height: 7px;
+      border-radius: 50%; background: var(--green);
+      margin-right: 5px; animation: pulse 2s infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:.4} }
+
+    nav { flex: 1; padding: 12px 8px; }
+    nav .section-label {
+      font-size: 10px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .08em; color: var(--muted); padding: 10px 8px 4px;
+    }
+    nav a {
+      display: flex; align-items: center; gap: 9px;
+      padding: 8px 10px; border-radius: 6px;
+      color: var(--muted); text-decoration: none; font-size: 13px;
+      transition: all .15s; cursor: pointer;
+    }
+    nav a:hover { background: rgba(59,130,246,.1); color: var(--text); }
+    nav a.active { background: rgba(59,130,246,.15); color: var(--blue); font-weight: 600; }
+    nav a .icon { font-size: 15px; width: 18px; text-align: center; }
+
+    /* ── Main ────────────────────────────────────────────────── */
+    #main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+    #topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 24px; border-bottom: 1px solid var(--border);
+      background: var(--surface); gap: 12px;
+    }
+    #topbar h1 { font-size: 16px; font-weight: 600; }
+    #topbar .meta { font-size: 12px; color: var(--muted); }
+
+    #content { flex: 1; overflow-y: auto; padding: 20px 24px; }
+
+    /* ── KPI Cards ───────────────────────────────────────────── */
+    .kpi-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+      gap: 12px; margin-bottom: 24px;
+    }
+    .kpi-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 14px 16px;
+    }
+    .kpi-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+    .kpi-value { font-size: 24px; font-weight: 700; margin: 4px 0 2px; }
+    .kpi-sub   { font-size: 11px; color: var(--muted); }
+    .kpi-green { color: var(--green); }
+    .kpi-red   { color: var(--red); }
+    .kpi-blue  { color: var(--blue); }
+    .kpi-orange{ color: var(--orange); }
+    .kpi-purple{ color: var(--purple); }
+    .kpi-cyan  { color: var(--cyan); }
+
+    /* ── Sections ────────────────────────────────────────────── */
+    .section { display: none; }
+    .section.active { display: block; }
+
+    .section-header {
+      display: flex; align-items: baseline; gap: 10px; margin-bottom: 16px;
+    }
+    .section-header h2 { font-size: 16px; font-weight: 600; }
+    .section-header p  { font-size: 12px; color: var(--muted); }
+
+    /* ── Chart Grid ──────────────────────────────────────────── */
+    .chart-grid {
+      display: grid; gap: 16px;
+    }
+    .chart-grid-2 { grid-template-columns: 1fr 1fr; }
+    .chart-grid-3 { grid-template-columns: 2fr 1fr; }
+
+    .chart-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: 16px;
+    }
+    .chart-card h3 {
+      font-size: 12px; font-weight: 600; text-transform: uppercase;
+      letter-spacing: .06em; color: var(--muted); margin-bottom: 12px;
+    }
+    .chart-wrap { position: relative; }
+    .chart-wrap canvas { max-height: 300px; }
+
+    /* ── Table ───────────────────────────────────────────────── */
+    .tbl-wrap { overflow-x: auto; max-height: 320px; overflow-y: auto; }
+    table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    thead th {
+      position: sticky; top: 0; background: var(--surface);
+      padding: 7px 10px; text-align: left; font-weight: 600;
+      color: var(--muted); border-bottom: 1px solid var(--border);
+      font-size: 11px; text-transform: uppercase; letter-spacing: .04em;
+    }
+    tbody tr:hover { background: rgba(255,255,255,.03); }
+    tbody td { padding: 6px 10px; border-bottom: 1px solid rgba(51,65,85,.5); }
+    .num { text-align: right; font-variant-numeric: tabular-nums; }
+    .badge {
+      display: inline-block; padding: 1px 7px; border-radius: 9px;
+      font-size: 10px; font-weight: 600;
+    }
+    .badge-green  { background: rgba(16,185,129,.15); color: var(--green); }
+    .badge-red    { background: rgba(239,68,68,.15);  color: var(--red); }
+    .badge-orange { background: rgba(245,158,11,.15); color: var(--orange); }
+    .badge-blue   { background: rgba(59,130,246,.15); color: var(--blue); }
+
+    /* ── Loading ─────────────────────────────────────────────── */
+    .spinner {
+      display: flex; align-items: center; justify-content: center;
+      height: 200px; color: var(--muted); gap: 10px; font-size: 13px;
+    }
+    .spin {
+      width: 20px; height: 20px; border: 2px solid var(--border);
+      border-top-color: var(--blue); border-radius: 50%;
+      animation: rotate .7s linear infinite;
+    }
+    @keyframes rotate { to { transform: rotate(360deg); } }
+
+    /* ── Error ───────────────────────────────────────────────── */
+    .err {
+      background: rgba(239,68,68,.1); border: 1px solid rgba(239,68,68,.3);
+      border-radius: 8px; padding: 14px 16px; color: var(--red);
+      font-size: 13px; margin-bottom: 16px;
+    }
+  </style>
+</head>
+<body>
+<div id="shell">
+
+  <!-- ── Sidebar ─────────────────────────────────── -->
+  <aside id="sidebar">
+    <div class="logo">
+      <div class="logo-title">CloudBridge Inc.</div>
+      <div class="logo-sub"><span class="status-dot"></span>Live — Gold Layer</div>
+    </div>
+    <nav>
+      <div class="section-label">Overview</div>
+      <a class="active" data-section="pnl">
+        <span class="icon">📊</span> P&amp;L Statement
+      </a>
+      <a data-section="mrr">
+        <span class="icon">📈</span> MRR / ARR
+      </a>
+
+      <div class="section-label">Revenue</div>
+      <a data-section="revenue">
+        <span class="icon">💰</span> Revenue Summary
+      </a>
+      <a data-section="ar">
+        <span class="icon">🕐</span> AR Aging
+      </a>
+
+      <div class="section-label">Finance</div>
+      <a data-section="bs">
+        <span class="icon">🏛️</span> Balance Sheet
+      </a>
+      <a data-section="cf">
+        <span class="icon">💵</span> Cash Flow
+      </a>
+
+      <div class="section-label">Operations</div>
+      <a data-section="vendor">
+        <span class="icon">🏢</span> OpEx by Vendor
+      </a>
+      <a data-section="payroll">
+        <span class="icon">👥</span> Payroll Burn
+      </a>
+    </nav>
+  </aside>
+
+  <!-- ── Main ───────────────────────────────────── -->
+  <div id="main">
+    <div id="topbar">
+      <h1 id="page-title">P&amp;L Statement</h1>
+      <span class="meta" id="refresh-meta">Loading…</span>
+    </div>
+
+    <div id="content">
+
+      <!-- ── KPI Row (always visible) ────────────── -->
+      <div class="kpi-grid" id="kpi-grid">
+        <div class="kpi-card"><div class="kpi-label">Current ARR</div><div class="kpi-value kpi-green" id="k-arr">—</div><div class="kpi-sub">annualized run rate</div></div>
+        <div class="kpi-card"><div class="kpi-label">Current MRR</div><div class="kpi-value kpi-blue" id="k-mrr">—</div><div class="kpi-sub">monthly recurring rev</div></div>
+        <div class="kpi-card"><div class="kpi-label">Active Subs</div><div class="kpi-value kpi-cyan" id="k-subs">—</div><div class="kpi-sub" id="k-subs-sub">—</div></div>
+        <div class="kpi-card"><div class="kpi-label">Gross Margin</div><div class="kpi-value kpi-green" id="k-gm">—</div><div class="kpi-sub" id="k-gm-sub">latest full year</div></div>
+        <div class="kpi-card"><div class="kpi-label">Cash Balance</div><div class="kpi-value kpi-orange" id="k-cash">—</div><div class="kpi-sub">latest period</div></div>
+        <div class="kpi-card"><div class="kpi-label">Churn Rate</div><div class="kpi-value kpi-red" id="k-churn">—</div><div class="kpi-sub" id="k-churn-sub">of all subs churned</div></div>
+      </div>
+
+      <!-- ── P&L ─────────────────────────────────── -->
+      <div id="sec-pnl" class="section active">
+        <div class="section-header">
+          <h2>P&amp;L Statement</h2>
+          <p>Monthly revenue, cost of goods sold, and operating expenses — from <code>rpt_pl_statement</code></p>
+        </div>
+        <div class="chart-grid chart-grid-3">
+          <div class="chart-card">
+            <h3>Monthly Revenue vs COGS vs OpEx</h3>
+            <div class="chart-wrap"><canvas id="chart-pnl-trend"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Annual Revenue Mix</h3>
+            <div class="chart-wrap"><canvas id="chart-pnl-donut"></canvas></div>
+          </div>
+        </div>
+        <div style="margin-top:16px" class="chart-card">
+          <h3>Account-Level Detail — Current Year</h3>
+          <div class="tbl-wrap" id="tbl-pnl"></div>
+        </div>
+      </div>
+
+      <!-- ── MRR ─────────────────────────────────── -->
+      <div id="sec-mrr" class="section">
+        <div class="section-header">
+          <h2>MRR / ARR</h2>
+          <p>Subscription revenue trend and plan breakdown — from <code>rpt_mrr</code></p>
+        </div>
+        <div class="chart-grid chart-grid-2">
+          <div class="chart-card">
+            <h3>Monthly Subscription Revenue Trend</h3>
+            <div class="chart-wrap"><canvas id="chart-mrr-trend"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Active ARR by Plan</h3>
+            <div class="chart-wrap"><canvas id="chart-mrr-plan"></canvas></div>
+          </div>
+        </div>
+        <div style="margin-top:16px" class="chart-grid chart-grid-2">
+          <div class="chart-card">
+            <h3>Account Lifecycle Stage</h3>
+            <div class="chart-wrap"><canvas id="chart-mrr-lifecycle"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Plan Summary</h3>
+            <div class="tbl-wrap" id="tbl-mrr-plan"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Revenue ─────────────────────────────── -->
+      <div id="sec-revenue" class="section">
+        <div class="section-header">
+          <h2>Revenue Summary</h2>
+          <p>Gross and net revenue by customer segment and sales rep — from <code>rpt_revenue_summary</code></p>
+        </div>
+        <div class="chart-grid chart-grid-2">
+          <div class="chart-card">
+            <h3>Monthly Revenue by Type</h3>
+            <div class="chart-wrap"><canvas id="chart-rev-monthly"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Revenue by Customer Segment</h3>
+            <div class="chart-wrap"><canvas id="chart-rev-segment"></canvas></div>
+          </div>
+        </div>
+        <div style="margin-top:16px" class="chart-card">
+          <h3>Top Sales Reps by Revenue</h3>
+          <div class="tbl-wrap" id="tbl-rev-rep"></div>
+        </div>
+      </div>
+
+      <!-- ── AR Aging ─────────────────────────────── -->
+      <div id="sec-ar" class="section">
+        <div class="section-header">
+          <h2>AR Aging</h2>
+          <p>Accounts receivable exposure by aging bucket — from <code>rpt_ar_aging</code></p>
+        </div>
+        <div class="chart-grid chart-grid-2">
+          <div class="chart-card">
+            <h3>Open AR by Aging Bucket ($)</h3>
+            <div class="chart-wrap"><canvas id="chart-ar-bucket"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Invoice Count by Bucket</h3>
+            <div class="chart-wrap"><canvas id="chart-ar-count"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Balance Sheet ─────────────────────────── -->
+      <div id="sec-bs" class="section">
+        <div class="section-header">
+          <h2>Balance Sheet</h2>
+          <p>Cumulative closing balances — Assets, Liabilities, Equity — from <code>rpt_balance_sheet</code></p>
+        </div>
+        <div class="chart-grid chart-grid-3">
+          <div class="chart-card">
+            <h3>Monthly Balance Sheet Trend</h3>
+            <div class="chart-wrap"><canvas id="chart-bs-trend"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Latest Period</h3>
+            <div class="chart-wrap"><canvas id="chart-bs-latest"></canvas></div>
+          </div>
+        </div>
+        <div style="margin-top:16px" class="chart-card">
+          <h3>Account-Level Balances — Latest Period</h3>
+          <div class="tbl-wrap" id="tbl-bs"></div>
+        </div>
+      </div>
+
+      <!-- ── Cash Flow ─────────────────────────────── -->
+      <div id="sec-cf" class="section">
+        <div class="section-header">
+          <h2>Cash Flow Statement</h2>
+          <p>Direct-method cash movements classified by operating activity — from <code>rpt_cash_flow</code></p>
+        </div>
+        <div class="chart-grid chart-grid-3">
+          <div class="chart-card">
+            <h3>Monthly Net Cash by Category</h3>
+            <div class="chart-wrap"><canvas id="chart-cf-monthly"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Cumulative Cash Balance</h3>
+            <div class="chart-wrap"><canvas id="chart-cf-balance"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── OpEx by Vendor ──────────────────────── -->
+      <div id="sec-vendor" class="section">
+        <div class="section-header">
+          <h2>OpEx by Vendor</h2>
+          <p>Operating expense breakdown by vendor and category — from <code>rpt_opex_by_vendor</code></p>
+        </div>
+        <div class="chart-grid chart-grid-3">
+          <div class="chart-card">
+            <h3>Top Vendors by Total Spend</h3>
+            <div class="chart-wrap"><canvas id="chart-vendor-top"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Spend by Category</h3>
+            <div class="chart-wrap"><canvas id="chart-vendor-cat"></canvas></div>
+          </div>
+        </div>
+        <div style="margin-top:16px" class="chart-card">
+          <h3>Monthly Vendor Spend by Category</h3>
+          <div class="chart-wrap"><canvas id="chart-vendor-monthly"></canvas></div>
+        </div>
+      </div>
+
+      <!-- ── Payroll ─────────────────────────────── -->
+      <div id="sec-payroll" class="section">
+        <div class="section-header">
+          <h2>Payroll Burn</h2>
+          <p>Monthly gross payroll by department and pay type — from <code>rpt_payroll_burn</code></p>
+        </div>
+        <div class="chart-grid chart-grid-2">
+          <div class="chart-card">
+            <h3>Monthly Payroll by Department</h3>
+            <div class="chart-wrap"><canvas id="chart-pay-dept"></canvas></div>
+          </div>
+          <div class="chart-card">
+            <h3>Annual Salary vs Bonus</h3>
+            <div class="chart-wrap"><canvas id="chart-pay-type"></canvas></div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /#content -->
+  </div><!-- /#main -->
+</div><!-- /#shell -->
+
+<script>
+// ── Config ─────────────────────────────────────────────────────────────────
+const API = 'http://127.0.0.1:8000';
+
+// ── Palette ────────────────────────────────────────────────────────────────
+const C = {
+  blue:    '#3b82f6', green:  '#10b981', red:    '#ef4444',
+  orange:  '#f59e0b', purple: '#8b5cf6', cyan:   '#06b6d4',
+  indigo:  '#6366f1', pink:   '#ec4899', teal:   '#14b8a6',
+  lime:    '#84cc16', amber:  '#d97706', rose:   '#f43f5e',
+};
+const PALETTE = Object.values(C);
+
+// Chart.js global defaults
+Chart.defaults.color          = '#94a3b8';
+Chart.defaults.borderColor    = '#334155';
+Chart.defaults.font.family    = "'Segoe UI', system-ui, sans-serif";
+Chart.defaults.font.size      = 11;
+Chart.defaults.plugins.legend.labels.boxWidth = 10;
+Chart.defaults.plugins.legend.labels.padding  = 12;
+
+// ── Helpers ────────────────────────────────────────────────────────────────
+const fmt = (n, dec=0) => n == null ? '—' :
+  new Intl.NumberFormat('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec}).format(n);
+const fmtM = (n) => n == null ? '—' :
+  '$' + (Math.abs(n) >= 1e6 ? fmt(n/1e6,1)+'M' : Math.abs(n) >= 1e3 ? fmt(n/1e3,0)+'K' : fmt(n,0));
+const fmtPct = (n) => n == null ? '—' : fmt(n,1) + '%';
+
+async function get(path) {
+  const r = await fetch(API + path);
+  if (!r.ok) throw new Error(await r.text());
+  return r.json();
+}
+
+function uniqueLabels(data, key) {
+  return [...new Set(data.map(r => r[key]))];
+}
+
+function groupBy(data, key) {
+  return data.reduce((acc, row) => {
+    (acc[row[key]] = acc[row[key]] || []).push(row);
+    return acc;
+  }, {});
+}
+
+function makeChart(id, config) {
+  const el = document.getElementById(id);
+  if (!el) return null;
+  const existing = Chart.getChart(el);
+  if (existing) existing.destroy();
+  return new Chart(el, config);
+}
+
+// ── Nav ─────────────────────────────────────────────────────────────────────
+const titles = {
+  pnl: 'P&L Statement', mrr: 'MRR / ARR', revenue: 'Revenue Summary',
+  ar: 'AR Aging', bs: 'Balance Sheet', cf: 'Cash Flow',
+  vendor: 'OpEx by Vendor', payroll: 'Payroll Burn',
+};
+
+document.querySelectorAll('nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    const s = link.dataset.section;
+    document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+    link.classList.add('active');
+    document.getElementById('sec-' + s).classList.add('active');
+    document.getElementById('page-title').textContent = titles[s] || s;
+  });
+});
+
+// ── KPI Cards ───────────────────────────────────────────────────────────────
+async function loadKPIs() {
+  try {
+    const [sub, fin] = await Promise.all([get('/api/kpis'), get('/api/kpis/financials')]);
+    const k = sub[0] || {};
+    document.getElementById('k-arr').textContent   = fmtM(k.current_arr);
+    document.getElementById('k-mrr').textContent   = fmtM(k.current_mrr);
+    document.getElementById('k-subs').textContent  = fmt(k.active_subs);
+    document.getElementById('k-subs-sub').textContent = fmt(k.churned_subs) + ' churned';
+    document.getElementById('k-churn').textContent = fmtPct(k.churn_rate_pct);
+
+    const f = fin.financials || {};
+    document.getElementById('k-gm').textContent    = fmtPct(f.gross_margin_pct);
+    document.getElementById('k-gm-sub').textContent = 'FY' + (f.entry_year || '—');
+    document.getElementById('k-cash').textContent  = fmtM(fin.cash_balance);
+    document.getElementById('refresh-meta').textContent = 'Updated ' + new Date().toLocaleTimeString();
+  } catch(e) {
+    console.error('KPI load failed', e);
+  }
+}
+
+// ── P&L Section ────────────────────────────────────────────────────────────
+async function loadPnL() {
+  try {
+    const [trend, detail] = await Promise.all([get('/api/pnl'), get('/api/pnl/detail')]);
+
+    // Monthly trend chart
+    const months   = uniqueLabels(trend, 'entry_month');
+    const byType   = groupBy(trend, 'account_type');
+    const revData  = months.map(m => { const r = (byType['REVENUE']||[]).find(x=>x.entry_month===m); return r ? r.amount : 0; });
+    const cogsData = months.map(m => { const r = (byType['COGS']   ||[]).find(x=>x.entry_month===m); return r ? Math.abs(r.amount) : 0; });
+    const opexData = months.map(m => { const r = (byType['OPEX']   ||[]).find(x=>x.entry_month===m); return r ? Math.abs(r.amount) : 0; });
+    const gpData   = revData.map((r,i) => r - cogsData[i]);
+
+    makeChart('chart-pnl-trend', {
+      type: 'line',
+      data: {
+        labels: months.map(m => m.slice(0,7)),
+        datasets: [
+          { label: 'Revenue',       data: revData,  borderColor: C.green,  backgroundColor: 'rgba(16,185,129,.08)', fill: true, tension: .3, pointRadius: 0 },
+          { label: 'Gross Profit',  data: gpData,   borderColor: C.blue,   backgroundColor: 'transparent',          fill: false, tension: .3, pointRadius: 0 },
+          { label: 'COGS',          data: cogsData, borderColor: C.orange, backgroundColor: 'transparent',          fill: false, tension: .3, borderDash: [4,3], pointRadius: 0 },
+          { label: 'OpEx',          data: opexData, borderColor: C.red,    backgroundColor: 'transparent',          fill: false, tension: .3, borderDash: [4,3], pointRadius: 0 },
+        ],
+      },
+      options: { responsive: true, interaction: { mode: 'index' },
+        scales: { y: { ticks: { callback: v => fmtM(v) } } },
+        plugins: { tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + fmtM(ctx.raw) } } },
+      },
+    });
+
+    // Annual donut — revenue vs cogs vs opex for latest year
+    const latestYear = Math.max(...trend.map(r => r.entry_year));
+    const ly = trend.filter(r => r.entry_year === latestYear);
+    const donutLabels = ['Revenue', 'COGS', 'OpEx'];
+    const donutData   = [
+      ly.filter(r=>r.account_type==='REVENUE').reduce((s,r)=>s+r.amount,0),
+      Math.abs(ly.filter(r=>r.account_type==='COGS').reduce((s,r)=>s+r.amount,0)),
+      Math.abs(ly.filter(r=>r.account_type==='OPEX').reduce((s,r)=>s+r.amount,0)),
+    ];
+    makeChart('chart-pnl-donut', {
+      type: 'doughnut',
+      data: { labels: donutLabels, datasets: [{ data: donutData, backgroundColor: [C.green, C.orange, C.red], borderWidth: 0 }] },
+      options: { responsive: true, plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + fmtM(ctx.raw) } } } },
+    });
+
+    // Detail table — current year
+    const currYear = detail.filter(r => r.entry_year === latestYear);
+    // Aggregate by account_name for current year
+    const byAcct = {};
+    currYear.forEach(r => {
+      if (!byAcct[r.account_name]) byAcct[r.account_name] = { ...r, period_amount: 0, ytd: 0 };
+      byAcct[r.account_name].period_amount += r.period_amount;
+      byAcct[r.account_name].ytd           += r.ytd_amount;
+    });
+    const rows = Object.values(byAcct).sort((a,b) => a.account_type_sort_key - b.account_type_sort_key);
+    const tbl = `<table>
+      <thead><tr>
+        <th>Account</th><th>Type</th><th>Subtype</th>
+        <th class="num">Period ($)</th><th class="num">YTD ($)</th><th class="num">% Rev</th>
+      </tr></thead>
+      <tbody>${rows.map(r => `<tr>
+        <td>${r.account_name}</td>
+        <td><span class="badge ${r.account_type==='REVENUE'?'badge-green':r.account_type==='COGS'?'badge-orange':'badge-blue'}">${r.account_type}</span></td>
+        <td>${r.account_subtype||'—'}</td>
+        <td class="num">${fmtM(r.period_amount)}</td>
+        <td class="num">${fmtM(r.ytd)}</td>
+        <td class="num">${r.pct_of_revenue != null ? fmtPct(r.pct_of_revenue) : '—'}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+    document.getElementById('tbl-pnl').innerHTML = tbl;
+
+  } catch(e) { console.error('P&L load failed', e); }
+}
+
+// ── MRR Section ─────────────────────────────────────────────────────────────
+async function loadMRR() {
+  try {
+    const [trend, plan, lifecycle] = await Promise.all([
+      get('/api/mrr'), get('/api/mrr/by-plan'), get('/api/mrr/lifecycle'),
+    ]);
+
+    // MRR trend line
+    makeChart('chart-mrr-trend', {
+      type: 'line',
+      data: {
+        labels: trend.map(r => r.invoice_month.slice(0,7)),
+        datasets: [
+          { label: 'Subscription Revenue', data: trend.map(r=>r.sub_revenue), borderColor: C.blue, backgroundColor: 'rgba(59,130,246,.1)', fill: true, tension: .3, pointRadius: 0 },
+          { label: 'Paying Customers', data: trend.map(r=>r.paying_customers), borderColor: C.green, yAxisID: 'y2', tension: .3, pointRadius: 0 },
+        ],
+      },
+      options: {
+        responsive: true, interaction: { mode: 'index' },
+        scales: {
+          y:  { ticks: { callback: v => fmtM(v) } },
+          y2: { position: 'right', grid: { drawOnChartArea: false }, ticks: { callback: v => fmt(v) } },
+        },
+        plugins: { tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + (ctx.datasetIndex===0 ? fmtM(ctx.raw) : fmt(ctx.raw)) } } },
+      },
+    });
+
+    // ARR by plan bar
+    makeChart('chart-mrr-plan', {
+      type: 'bar',
+      data: {
+        labels: plan.map(r=>r.plan_name),
+        datasets: [{ label: 'ARR', data: plan.map(r=>r.total_arr), backgroundColor: plan.map((_,i)=>PALETTE[i%PALETTE.length]), borderWidth: 0, borderRadius: 4 }],
+      },
+      options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { ticks: { callback: v=>fmtM(v) } } } },
+    });
+
+    // Lifecycle donut
+    makeChart('chart-mrr-lifecycle', {
+      type: 'doughnut',
+      data: { labels: lifecycle.map(r=>r.account_lifecycle_stage), datasets: [{ data: lifecycle.map(r=>r.total_mrr), backgroundColor: PALETTE.slice(0,lifecycle.length), borderWidth: 0 }] },
+      options: { responsive: true, plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + fmtM(ctx.raw) } } } },
+    });
+
+    // Plan table
+    document.getElementById('tbl-mrr-plan').innerHTML = `<table>
+      <thead><tr><th>Plan</th><th class="num">Subs</th><th class="num">MRR</th><th class="num">ARR</th></tr></thead>
+      <tbody>${plan.map(r=>`<tr>
+        <td>${r.plan_name}</td>
+        <td class="num">${fmt(r.sub_count)}</td>
+        <td class="num">${fmtM(r.total_mrr)}</td>
+        <td class="num">${fmtM(r.total_arr)}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+
+  } catch(e) { console.error('MRR load failed', e); }
+}
+
+// ── Revenue Section ─────────────────────────────────────────────────────────
+async function loadRevenue() {
+  try {
+    const [monthly, segments, reps] = await Promise.all([
+      get('/api/revenue/monthly'), get('/api/revenue/by-segment'), get('/api/revenue/by-rep'),
+    ]);
+
+    // Monthly stacked bar
+    const months   = uniqueLabels(monthly, 'invoice_month');
+    const types    = uniqueLabels(monthly, 'invoice_type');
+    makeChart('chart-rev-monthly', {
+      type: 'bar',
+      data: {
+        labels: months.map(m=>m.slice(0,7)),
+        datasets: types.map((t,i) => ({
+          label: t,
+          data: months.map(m => { const r = monthly.find(x=>x.invoice_month===m&&x.invoice_type===t); return r?r.gross_revenue:0; }),
+          backgroundColor: PALETTE[i], borderRadius: 2, borderWidth: 0,
+        })),
+      },
+      options: { responsive: true, interaction: { mode: 'index' }, scales: { x: { stacked: true }, y: { stacked: true, ticks: { callback: v=>fmtM(v) } } } },
+    });
+
+    // Segment bar
+    const segs = uniqueLabels(segments, 'segment');
+    makeChart('chart-rev-segment', {
+      type: 'bar',
+      data: {
+        labels: segs,
+        datasets: types.map((t,i) => ({
+          label: t,
+          data: segs.map(s => { const r = segments.find(x=>x.segment===s&&x.invoice_type===t); return r?r.gross_revenue:0; }),
+          backgroundColor: PALETTE[i], borderRadius: 4, borderWidth: 0,
+        })),
+      },
+      options: { responsive: true, scales: { x: { stacked: true }, y: { stacked: true, ticks: { callback: v=>fmtM(v) } } } },
+    });
+
+    // Reps table
+    document.getElementById('tbl-rev-rep').innerHTML = `<table>
+      <thead><tr><th>Sales Rep</th><th class="num">Customers</th><th class="num">Invoices</th><th class="num">Gross Rev</th><th class="num">Net Rev</th></tr></thead>
+      <tbody>${reps.map((r,i)=>`<tr>
+        <td>${r.sales_rep_name||'—'}</td>
+        <td class="num">${fmt(r.customers)}</td>
+        <td class="num">${fmt(r.invoices)}</td>
+        <td class="num">${fmtM(r.gross_revenue)}</td>
+        <td class="num">${fmtM(r.net_revenue)}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+
+  } catch(e) { console.error('Revenue load failed', e); }
+}
+
+// ── AR Aging Section ─────────────────────────────────────────────────────────
+async function loadAR() {
+  try {
+    const data = await get('/api/ar-aging');
+
+    const bucketColors = {
+      'Current':          C.green,
+      '1-30 Days Overdue': C.orange,
+      '31-60 Days Overdue': C.amber,
+      '61-90 Days Overdue': C.red,
+      '90+ Days Overdue':   '#7f1d1d',
+    };
+    const colors = data.map(r => bucketColors[r.ar_aging_bucket] || C.purple);
+
+    makeChart('chart-ar-bucket', {
+      type: 'bar',
+      data: {
+        labels: data.map(r=>r.ar_aging_bucket),
+        datasets: [{ label: 'Exposure ($)', data: data.map(r=>r.total_exposure), backgroundColor: colors, borderRadius: 4, borderWidth: 0 }],
+      },
+      options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { callback: v=>fmtM(v) } } } },
+    });
+
+    makeChart('chart-ar-count', {
+      type: 'doughnut',
+      data: { labels: data.map(r=>r.ar_aging_bucket), datasets: [{ data: data.map(r=>r.invoice_count), backgroundColor: colors, borderWidth: 0 }] },
+      options: { responsive: true, plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + fmt(ctx.raw) + ' invoices' } } } },
+    });
+
+  } catch(e) { console.error('AR load failed', e); }
+}
+
+// ── Balance Sheet Section ────────────────────────────────────────────────────
+async function loadBS() {
+  try {
+    const [trend, latest] = await Promise.all([get('/api/balance-sheet'), get('/api/balance-sheet/latest')]);
+
+    const months  = uniqueLabels(trend, 'entry_month');
+    const types   = ['ASSET', 'LIABILITY', 'EQUITY'];
+    const typeMap = { ASSET: C.green, LIABILITY: C.red, EQUITY: C.blue };
+
+    makeChart('chart-bs-trend', {
+      type: 'line',
+      data: {
+        labels: months.map(m=>m.slice(0,7)),
+        datasets: types.map(t => ({
+          label: t, tension: .3, pointRadius: 0, borderColor: typeMap[t], backgroundColor: 'transparent',
+          data: months.map(m => { const r = trend.find(x=>x.entry_month===m&&x.account_type===t); return r?r.closing_balance:0; }),
+        })),
+      },
+      options: { responsive: true, interaction: { mode: 'index' }, scales: { y: { ticks: { callback: v=>fmtM(v) } } },
+        plugins: { tooltip: { callbacks: { label: ctx => ctx.dataset.label + ': ' + fmtM(ctx.raw) } } } },
+    });
+
+    // Latest period donut
+    const latestByType = groupBy(latest, 'account_type');
+    const donutLabels  = types;
+    const donutData    = types.map(t => (latestByType[t]||[]).reduce((s,r)=>s+r.closing_balance,0));
+    makeChart('chart-bs-latest', {
+      type: 'doughnut',
+      data: { labels: donutLabels, datasets: [{ data: donutData, backgroundColor: types.map(t=>typeMap[t]), borderWidth: 0 }] },
+      options: { responsive: true, plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + fmtM(ctx.raw) } } } },
+    });
+
+    // Account table
+    document.getElementById('tbl-bs').innerHTML = `<table>
+      <thead><tr><th>Account</th><th>Section</th><th>Subtype</th><th class="num">Closing Balance</th></tr></thead>
+      <tbody>${latest.map(r=>`<tr>
+        <td>${r.account_name}</td>
+        <td><span class="badge ${r.account_type==='ASSET'?'badge-green':r.account_type==='LIABILITY'?'badge-red':'badge-blue'}">${r.bs_section}</span></td>
+        <td>${r.account_subtype||'—'}</td>
+        <td class="num">${fmtM(r.closing_balance)}</td>
+      </tr>`).join('')}</tbody>
+    </table>`;
+
+  } catch(e) { console.error('BS load failed', e); }
+}
+
+// ── Cash Flow Section ────────────────────────────────────────────────────────
+async function loadCF() {
+  try {
+    const data = await get('/api/cash-flow');
+
+    const months     = uniqueLabels(data, 'entry_month');
+    const categories = uniqueLabels(data, 'cash_flow_category');
+    const catColors  = {
+      'Cash Received from Customers': C.green,
+      'Cash Paid to Vendors':         C.red,
+      'Cash Paid for Payroll':        C.orange,
+      'Other Operating Cash':         C.muted,
+    };
+
+    makeChart('chart-cf-monthly', {
+      type: 'bar',
+      data: {
+        labels: months.map(m=>m.slice(0,7)),
+        datasets: categories.map(cat => ({
+          label: cat,
+          data: months.map(m => { const r = data.find(x=>x.entry_month===m&&x.cash_flow_category===cat); return r?r.net_movement:0; }),
+          backgroundColor: catColors[cat] || C.purple, borderRadius: 2, borderWidth: 0,
+        })),
+      },
+      options: { responsive: true, interaction: { mode: 'index' }, scales: { x: { stacked: true }, y: { stacked: true, ticks: { callback: v=>fmtM(v) } } } },
+    });
+
+    // Cumulative balance — one row per month (sum across categories)
+    const cumByMonth = months.map(m => {
+      const rows = data.filter(r=>r.entry_month===m);
+      return rows.length ? rows[rows.length-1].cumulative_balance : 0;
+    });
+    makeChart('chart-cf-balance', {
+      type: 'line',
+      data: {
+        labels: months.map(m=>m.slice(0,7)),
+        datasets: [{ label: 'Cumulative Cash', data: cumByMonth, borderColor: C.cyan, backgroundColor: 'rgba(6,182,212,.1)', fill: true, tension: .3, pointRadius: 0 }],
+      },
+      options: { responsive: true, scales: { y: { ticks: { callback: v=>fmtM(v) } } },
+        plugins: { tooltip: { callbacks: { label: ctx => 'Cash Balance: ' + fmtM(ctx.raw) } } } },
+    });
+
+  } catch(e) { console.error('CF load failed', e); }
+}
+
+// ── Vendor Section ───────────────────────────────────────────────────────────
+async function loadVendor() {
+  try {
+    const [top, monthly] = await Promise.all([get('/api/opex-vendor'), get('/api/opex-vendor/monthly')]);
+
+    // Top vendors horizontal bar
+    makeChart('chart-vendor-top', {
+      type: 'bar',
+      data: {
+        labels: top.map(r=>r.vendor_name),
+        datasets: [{ label: 'Total Spend', data: top.map(r=>r.total_spend), backgroundColor: top.map((_,i)=>PALETTE[i%PALETTE.length]), borderRadius: 4, borderWidth: 0 }],
+      },
+      options: { indexAxis: 'y', responsive: true, plugins: { legend: { display: false } }, scales: { x: { ticks: { callback: v=>fmtM(v) } } } },
+    });
+
+    // Spend by category donut
+    const byCat = {};
+    top.forEach(r => { byCat[r.vendor_category] = (byCat[r.vendor_category]||0) + r.total_spend; });
+    makeChart('chart-vendor-cat', {
+      type: 'doughnut',
+      data: { labels: Object.keys(byCat), datasets: [{ data: Object.values(byCat), backgroundColor: PALETTE.slice(0,Object.keys(byCat).length), borderWidth: 0 }] },
+      options: { responsive: true, plugins: { tooltip: { callbacks: { label: ctx => ctx.label + ': ' + fmtM(ctx.raw) } } } },
+    });
+
+    // Monthly stacked by category
+    const mths  = uniqueLabels(monthly, 'bill_month');
+    const cats  = uniqueLabels(monthly, 'vendor_category');
+    makeChart('chart-vendor-monthly', {
+      type: 'bar',
+      data: {
+        labels: mths.map(m=>m.slice(0,7)),
+        datasets: cats.map((cat,i) => ({
+          label: cat,
+          data: mths.map(m => { const r = monthly.find(x=>x.bill_month===m&&x.vendor_category===cat); return r?r.total_spend:0; }),
+          backgroundColor: PALETTE[i%PALETTE.length], borderRadius: 0, borderWidth: 0,
+        })),
+      },
+      options: { responsive: true, interaction: { mode: 'index' }, scales: { x: { stacked: true }, y: { stacked: true, ticks: { callback: v=>fmtM(v) } } } },
+    });
+
+  } catch(e) { console.error('Vendor load failed', e); }
+}
+
+// ── Payroll Section ──────────────────────────────────────────────────────────
+async function loadPayroll() {
+  try {
+    const [monthly, annual] = await Promise.all([get('/api/payroll'), get('/api/payroll/annual')]);
+
+    // Dept stacked bar — salary only
+    const salary  = monthly.filter(r=>r.pay_type==='SALARY');
+    const mths    = uniqueLabels(salary, 'pay_month');
+    const depts   = uniqueLabels(salary, 'department');
+    const deptColors = { Engineering: C.blue, Sales: C.green, 'Customer Success': C.cyan, 'G&A': C.purple };
+
+    makeChart('chart-pay-dept', {
+      type: 'bar',
+      data: {
+        labels: mths.map(m=>m.slice(0,7)),
+        datasets: depts.map((d,i) => ({
+          label: d,
+          data: mths.map(m => { const r = salary.find(x=>x.pay_month===m&&x.department===d); return r?r.gross_pay:0; }),
+          backgroundColor: deptColors[d]||PALETTE[i], borderRadius: 0, borderWidth: 0,
+        })),
+      },
+      options: { responsive: true, interaction: { mode: 'index' }, scales: { x: { stacked: true }, y: { stacked: true, ticks: { callback: v=>fmtM(v) } } } },
+    });
+
+    // Annual salary vs bonus
+    const years     = uniqueLabels(annual, 'pay_year');
+    makeChart('chart-pay-type', {
+      type: 'bar',
+      data: {
+        labels: years,
+        datasets: [
+          { label: 'Salary', data: years.map(yr => annual.filter(r=>r.pay_year===yr&&r.pay_type==='SALARY').reduce((s,r)=>s+r.gross_pay,0)), backgroundColor: C.blue, borderRadius: 4, borderWidth: 0 },
+          { label: 'Bonus',  data: years.map(yr => annual.filter(r=>r.pay_year===yr&&r.pay_type==='BONUS').reduce((s,r)=>s+r.gross_pay,0)),  backgroundColor: C.orange, borderRadius: 4, borderWidth: 0 },
+        ],
+      },
+      options: { responsive: true, interaction: { mode: 'index' }, scales: { x: { stacked: true }, y: { stacked: true, ticks: { callback: v=>fmtM(v) } } } },
+    });
+
+  } catch(e) { console.error('Payroll load failed', e); }
+}
+
+// ── Boot ─────────────────────────────────────────────────────────────────────
+(async () => {
+  await loadKPIs();
+  // Load all sections in parallel — they're hidden but charts render correctly
+  await Promise.all([
+    loadPnL(), loadMRR(), loadRevenue(), loadAR(),
+    loadBS(), loadCF(), loadVendor(), loadPayroll(),
+  ]);
+  document.getElementById('refresh-meta').textContent = 'Loaded ' + new Date().toLocaleTimeString();
+})();
+</script>
+</body>
+</html>
