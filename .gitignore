@@ -22,5 +22,9 @@ logs/
 # Claude memory (private)
 .claude/
 
+# Environment secrets — never commit credentials
+.env
+db/.env
+
 # VS Code
 .vscode/

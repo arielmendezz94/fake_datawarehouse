@@ -497,7 +497,7 @@ models:
               quote: true
 
 
-  - name: int_vendor_bills__enriched
+  - name: fact_vendor_bills
     description: >
       Silver layer core model for vendor invoicing and accounts payable. 
       Normalizes multi-currency raw staging records, evaluates current payment liabilities, 

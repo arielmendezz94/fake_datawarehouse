@@ -44,4 +44,4 @@ select
 
 
 from {{ ref('stg_journal_entries') }}  b
-left join {{ ref('dim_accounts') }}     a  on b.account_id = a.account_id
+right join {{ ref('dim_accounts') }}     a  on b.account_id = a.account_id
